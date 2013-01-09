@@ -1,0 +1,51 @@
+
+.topbar {
+  background-color: #555;
+  color: #efefef;
+  padding: 0.2em .5em;
+}
+
+.topbar a {
+  color: #0cf;
+}
+
+table.calendartable {
+  margin-top: 2em;
+  border-collapse: collapse;
+}
+
+table.calendartable th, 
+table.calendartable td {
+  width: 4ex;
+  height: 4ex;
+  line-height: 4ex;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgb(217, 237, 247);
+}
+
+table.calendartable th {
+  background-color: rgb(217, 237, 247);
+}
+
+table.calendartable td.selected {
+  background-color: rgb(223, 240, 216);
+}
+
+table.calendartable caption {
+  font-size: 20pt;
+  line-height: 1.5em;
+}
+
+table.calendartable td {
+  text-align: center;
+}
+
+tr.no-record td {
+  text-align: center;
+  line-height: 3em;
+}
+
+td.number {
+  text-align: right;
+}

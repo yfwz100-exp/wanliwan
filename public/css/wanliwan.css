@@ -1,0 +1,26 @@
+
+.topbar {
+  margin-bottom: .5em;
+}
+
+.mark-tr, .mark-tl, .mark-br, .mark-bl {
+  background-image: url('../img/wanliwan.png');
+  background-repeat: no-repeat;
+}
+
+.mark-tr {
+  background-position: top right;
+}
+
+.mark-tl {
+  background-position: top left;
+}
+
+.mark-br {
+  background-position: bottom right;
+}
+
+.mark-bl {
+  background-position: bottom left;
+}
+
