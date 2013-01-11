@@ -11,7 +11,7 @@ By [yfwz100](mailto:yfwz100@yeah.net) at 2013.
 
 ## The documents 
 
-The development documents are located at [wiki](wanliwan/wiki). Please refer to the two place for more information.
+The development documents are located at [wiki](wanliwan/wiki). Please refer to the wiki for more information.
 
 ## The authors
 
