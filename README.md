@@ -30,4 +30,3 @@ The area of China is 960,0000 sq km(not exactly) so we use the 'big number' to r
 
 So what it means is the social network will be a widely used social network in China.
 
-
