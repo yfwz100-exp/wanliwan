@@ -26,7 +26,7 @@ But what's wanliwan(万里万)? And how it's related to a social network?
 
 The idea of wanliwan is suggested by [qzr](mailto:iloveyouliping@sina.com) with the thought of a million miles distance(in fact, wan exactly means ten thousand, but in Chinese, when the number is big enough, it just means very big and it's not exactly what it means. So I uses million here).
 
-The area of China is 960,0000 sq km(not exactly) so we uses the very big number to represent the area of China.
+The area of China is 960,0000 sq km(not exactly) so we use the 'big number' to represent the area of China.
 
 So what it means is the social network will be a widely used social network in China.
 
