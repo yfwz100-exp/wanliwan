@@ -1,4 +1,4 @@
-// JavaScript Document
+//连接数据库 
 
 var settings = require('../settings');
 var Db = require('mongodb').Db;
