@@ -1,6 +1,6 @@
 //连接数据库 
 
-var settings = require('../settings');
+var settings = require('./settings');
 var Db = require('mongodb').Db;
 var Connection = require('mongodb').Connection;
 var Server = require('mongodb').Server;
