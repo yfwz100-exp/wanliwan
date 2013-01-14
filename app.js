@@ -4,7 +4,7 @@
  */
 
 var express = require('express')
-  , route = require('./route')
+  , routes = require('./routes')
   , http = require('http')
   , path = require('path')
   , settings = require('./settings')
@@ -36,7 +36,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-route.initRoute(app);
+routes.init(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

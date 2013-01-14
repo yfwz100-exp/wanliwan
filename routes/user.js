@@ -5,9 +5,15 @@
 
 var User = require('../model/user');
 
+exports.checkLogin = function checkLogin(req, res) {
+  return req.session.user;
+}
+
 exports.list = function(req, res){
   if (req.session.user) {
-    res.send("respond with a resource");
+    res.render('list', {
+      layout: 'layout'
+    });
   } else {
     res.redirect('/login');
   }
