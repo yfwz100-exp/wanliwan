@@ -4,9 +4,9 @@
  * 所有的 url 分发都在此编写。
  */
 
-var home = require('./home')
-  , user = require('./user')
-  , test = require('./tests');
+var home = require('../controllers/home')
+  , user = require('../controllers/user')
+  , test = require('../controllers/tests');
 
 exports.init = function init(app) {
   app.get('/', home.index);
@@ -20,5 +20,5 @@ exports.init = function init(app) {
 
   app.get('/register', user.registerView);
   app.post('/register', user.register);
-}
+};
 

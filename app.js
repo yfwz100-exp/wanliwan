@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , settings = require('./my/settings')
+  , settings = require('./dbs/settings')
   , MongoStore = require('connect-mongo')(express);
 
 var app = express();
@@ -15,12 +15,12 @@ var app = express();
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
+  app.set('view engine', 'jade');
   app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser('wanliwanbyus'));
+  app.use(express.cookieParser(settings.cookieSecret));
   app.use(express.session({
     secret: settings.cookieSecret,
     store: new MongoStore({
