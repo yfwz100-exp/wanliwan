@@ -10,9 +10,9 @@
       <div class="navbar-inner">
         <div class="container">
           <ul class="nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li class="active"><a href="/register">Register</a></li>
+            <li><a href="/">主页</a></li>
+            <li><a href="/login">登入</a></li>
+            <li class="active"><a href="/register">登记</a></li>
           </ul>
         </div>
       </div>
@@ -20,32 +20,32 @@
     <div class="container">
       <form class="form-horizontal" action="/register" method="POST">
         <fieldset>
-          <legend>Register</legend>
+          <legend>登记</legend>
 
           <div class="control-group">
-            <label class="control-label" for="username">User name: </label>
+            <label class="control-label" for="username"> </label>
             <div class="controls">
-            	<input type="text" id="username" name="user[name]" placeholder="your account" />
+            	<input type="text" id="username" name="user[name]" placeholder="昵称" />
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="password">Password: </label>
+            <label class="control-label" for="password"></label>
             <div class="controls">
-            	<input type="password" id="password" name="user[pass]" placeholder="your password" />
+            	<input type="password" id="password" name="user[pass]" placeholder="密码" />
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="password">Re Password: </label>
+            <label class="control-label" for="password"></label>
             <div class="controls">
-            	<input type="password" id="password" name="user[repass]" placeholder="your password" />
+            	<input type="password" id="password" name="user[repass]" placeholder="确认密码" />
             </div>
           </div>
         </fieldset>
 
         <div class="form-actions">
-          <input class="btn btn-primary" type="submit" value="Login" />
-          <input class="btn" type="reset" value="Reset" />
+          <input class="btn btn-primary" type="submit" value="开启奇妙之旅" />
+          <input class="btn" type="reset" value="我再考虑一下" />
         </div>
       </form>
     </div>

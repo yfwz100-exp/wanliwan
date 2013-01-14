@@ -1,3 +1,4 @@
+//这里是url的路由配置
 
 var  routes = require('./routes')
   , user = require('./routes/user')
