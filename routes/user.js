@@ -3,7 +3,7 @@
  * GET users listing.
  */
 
-var User = require('../model/user');
+var User = require('../my/model/user');
 
 exports.checkLogin = function checkLogin(req, res) {
   return req.session.user;
