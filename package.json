@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "wanliwan",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "express": "3.0.6",
     "ejs": "*",
     "stylus": "*",
+    "async": "*",
     "mongodb": "*",
     "connect-mongo": ">=0.1.7"
   }
