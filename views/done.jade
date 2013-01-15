@@ -1,20 +1,19 @@
-doctype 5
-html
-head
-  meta(charset="utf8")
+extends layout
+
+block append head
 	title Done
-  
-  link(rel="stylesheet" href="/css/bootstrap.css")
+
 	link(rel="stylesheet" href="/css/wanliwan.css")
   link(rel='stylesheet' href='/css/info.css')
 
-body.container
-	.page-header
-    h1 Done! 
-    .pull-right ^_^
+block body
+  .container
+	  .page-header
+      h1 Done! 
+      .pull-right ^_^
     
-	.content
-    p.well #{message}
+	  .content
+      p.well #{message}
 
-		.more
-      a(href='#{link}').btn.btn-primary Continue
+		  .more
+        a(href='#{link}').btn.btn-primary Continue
