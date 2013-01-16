@@ -5,7 +5,18 @@ html
     block head
       link(rel='stylesheet',href='/stylesheets/bootstrap.css')
       script(src='/javascripts/jquery.min.js')
-  body
+  body      
     block body
+    block footer
+      .footer
+        .container
+          p.pull-right
+            | Projects used in this site  can be found 
+            a(href='/about') here
+            | .
+          p 
+            | &copy; 
+            a(href='mailto:yfwz100@yeah.net') Wanliwan development team
+            | .
+  script(src="/javascripts/bootstrap.js")
 
-    script(src="/javascripts/bootstrap.js")
