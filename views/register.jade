@@ -1,0 +1,50 @@
+extends layout
+
+block append head
+  title 欢迎加入
+  link(rel='stylesheet',href='/css/wanliwan.css')
+
+block body
+  .topbar.navbar.navbar-inverse.navbar-static-top
+    .navbar-inner
+      .container
+        .nav
+          li
+            a(href='/') 主页
+          li
+            a(href='/login') 登入
+          li.active
+            a(href='/register') 登记
+    
+  .container
+    form(action='/register',method='POST').form-horizontal
+      fieldset
+        legend 登记
+        
+        .control-group
+          label(for='username').control-label
+          .controls
+            input(type='text',id='username',name='user[name]', placeholder='昵称')
+
+        .control-group
+          label(for='password').control-label
+          .controls
+            input(type='password',id='password',name='user[pass]', placeholder='密码')
+              
+        .control-group
+          label(for='password').control-label
+          .controls
+            input(type='password',id='password',name='user[repass]', placeholder='确认密码')
+      
+      .form-actions
+        input(type='submit',value='开启奇妙之旅').btn.btn-primary
+        input(type='reset',value='我再考虑一下').btn 
+        
+  footer.footer
+    .container
+      p.pull-right
+        | Projects used in this site  can be found 
+        a(href='/about') here. 
+      p
+        | &copy; 
+        a(href='mailto:yfwz100@yeah.net') Wanliwan development team.
