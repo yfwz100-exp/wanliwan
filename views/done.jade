@@ -1,19 +1,13 @@
 extends layout
-
 block append head
-	title Done
-
-	link(rel="stylesheet" href="/css/wanliwan.css")
-  link(rel='stylesheet' href='/css/info.css')
-
+  title Done
+  link(rel="stylesheet",href="/stylesheets/wanliwan.css")
 block body
   .container
-	  .page-header
-      h1 Done! 
+    .page-header
+      h1 Done!
       .pull-right ^_^
-    
-	  .content
+    .content
       p.well #{message}
-
-		  .more
+      .more
         a(href='#{link}').btn.btn-primary Continue
