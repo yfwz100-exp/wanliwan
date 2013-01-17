@@ -10,6 +10,8 @@ var home = require('../controllers/home')
 
 exports.init = function init(app) {
   app.get('/', home.index);
+  app.get('/andex',home.andex);
+  
   app.get('/tests', test.index);
 
   app.get('/users', user.list);
@@ -20,5 +22,6 @@ exports.init = function init(app) {
 
   app.get('/register', user.registerView);
   app.post('/register', user.register);
-};
+  
+ };
 
