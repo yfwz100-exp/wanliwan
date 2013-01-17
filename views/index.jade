@@ -2,23 +2,71 @@ extends layout
 
 block append head
   title 万里万，管饭的社交网络
-  link(rel='stylesheet', href='/stylesheets/wanliwan.css')
-  
+  link(href="/stylesheets/carousel.css",rel="stylesheet")
+
 block body
-  .topbar.navbar.navbar-static-top
-    .navbar-inner
-      .container
-        .nav
-          li.active
-            a(href='/') 主页
-          li
-            a(href='/login') 登入
-          li
-            a(href='/register') 登记
-  .container
-    .hero-unit.mark-br
-      h1 万里万
-      p 一群人，一个团队，一个梦想。
-      a(href='/register').btn.btn-primary 加入我们
-      | 
-      a(href='/login').btn 登入
+  .navbar-wrapper
+    .container
+      .navbar.navbar-inverse
+        .navbar-inner
+          a(data-toggle="collapse",data-target=".nav-collapse").btn.btn-navbar
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href="/").brand 万里万
+
+          .nav-collapse.collapse
+            ul.nav
+              li.active: a(href="/") 主页
+              li: a(href='/news') 新鲜事
+              li: a(href='/explore') 探索
+              li: a(href="/about") 关于
+              
+              li.dropdown
+                a(href="#",data-toggle="dropdown").dropdown-toggle 更多
+                  b.caret
+                ul.dropdown-menu
+                  li: a(href="#") 这是什么？
+                  li: a(href="https://github.com/yfwz100/wanliwan") 项目说明
+
+  #myCarousel.carousel.slide
+    .carousel-inner
+      .item
+        img(src="/images/slide-01.jpg",alt="")
+        .container
+            .carousel-caption
+              h1 我们就是不一样。
+              p.lead 请不要用低俗的目光侮辱我高尚的人格!
+              a(href="/register").btn.btn-large.btn-primary 现在就加入
+              | 
+              a(href='/login').btn.btn-large.btn-success 登入
+      .item
+        img(src="/images/slide-02.jpg",alt="")
+        .container
+            .carousel-caption
+              h1 永恒爱意
+              p.lead 曾经有一份真挚的爱情摆在我眼前，我没有好好地珍惜，但当失去才觉得后悔。如果，上天给个机会我再来一次，我会对那个女孩说：……
+              a(href="/register").btn.btn-large.btn-primary 加入我们
+              | 
+              a(href='/login').btn.btn-large.btn-success 登陆！
+      .item.active
+        img(src="/images/slide-03.jpg",alt="")
+        .container
+            .carousel-caption
+              h1 东风何处是人间
+              p.lead 无聊是一群人的狂欢。
+              a(href="/register").btn.btn-large.btn-primary 共同无聊
+              | 
+              a(href='/login').btn.btn-large.btn-success 已经无聊
+
+    a(href="#myCarousel",data-slide="prev").left.carousel-control &lsaquo;
+    a(href="#myCarousel",data-slide="next").right.carousel-control &rsaquo;
+      
+block append footerjs
+  script
+    !function ($) {
+      $(function(){
+        // carousel demo
+        $('#myCarousel').carousel()
+      })
+    }(window.jQuery)
