@@ -4,7 +4,7 @@ html
     meta(charset='utf8')
     block head
       link(rel='stylesheet',href='/stylesheets/bootstrap.css')
-      script(src='/javascripts/jquery.min.js')
+      script(src='/javascripts/jquery.js')
   body      
     block body
     block footer
@@ -18,5 +18,6 @@ html
             | &copy; 
             a(href='mailto:yfwz100@yeah.net') Wanliwan development team
             | .
-  script(src="/javascripts/bootstrap.js")
+    block footerjs
+      script(src="/javascripts/bootstrap.js")
 
