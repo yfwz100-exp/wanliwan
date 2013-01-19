@@ -24,3 +24,7 @@
   background-position: bottom left;
 }
 
+.footer {
+  position:relative;
+  z-index:10;  
+}
