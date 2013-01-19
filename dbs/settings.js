@@ -4,5 +4,7 @@
 module.exports = {
   cookieSecret: 'wanliwanbyus',
   db: 'qing',
-  host: 'localhost'
+  host: 'localhost',
+  connection: require('./mongoose'),
 };
+

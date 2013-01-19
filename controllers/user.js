@@ -12,6 +12,7 @@ exports.checkLogin = function checkLogin(req, res) {
 exports.list = function(req, res){
   if (req.session.user) {
     res.render('list', {
+      user: req.session.user,
       layout: 'layout'
     });
   } else {

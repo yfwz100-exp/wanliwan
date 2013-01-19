@@ -2,12 +2,22 @@ extends layout
 block append head
   title Done
   link(rel="stylesheet",href="/stylesheets/wanliwan.css")
+  meta(http-equiv='refresh',content='5; '+link)
+  script
+    $(function() {
+      setInterval(function() {
+        var secs = parseInt($('#secs').text());
+        $('#secs').text(--secs);
+      }, 1000);
+    });
 block body
   .container
     .page-header
-      h1 Done!
+      h1 完成~
       .pull-right ^_^
     .content
       p.well #{message}
       .more
-        a(href='#{link}').btn.btn-primary Continue
+        a(href='#{link}').btn.btn-primary 
+          span#secs 5
+          | 秒后继续
