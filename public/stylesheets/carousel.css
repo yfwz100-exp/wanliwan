@@ -15,7 +15,7 @@ body {
       left: 0;
       right: 0;
       z-index: 10;
-      margin-top: 20px;
+      margin-top:-5px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
     .navbar-wrapper .navbar {
@@ -87,9 +87,9 @@ body {
       background-color: rgba(22,22,22,0.6);
       border-radius: 10px;
       position: static;
-      max-width: 550px;
+      max-width: 400px;
       padding: 20px;
-      margin-top: 200px;
+      margin-top: 400px;
     }
     .carousel-caption h1,
     .carousel-caption .lead {
@@ -210,9 +210,9 @@ body {
       .carousel-caption {
         width: 65%;
         padding: 0 70px;
-        margin-top: 100px;
-        background-color: rgba(22,22,22, 22);
-        border-radius: 10px;
+        margin-top: 200px;
+        background-color: rgba(22,22,22,10);
+        border-radius: 5px;
       }
       .carousel-caption h1 {
         font-size: 30px;
