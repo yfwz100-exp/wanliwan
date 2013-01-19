@@ -8,9 +8,10 @@
   "dependencies": {
     "express": "*",
     "jade": "*",
-    "stylus": "*",
+    "less-middleware": "*",
     "async": "*",
     "mongodb": "*",
-    "connect-mongo": ">=0.1.7"
+    "connect-mongo": ">=0.1.7",
+    "mongoose": "*"
   }
 }
