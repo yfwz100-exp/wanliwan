@@ -23,5 +23,6 @@ exports.init = function init(app) {
   app.get('/register', user.registerView);
   app.post('/register', user.register);
   
+  app.get('/home', user.home);
  };
 

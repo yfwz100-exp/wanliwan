@@ -26,7 +26,10 @@ exports.registerView = function registerView(req, res) {
 exports.register = function register(req, res) {
   if (req.body.user.name && req.body.user.pass && req.body.user.repass
       && req.body.user.pass == req.body.user.repass) {
-    var user = new User(req.body.user);
+    var user = new User({
+      name: req.body.user.name,
+      password:req.body.user.pass
+    });
     user.save(function (err) {
       if (! err) {
         res.render('done', {
@@ -59,7 +62,7 @@ exports.login = function login(req, res) {
       req.session.user = user;
       res.render('done', {
         message: 'Successfully login!',
-        link: '/users'
+        link: '/home'
       });
     } else {
       res.render('error', {
@@ -78,3 +81,6 @@ exports.logout = function logout(req, res) {
   });
 }
 
+exports.home = function home(req, res) {
+  res.render('home',{});
+}
