@@ -1,0 +1,249 @@
+extends layout
+
+block append head
+		title home
+		link(href="/stylesheets/css/application.css" rel="stylesheet")
+		link(href="/stylesheets/docs.css" rel="stylesheet")
+		link(href="/javascripts/google-code-prettify/prettify.css" rel="stylesheet")
+		script(src="/javascripts/application.js")
+		
+block body
+  #container
+	  .header_top
+		  .header_top_main
+			  h1 万里万.
+			  .logo
+				  img(src="../image/logo.png")
+				.header_nav
+				  ul
+						li
+							a(href="#")
+                img(src="../image/nav1_01.gif")
+						li
+              a(href="#")
+                img(src="../image/nav_02.gif")
+						li
+							a(href="#")
+                img(src="../image/nav_03.gif")
+            li
+              a(href="#")
+                img(src="../image/nav_04.gif")
+            li
+							a(href="#")
+                img(src="../image/nav_05.gif")
+            li
+              a(href="#")
+                img(src="../image/nav_06.gif")
+						li
+							a(href="#")
+                img(src="../image/nav_07.gif")
+			
+				.search
+				  form(method="post")
+					  i.icon-search#icon_search
+						  input(type="text",id="input_search",name="search")
+
+    .header_bottom">
+		  .avatar
+			  img(src="../image/2.png",alt="img")
+
+			.navigator_sign
+			  .navigator
+				  .right_show
+					  .nav
+						  li
+								img(src="../image/nav_text.png") 
+                br
+								span 文字
+			        li
+                img(src="../image/na.gif")
+							li
+                img(src="../image/nav_photo.png")
+								br
+								span 照片
+							li
+                img(src="../image/na.gif")
+							li
+                img(src="../image/nav_quote.png")
+								br
+								span 名言
+							li 
+                img(src="../image/na.gif")
+							li
+                img(src="../image/nav_link.png")
+								br
+								span 链接
+							li
+                img(src="../image/na.gif")
+							li
+                img(src="../image/nav_chat.png")
+								br
+								span @伊
+							li
+                img(src="../image/na.gif")
+							li
+                img(src="../image/nav_audio.png")
+								br
+								span 音乐
+							li
+                img(src="../image/na.gif")
+						  li
+                img(src="../image/nav_video.png")
+								br
+								span 视频
+				
+				.sign
+				  p 忍耐，朋友是最重要的。
+					
+			.aide
+			  .weather
+				  img(src="../image/sun.png")
+					img(src="../image/moon.png").weather_img
+
+          p 
+            | 沈阳 &nbsp;&nbsp;-3°C ~ -15°C
+					  br
+					  | 晴转多云 东南风三级
+
+				.date
+					p 周五 壬申 廿二
+					
+    .content
+			.content_left
+			  .messageBar
+				  .tip_right
+					  .follow_avatar_right
+						  img(src="../image/2-1.png")
+							span.icon-gift.gift.icon-white
+							span.icon-gift.msg.icon-white
+						.message_right
+							.messagebar
+								span.name 张国荣
+								span.time 16:13
+								span.date 12-01
+								span.icon-remove.close
+								span.icon-wrench.tool
+							.show_content
+							  p.
+									1月12日晚，东北大学2013年辽沈地区校友、校董迎新春座谈会在
+										我校举行。原辽宁省副省长赵新良、辽宁省政协副主席王植时、沈阳市
+										市长陈海波等50余位校友参加了座谈会。我校领导孙家学、丁烈云、杨
+										明、王福利、张国臣出席了座谈会。
+										1月12日晚，东北大学2013年辽沈地区校友、校董迎新春座谈会在
+										我校举行。原辽宁省副省长赵新良、辽宁省政协副主席王植时、沈阳市
+										市长陈海波等50余位校友参加了座谈会。我校领导孙家学、丁烈云、杨
+										明、王福利、张国臣出席了座谈会。
+			
+							.appraize
+                span.mood
+                  i.ti_mood #
+                  | 心情
+									<!--xi huan-->
+								a(href="#")
+                  span.num 1 
+                  span.icon-heart.shape
+									<!--xi huan-->
+									<!--讨论 taolun-->
+                a(href="#")
+                  span.num 2
+                  span.icon-heart.shape
+									<!--讨论 taolun-->
+									<!--转发 zhuan fa-->
+								a(href="#")
+                  span.num 3
+                  span.icon-share-alt.shape
+									<!--转发 zhuan fa-->
+						<!--a block-->
+					.tip_left
+						.follow_avatar_left
+						  img(src="../image/1.png")
+							span.icon-gift.gift.icon-white
+							span.icon-gift.msg.icon-white
+						.message_left
+							.messagebar
+							  span.name 张国荣
+								span.time 16:13
+								span.date 12-01
+								span.icon-remove.close
+								span.icon-wrench.tool
+							.show_content
+							  p.
+										1月12日晚，东北大学2013年辽沈地区校友、校董迎新春座谈会在
+										我校举行。原辽宁省副省长赵新良、辽宁省政协副主席王植时、沈阳市
+										市长陈海波等50余位校友参加了座谈会。我校领导孙家学、丁烈云、杨
+										明、王福利、张国臣出席了座谈会。
+										1月12日晚，东北大学2013年辽沈地区校友、校董迎新春座谈会在
+										我校举行。原辽宁省副省长赵新良、辽宁省政协副主席王植时、沈阳市
+										市长陈海波等50余位校友参加了座谈会。我校领导孙家学、丁烈云、杨
+										明、王福利、张国臣出席了座谈会。
+              
+              .appraize
+                span.mood
+                  i.ti_mood #
+                  | 心情
+									<!--xi huan-->
+                a(href="#")
+                  span.num 1
+                  span.icon-heart.shape
+									<!--xi huan-->
+									<!--讨论 taolun-->
+								a(href="#")
+                  span.num 2 
+                  span.icon-heart.shape
+									<!--讨论 taolun-->
+									<!--转发 zhuan fa-->
+								a(href="#")
+                  span.num 3
+                  span.icon-share-alt.shape
+									<!--转发 zhuan fa-->
+
+					
+
+      .content_right
+			  .noticeBar
+				  .my_info
+					  .msg_title
+						  span  张国荣
+							span  男
+							span  演员
+            div 
+              p#my_info_content
+						    a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							  a(href="#") 1028442429@qq.com
+							
+							.icon-plus-sign#unfold
+							.icon-minus-sign#fold
+					.present
+            span.icon-gift
+              span 礼物
+              span.num 12321312
+					.feeling.wanxin
+						span.icon-heart
+              span 万信
+              span.num 234324
+					.feeling.discuss
+					  span.icon-heart
+              span 讨论
+              span.num 123213
+					.feeling.like
+					  span.icon-heart
+              span 喜欢
+              span.num 4354
+					.quote
+					  span.icon-hand-right
+            span 引用
+            span.num 4354
+					.photo
+            img(src="../image/zj.png")
+						.buttons
+              a(href="#").button 
+                i.icon-plus
+              a(href="#").button 
+                i.icon-refresh
+              a(href="#").button 
+                i.icon-heart
