@@ -1,4 +1,4 @@
-var text = require('../my_modules/user');
+var text = require('../models/user');
 
 
 exports.postText = function postText(req, res) {
