@@ -52,7 +52,7 @@ module.exports = {
 
   'register': {
     get: user.registerView,
-      post: user.register
+    post: user.register
   },
 
   'home': {
