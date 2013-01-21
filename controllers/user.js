@@ -3,12 +3,13 @@
  * GET users listing.
  */
 
-var User = require('../models/user');
+var User = require('../my_modules/user');
+var Text = require('../my_modules/text');
 
-exports.checkLogin = function checkLogin(req, res,next) {
-  if(!req.session.user){
+exports.checkLogin = function checkLogin(req, res, next) {
+  if (! req.session.user) {
     return res.redirect('/login');
-  }else{
+  } else {
     next();
   }
 }
