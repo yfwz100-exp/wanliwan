@@ -4,9 +4,14 @@
  */
 
 var User = require('../my_modules/user');
+var Text = require('../my_modules/text');
 
-exports.checkLogin = function checkLogin(req, res) {
-  return req.session.user;
+exports.checkLogin = function checkLogin(req, res, next) {
+  if (! req.session.user) {
+    return res.redirect('/login');
+  } else {
+    next();
+  }
 }
 
 exports.list = function(req, res){
