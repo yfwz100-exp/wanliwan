@@ -1,28 +1,62 @@
-/**
- * 这里是url的路由配置
- *
- * 所有的 url 分发都在此编写。
- */
-
 var home = require('../controllers/home')
   , user = require('../controllers/user')
   , test = require('../controllers/tests');
 
-exports.init = function init(app) {
-  app.get('/', home.index);
-  app.get('/andex',home.andex);
-  
-  app.get('/tests', test.index);
+/**
+ * URL 路由配置。
+ *
+ * 这里的URL路由使用JSON格式控制的，关于JSON格式的标准，可以参见http://json.org，但这里并没有完全按照标准来用。
+ *
+ * 总的来说，一个URL地址可以这么来写
+ * 例如，要配置 /home/user/1234 ，那么，在这个文件中可以
+ * {
+ * '/': {
+ *   'home': {
+ *     get: controller1,
+ *     post: controller2,
+ *     all: controller3,
+ *
+ *     '/': {
+ *       'user': {
+ *         get: controller4,
+ *         post: controller5,
+ *
+ *         '/': {
+ *           '1234': {
+ *             get: controller6
+ *           }
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+ * }
+ * 也就是说，其中的controller只是一个例子，并不一定每一个地址都有controller对应。这里的配置也像文件夹那样，是层层嵌套的。
+ *
+ */
 
-  app.get('/users', user.list);
+module.exports = {
+  get: home.index,
 
-  app.get('/login', user.loginView);
-  app.post('/login', user.login);
-  app.all('/logout', user.logout);
+  users: {
+  },
 
-  app.get('/register', user.registerView);
-  app.post('/register', user.register);
-  
-  app.get('/home', user.home);
- };
+  'login': {
+    get: user.loginView,
+    post: user.login,
+  },
 
+  'logout': {
+    all: user.logout,
+  },
+
+  'register': {
+    get: user.registerView,
+      post: user.register
+  },
+
+  'home': {
+    all: user.checkLogin,
+    get: user.home
+  }
+};
