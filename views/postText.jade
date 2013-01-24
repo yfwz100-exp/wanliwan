@@ -1,0 +1,30 @@
+extends layout
+block append head
+  title 新文本
+  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap.min.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/prettify.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
+block body
+  form(action='/text', method='POST').form-horizontal
+    fieldset
+      legend 登记
+      .control-group
+        label(for='username').control-label
+        .controls
+          textarea(placeholder="Enter text ...",name='text[content]',style="width: 810px; height: 200px").textarea
+    .form-actions
+      input(type='submit',value='开启奇妙之旅').btn.btn-primary
+      |
+      input(type='reset',value='我再考虑一下').btn
+
+block append footerjs
+  script(src='/javascripts/wysihtml5-0.3.0.js')
+  script(src='/javascripts/prettify.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/bootstrap-wysihtml5.js')
+  script
+    $('.textarea').wysihtml5();
+
+  script
+    $(prettyPrint);
