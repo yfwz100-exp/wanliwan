@@ -1,0 +1,76 @@
+-var position = true
+-var tempost  = {author:{}} 
+each post in posts
+  if tempost.author.name != post.author.name
+    - position = !position
+  - tempost = post
+  if  position
+    .tip_right
+      .follow_avatar_right
+        img(src="/images/2-1.png")
+        span.icon-gift.gift.icon-white
+        span.icon-gift.msg.icon-white
+      .message_right
+        .messagebar
+          span.name #{post.author.name}
+          span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
+          span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
+          span.icon-remove.close
+          span.icon-wrench.tool
+        .show_content
+          p !{post.content}
+      .appraize
+        span.mood
+          i.ti_mood #
+          | 心情
+          <!--xi huan-->
+        a(href="#")
+          span.num 1 
+          span.icon-heart.shape
+            <!--xi huan-->
+            <!--讨论 taolun-->
+        a(href="#")
+          span.num 2
+          span.icon-heart.shape
+           <!--讨论 taolun-->
+           <!--转发 zhuan fa-->
+        a(href="#")
+          span.num 3
+          span.icon-share-alt.shape
+            <!--转发 zhuan fa-->
+  else
+    .tip_left
+      .follow_avatar_left
+        img(src="/images/1.png")
+        span.icon-gift.gift.icon-white
+        span.icon-gift.msg.icon-white
+      .message_left
+        .messagebar
+          span.name #{post.author.name}
+          span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
+          span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
+          span.icon-remove.close
+          span.icon-wrench.tool
+        .show_content
+          p !{post.content}
+      .appraize
+        span.mood
+          i.ti_mood #
+          | 心情
+          <!--xi huan-->
+        a(href="#")
+          span.num 1
+          span.icon-heart.shape
+            <!--xi huan-->
+            <!--讨论 taolun-->
+        a(href="#")
+          span.num 2 
+          span.icon-heart.shape
+            <!--讨论 taolun-->
+            <!--转发 zhuan fa-->
+        a(href="#")
+          span.num 3
+          span.icon-share-alt.shape
+            <!--转发 zhuan fa-->
+else
+  li  你没有一点儿相关信息0_O!
