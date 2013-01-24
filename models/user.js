@@ -2,11 +2,27 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
-  name: String,
-  password: String,
-  pic: String,
+  name: {
+    type: String,
+    required: true
+  }, 
+  password: {
+    type: String,
+    required: true
+  },
+  pic: {
+    type: String,
+    'default': '/uploads/unknown.png'
+  },
   description: String,
-  verified: Boolean
+  verified: {
+    type: Boolean,
+    'default': false
+  },
+  posts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post'
+  }]
 });
 
 userSchema.statics.get = function get(username, callback) {

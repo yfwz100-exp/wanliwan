@@ -10,9 +10,8 @@ var textSchema = new mongoose.Schema({
   },
   // 作者的Email 
   author: {
-    type: String,
-    lowercase: true,
-    trim: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   // 该文字的状态，如果需要审核，可为未审核状态。
@@ -36,4 +35,12 @@ textSchema.index({
   uri: 1
 });
 
-module.exports = mongoose.model('posts', textSchema);
+textSchema.virtual('html').get(function () {
+  return require('markdown').markdown.toHTML(body);
+});
+
+textSchema.statics.list = function list(options, callback) {
+  this.find(options.find).sort(options.sort).populate('author').exec(callback);
+};
+
+module.exports = mongoose.model('Post', textSchema);
