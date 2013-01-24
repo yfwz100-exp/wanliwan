@@ -3,8 +3,8 @@
  * GET users listing.
  */
 
-var User = require('../my_modules/user');
-var Text = require('../my_modules/text');
+var User = require('../models/user');
+var Text = require('../models/text');
 
 exports.checkLogin = function checkLogin(req, res, next) {
   if (! req.session.user) {
@@ -87,5 +87,13 @@ exports.logout = function logout(req, res) {
 }
 
 exports.home = function home(req, res) {
-  res.render('home',{});
+  Text.find({
+    author : req.session.user.name
+  }).sort({date:-1}).exec(function(err,posts){
+    res.render('home',{
+      posts : posts
+    });
+  });
 }
+
+

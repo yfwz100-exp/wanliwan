@@ -4,7 +4,7 @@ var textSchema = new mongoose.Schema({
   // 转发层次；为空即原创
   parent: [String],
   // 文字内容
-  body: {
+  content: {
     type: String,
     required: true
   },
