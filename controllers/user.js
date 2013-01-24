@@ -88,8 +88,9 @@ exports.logout = function logout(req, res) {
 
 exports.home = function home(req, res) {
   Text.find({
-    author : req.session.user.name
-  }).sort({date:-1}).exec(function(err,posts){
+    author : req.session.user._id
+  }).sort({date:-1}).populate('author').exec(function(err,posts){
+    if (! posts) posts = [];
     res.render('home',{
       posts : posts
     });
