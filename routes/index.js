@@ -65,5 +65,14 @@ module.exports = {
     all : user.checkLogin,
     get : text.postTextView,
     post: text.postText
+  },
+  'findfollow':{
+    all : user.checkLogin,
+    get : user.findFollowView,
+    post: user.findFollow
+  },
+  'follow/:id': {
+    all : user.checkLogin,
+    get : user.follow 
   }
 };

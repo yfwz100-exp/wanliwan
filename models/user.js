@@ -10,6 +10,10 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  followers:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
   pic: {
     type: String,
     'default': '/uploads/unknown.png'

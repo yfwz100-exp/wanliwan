@@ -35,6 +35,7 @@ exports.register = function register(req, res) {
       name: req.body.user.name,
       password:req.body.user.pass
     });
+
     user.save(function (err) {
       if (! err) {
         res.render('done', {
@@ -48,6 +49,8 @@ exports.register = function register(req, res) {
         });
       }
     });
+    
+   
   } else {
     req.render('done', {
       link: '/login',
@@ -64,6 +67,21 @@ exports.login = function login(req, res) {
   var password = req.body.user.pass;
   User.get(username, function(err, user) {
     if (user && username == user.name && password == user.password) {
+      if(! user.follows){
+        user.followers.push(user._id);
+        user.save(function (err) {
+          if (err) {
+            res.render('error', {
+              link: '/login',
+              message: '初始化失败，请重新登陆...'
+            });
+          }
+        });
+
+        User.get(user.name,function(err,user){
+          req.session.user = user;
+        });
+      }
       req.session.user = user;
       res.render('done', {
         message: 'Successfully login!',
@@ -75,8 +93,9 @@ exports.login = function login(req, res) {
         link: '/login'
       });
     }
-  });
-};
+  }); 
+  
+ };
 
 exports.logout = function logout(req, res) {
   req.session.user = null;
@@ -88,7 +107,7 @@ exports.logout = function logout(req, res) {
 
 exports.home = function home(req, res) {
   Text.find({
-    author : req.session.user._id
+    author : {$in:req.session.user.followers}
   }).sort({date:-1}).populate('author').exec(function(err,posts){
     if (! posts) posts = [];
     res.render('home',{
@@ -97,4 +116,40 @@ exports.home = function home(req, res) {
   });
 }
 
+exports.findFollowView = function findFollowView(req, res) {
+  User.find({
+    _id :{$nin:req.session.user.followers}
+  },function(err,users){
+    if(! users) users = [];
+    res.render('findFollow',{
+      users : users
+    });
+  });
+}
 
+exports.findFollow = function findFollow(req, res){
+  
+}
+
+exports.follow = function follow(req,res){
+  var id = req.params.id;
+  var user = req.session.user;
+  console.log(id);
+  User.get(user.name, function(err, user) {
+    user.followers.push(id);
+    user.save(function (err) {
+      if (! err) {
+        req.session.user = user;
+        res.render('done', {
+          link: '/home',
+          message: 'Successfully 关注!'
+        });
+      } else {
+        res.render('error', {
+          link: '/findfollow',
+          message:"添加关注失败，请重新添加..."
+        });
+      }
+    });
+  });
+}
