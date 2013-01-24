@@ -1,5 +1,6 @@
 var home = require('../controllers/home')
   , user = require('../controllers/user')
+  , text = require('../controllers/text')
   , test = require('../controllers/tests');
 
 /**
@@ -58,5 +59,11 @@ module.exports = {
   'home': {
     all: user.checkLogin,
     get: user.home
+  },
+
+  'text': {
+    all : user.checkLogin,
+    get : text.postTextView,
+    post: text.postText
   }
 };
