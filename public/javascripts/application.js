@@ -14,7 +14,7 @@
 	  	var src=$(this).attr("src");
 	  	var imgurl=src.substring(0,12);
 	  	var gif=src.substring(12);
-	  	var full_img_url=imgurl+"1"+gif;
+	  	var fua wqwqll_img_url=imgurl+"1"+gif;
   		$(this).attr("src",full_img_url);
   	},function(){
   		var src=$(this).attr("src");
