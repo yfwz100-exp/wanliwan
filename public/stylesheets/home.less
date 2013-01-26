@@ -8,27 +8,78 @@ body {
 }
 img {
 	border: 0px;
+  outline: none;
 }
-#container {
+#container {	
+  position: relative;
 	width: 800px;
 	margin: 0 auto;
 	padding: 0px;
 	overflow: auto;
-	position: relative;
-	height: 10000px;
 }
+
+/*begin header_top*/
+
 .header_top {
-	height: 80px;
+	height: 60px;
 	background-repeat: no-repeat;
 	background-position:100px 0px;
-	
-}
-.header_top_main{
 	background-color: #44628a;
-	height: 56px;
 	border-radius: 0px 0px 8px 8px;
+
 }
+.header_top p{
+  float:left;
+  margin: 30px 0px 0px 10px;
+  font-size:24px;
+  color: #ffffff;
+  width: 78px;
+}
+.header_top .logo{
+  float:left;
+  margin: 10px 0px 0px 8px;
+  overflow: auto;
+	width: 64px;
+	height: 64px;
+}
+.header_nav{
+	float:left;
+	padding-top: 14px;
+	width:  300px;
+}
+.header_nav ul li{
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	list-style: none;
+}
+.search{
+	width: 175px;
+	height:30px;
+	float: right;
+	margin-right: 8px;
+	margin-top: 15px;
+	background-color: #011f3e;
+	border-radius: 15px;
+	border:1px solid #244253;
+}
+input#input_search{
+	width: 126px;
+	height: 20px;
+	border:none;
+	background-color: #011f3e;
+	font-size: 12px;
+	color: 3f4348;
+	outline: none;
+}
+#icon_search{
+	margin-left: 10px;
+}
+/*end header_top */
+
+/*begin header_bottom*/
 .header_bottom {
+  margin-top: 15px;
 	height: 120px;
 }
 
@@ -61,14 +112,13 @@ img {
 .sign p{
 	background-color: rgb(199,227,239);
 	display: inline-block;
-	padding:5px;
-	margin-top:10px;
+	padding: 5px;
+	margin-top: 10px;
 	font-size: 17px;
 	border-radius: 8px;
 	margin-left: 2px;
 }
 .aide{
-	padding-top:5px;
 	text-align:center;
 	width: 170px;
 	float: left;
@@ -76,10 +126,14 @@ img {
 	margin-left: 20px;
 }
 .aide p{
-	font-size:12px;
+	font-size: 12px;
+  line-height: 16px;
 	display: block;
 	margin: 3px;
 }
+.aide .date{
+}
+
 ul.nav{
 	margin: 0px;
 	padding: 0px;
@@ -140,14 +194,14 @@ a:link {
 }
 .message_left {
 	border: 1px solid #ccc;
-	width: 509px;
+	width: 512px;
 	float: left;
 	/*
 	margin-top: 12px;
 		margin-bottom: 10px;*/
 	
 	background-color: rgb(240,240,240);
-	border-radius: 5px;
+	border-radius: 10px 10px 10px 10px;
 }
 .tip_right {
 	width: 600px;
@@ -158,18 +212,18 @@ a:link {
 	height: 64px;
 	float: right;
 	margin: 0px 10px 10px 10px;
-	border-radius: 5px;
+	border-radius:10px;
 }
 .message_right {
 	border: 1px solid #ccc;
-	width: 509px;
+	width: 512px;
 	float: right;
 	/*
 	margin-top: 12px;
 		margin-bottom: 10px;*/
 	
 	background-color: rgb(240,240,240);
-	border-radius: 5px;
+	border-radius: 10px 10px 10px 10px;
 }
 .avatar img {
 	width: 83px;
@@ -190,15 +244,14 @@ a:link {
 	border-radius: 5px;
 }
 .show_content{
-	margin: 0px 5px 5px 5px;
+	margin: 0px 10px 0px 10px;
 	background-color: rgb(199,227,239);
-	border-radius: 5px;
+	border-radius: 10px 10px 10px 10px;
 	padding: 5px;
 }
 .messagebar{
 	height: 20px;
-	padding-top:5px;
-	padding-bottom:5px;
+	padding: 5px 0px 5px 25px;
 }
 .messageBar>div{
 	margin-top:10px;
@@ -206,6 +259,7 @@ a:link {
 }
 .appraize{
 	height: 20px;
+  padding: 5px 0px 5px 0px;
 }
 div.messagebar .name{
 	margin: 10px;
@@ -222,6 +276,9 @@ div.messagebar .tool{
 	float:right;
 	margin-right:10px;
 	opacity:0.8;
+}
+.messagebar .tool .fix{
+  margin-right:10px;
 }
 .apprazie span{
 	margin-left: 20px;
@@ -355,55 +412,6 @@ p#my_info_full_content>a{
 	text-decoration: none;
 	color:#adb4bc;
 }
-/*right*/
-/*header_top*/
-.logo{
-	position: absolute;
-	left:120px;
-	top:5px;
-	width: 85px;
-	height: 85px;
-}
-.header_top_main h1{
-	padding-top:17px;
-	margin-left:25px;
-	color: #ffffff;
-	float: left;
-	font-family: "幼圆";
-	font-size: 30px;
-}
-.header_nav ul li{
-	margin: 0px;
-	padding: 0px;
-	float: left;
-	list-style: none;
-}
-.header_nav{
-	float:left;
-	padding-top:14px;
-	margin-left:70px;
-	width: 245;
-}
-.search{
-	width: 175px;
-	height:30px;
-	float: right;
-	margin-right: 8px;
-	margin-top: 15px;
-	background-color: #011f3e;
-	border-radius: 15px;
-	border:1px solid #244253;
-}
-input#input_search{
-	width: 126px;
-	height: 20px;
-	border:none;
-	background-color: #011f3e;
-	font-size: 12px;
-	color: 3f4348;
-	outline: none;
-}
-#icon_search{
-	margin-left: 10px;
-}
-/*header_top*/
+
+
+
