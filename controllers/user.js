@@ -111,6 +111,7 @@ exports.home = function home(req, res) {
   }).sort({date:-1}).populate('author').exec(function(err,posts){
     if (! posts) posts = [];
     res.render('home',{
+      user  : req.session.user,
       posts : posts
     });
   });
