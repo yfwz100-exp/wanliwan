@@ -1,45 +1,45 @@
 extends layout
 block append head
   title home
-  link(href="/stylesheets/application.css",rel="stylesheet")
+  link(href="/stylesheets/home.css",rel="stylesheet")
   link(href="/stylesheets/docs.css",rel="stylesheet")
   link(href="/javascripts/google-code-prettify/prettify.css",rel="stylesheet")
   script(src="/javascripts/application.js")
 block body
   #container
     .header_top
-      .header_top_main
-        h1 万里万.
-        .logo
-           img(src="/images/logo.png")
-        .header_nav
-           ul
-            li
-              a(href="#")
-                img(src="/images/nav1_01.gif")
-            li
-              a(href="#")
-                img(src="/images/nav_02.gif")
-            li
-              a(href="#")
-                img(src="/images/nav_03.gif")
-            li
-              a(href="#")
-                img(src="/images/nav_04.gif")
-            li
-              a(href="#")
-                img(src="/images/nav_05.gif")
-            li
-              a(href="#")
-                img(src="/images/nav_06.gif")
-            li
-              a(href="/logout")
-                img(src="/images/nav_07.gif")
-        
-        .search
-          form(method="post")
-            i.icon-search#icon_search
-              input(type="text",class="search-query",id="input_search",name="search")
+      p 万里万.
+      .logo
+        a(href="#")
+          img(src="/images/logo.png")
+      .header_nav
+        ul
+          li
+            a(href="#")
+              img(src="/images/nav1_01.gif")
+          li
+            a(href="#")
+              img(src="/images/nav_02.gif")
+          li
+            a(href="#")
+              img(src="/images/nav_03.gif")
+          li
+            a(href="#")
+              img(src="/images/nav_04.gif")
+          li
+            a(href="#")
+              img(src="/images/nav_05.gif")
+          li
+            a(href="#")
+              img(src="/images/nav_06.gif")
+          li
+            a(href="/logout")
+              img(src="/images/nav_07.gif")
+       
+      .search
+        form(method="post")
+          i.icon-search#icon_search
+            input(type="text",class="search-query",id="input_search",name="search")
     
     .header_bottom
       .avatar
@@ -97,13 +97,11 @@ block body
       .aide
         .weather
           img(src="/images/sun.png")
-          img(src="/images/moon.png").weather_img
-          
+          img(src="/images/moon.png").weather_img          
           p
             | 沈阳 &nbsp;&nbsp;-3°C ~ -15°C
-            | br
+            br
             | 晴转多云 东南风三级
-        
         .date
           p 周五 壬申 廿二
     
@@ -153,9 +151,10 @@ block body
             span 喜欢
             span.num 4354
           .quote
-            span.icon-hand-right
-            span 引用
-            span.num 4354
+            a(href="/findfollow")
+              span.icon-hand-right
+              span 关注更多
+              span.num 4354
           .photo
             img(src="/images/zj.png")
             .buttons

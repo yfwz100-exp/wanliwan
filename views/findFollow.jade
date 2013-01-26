@@ -1,0 +1,18 @@
+extends layout
+block append head
+  title 寻找周杰伦
+block append body
+  .container
+    form(action="findfollow",method="post")
+      fieldset
+        legend 加关注
+        .control-group
+          input(type="text",class="search-query",id="input_search",name="search")
+          input(type='submit',value='查寻').btn.btn-primary 
+    each  user in users
+      img(src="/images/2-1.png")
+      span #{user.name}
+      a(href="follow/"+user._id).btn.btn-primary 关注
+    else
+      span 寻找你感兴趣的人物吧！～
+block append footerjs
