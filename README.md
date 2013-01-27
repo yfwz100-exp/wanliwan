@@ -15,7 +15,7 @@ The development documents are located at [wiki](wanliwan/wiki). Please refer to 
 
 ## The authors
 
-Main developers: [yfwz100](mailto:yfwz100@yeah.net), [qzr](mailto:iloveyouliping@sina.com), [chrobin](mailto:wcw1991@163.com).
+Main developers: [yfwz100](mailto:yfwz100@yeah.net), [qzr](mailto:iloveyouliping@sina.com), [Shang Lingyue](https://github.com/shly).
 
 If you are interested in this project, please contact us for more information.
 
