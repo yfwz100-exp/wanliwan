@@ -25,6 +25,7 @@ exports.postPhoto = function postPhoto(req,res){
     content: req.body.text.content,
     author : req.session.user._id,
     uri    : Date.now()+req.session.user.name
+    photo
   });
 
   text.save(function (err){
