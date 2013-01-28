@@ -1,6 +1,9 @@
 var home = require('../controllers/home')
   , user = require('../controllers/user')
   , text = require('../controllers/text')
+  , photo= require('../controllers/photo')
+  , music= require('../controllers/music')
+  , video= require('../controllers/video')
   , test = require('../controllers/tests');
 
 /**
@@ -65,6 +68,11 @@ module.exports = {
     all : user.checkLogin,
     get : text.postTextView,
     post: text.postText
+  },
+  'photo':{
+    all : user.checkLogin,
+    get : photo.postPhotoView,
+    post: photo.postPhoto
   },
   'findfollow':{
     all : user.checkLogin,

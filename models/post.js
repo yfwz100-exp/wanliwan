@@ -1,12 +1,11 @@
 var mongoose = require('mongoose');
 
-var textSchema = new mongoose.Schema({
+var postSchema = new mongoose.Schema({
   // 转发层次；为空即原创
   parent: [String],
   // 文字内容
   content: {
-    type: String,
-    required: true
+    type: String
   },
   // 作者的Email 
   author: {
@@ -14,6 +13,13 @@ var textSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  //保存的
+  photo:[String],
+
+  music:[String],
+
+  video:[String],
+
   // 该文字的状态，如果需要审核，可为未审核状态。
   state: String,
   // 发表日期
@@ -31,16 +37,16 @@ var textSchema = new mongoose.Schema({
 });
 
 // 以 uri 的字典顺序建立索引
-textSchema.index({
+postSchema.index({
   uri: 1
 });
 
-textSchema.virtual('html').get(function () {
+postSchema.virtual('html').get(function () {
   return require('markdown').markdown.toHTML(body);
 });
 
-textSchema.statics.list = function list(options, callback) {
+postSchema.statics.list = function list(options, callback) {
   this.find(options.find).sort(options.sort).populate('author').exec(callback);
 };
 
-module.exports = mongoose.model('Post', textSchema);
+module.exports = mongoose.model('Post', postSchema);

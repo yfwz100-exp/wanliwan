@@ -4,6 +4,7 @@ block append head
   link(href="/stylesheets/home.css",rel="stylesheet")
   link(href="/stylesheets/docs.css",rel="stylesheet")
   link(href="/javascripts/google-code-prettify/prettify.css",rel="stylesheet")
+  script(src="/javascripts/jquery.Draggable.js")
   script(src="/javascripts/application.js")
 block body
   #container
@@ -16,7 +17,8 @@ block body
         ul
           li
             a(href="#")
-              img(src="/images/nav1_01.gif")
+              i.icon-home.icon-2x
+              //img(src="/images/nav1_01.gif")
           li
             a(href="#")
               img(src="/images/nav_02.gif")
@@ -34,13 +36,12 @@ block body
               img(src="/images/nav_06.gif")
           li
             a(href="/logout")
-              img(src="/images/nav_07.gif")
-       
+              //img(src="/images/nav_07.gif")
+              i.icon-off.icon-2x
       .search
         form(method="post")
-          i.icon-search#icon_search
+          i.icon-search.icon-large#icon_search
             input(type="text",class="search-query",id="input_search",name="search")
-    
     .header_bottom
       .avatar
         img(src="/images/2.png",alt="img")
@@ -57,9 +58,11 @@ block body
               li
                 img(src="/images/na.gif")
               li
-                img(src="/images/nav_photo.png")
-                br
-                span 照片
+                a(href="/photo")
+                  i.icon-camera-retro.icon-3x
+                  //img(src="/images/nav_photo.png")
+                  br
+                  span 照片
               li
                 img(src="/images/na.gif")
               li
@@ -147,7 +150,7 @@ block body
             span 讨论
             span.num 123213
           .feeling.like
-            span.icon-heart
+            span.wlw-heart
             span 喜欢
             span.num 4354
           .quote

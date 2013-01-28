@@ -1,4 +1,4 @@
-var Text = require('../models/text');
+var Text = require('../models/post');
 
 
 exports.postTextView = function postTextView(req, res) {

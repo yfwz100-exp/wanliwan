@@ -2,7 +2,7 @@
 	$.each($(".drag_img"),function(i,n){
 		$(n).Draggable();
 		/* $.Draggable(n);*/
-	});
+	})；
   $(function(){
   	   /*margin control*/
   	$.each($(".messageBar").children(),function(i,n){

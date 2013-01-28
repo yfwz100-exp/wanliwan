@@ -4,7 +4,7 @@
  */
 
 var User = require('../models/user');
-var Text = require('../models/text');
+var Post = require('../models/post');
 
 exports.checkLogin = function checkLogin(req, res, next) {
   if (! req.session.user) {
@@ -106,7 +106,7 @@ exports.logout = function logout(req, res) {
 }
 
 exports.home = function home(req, res) {
-  Text.find({
+  Post.find({
     author : {$in:req.session.user.followers}
   }).sort({date:-1}).populate('author').exec(function(err,posts){
     if (! posts) posts = [];
