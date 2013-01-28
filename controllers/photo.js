@@ -19,12 +19,26 @@ exports.postPhoto = function postPhoto(req,res){
         message:  err
       });
     }
-    
-    
   });
   
-  res.render('done',{
-    link:'/home',
-    message:'成功地发表一张图片！'
+  var text = new Text({
+    content: req.body.text.content,
+    author : req.session.user._id,
+    uri    : Date.now()+req.session.user.name
+  });
+
+  text.save(function (err){
+    if(!err){
+      res.render('done',{
+        link:'/home',
+        message:'成功发表一张图片！'
+      });
+    }else{
+      res.render('error',{
+        link:'/text',
+        message:  err
+      });
+    }
+      
   });
 }
