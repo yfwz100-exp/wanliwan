@@ -1,0 +1,22 @@
+extends layout
+block append head
+  title 图片
+  link(rel='stylesheet',href='/stylesheets/jquery.Jcrop.css')  
+block body
+  .stage.container.featurette
+    form(enctype="multipart/form-data",action="/photo",method='POST').form-horizontal
+      fieldset
+        legend 图片
+        .control-group
+          label.control-label 选择图片路径
+          input(type="file",name="photo",multiple)#multiple
+      .form-actions
+        input(type="submit",value='火速上传').btn.btn-primary
+        a(href='/home').btn 还是算了
+block append  footerjs
+  script(src='/javascripts/mutileupload.js')
+  script(src='/javascripts/jquery.Jcrop.min.js')
+  script
+    jQuery(function($){
+      $('#target').Jcrop();    
+    });
