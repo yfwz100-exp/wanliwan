@@ -4,6 +4,21 @@
 		/* $.Draggable(n);*/
 	});
   $(function(){
+     setTimeout(function(){ 
+      $(".header_top").slideUp("slow");
+      $(".top_show").show();
+      },10000);
+
+     $(".header_top").mouseout(function(){
+      setTimeout(function(){
+        $(".header_top").slideUp("slow");
+        $(".top_show").show();
+      },10000);
+     });
+      $(".top_show").click(function(){
+        $(".header_top").slideDown("slow");
+        $(this).hide();
+      });
   	   /*margin control*/
   	$.each($(".messageBar").children(),function(i,n){
   		var former=$(n).attr("class");
