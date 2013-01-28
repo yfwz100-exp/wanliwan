@@ -4,11 +4,24 @@
 		/* $.Draggable(n);*/
 	});
   $(function(){
-     setTimeout(function(){ 
-      $(".header_top").slideUp("slow");
-      $(".top_show").show();
-      },10000);
-
+     var flag = $(".header_top").css("display");
+      if(flag =="block"){
+         setTimeout(function(){
+          $(".header_top").slideUp("slow");
+          $(".top_show").show();
+        },10000);
+      }
+     $(".header_top").hover(
+       function () {
+           $(".header_top").show();
+       },
+       function () {
+           setTimeout(function(){
+            $(".header_top").slideUp("slow");
+            $(".top_show").show();
+           },10000);
+       }
+     );
      $(".header_top").mouseout(function(){
       setTimeout(function(){
         $(".header_top").slideUp("slow");
