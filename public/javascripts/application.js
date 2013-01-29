@@ -4,30 +4,28 @@
 		/* $.Draggable(n);*/
 	});
   $(function(){
-     var flag = $(".header_top").css("display");
+    $(document).not(".header_top").mousemove(function(){
+       var flag = $(".header_top").css("display");
       if(flag =="block"){
-         setTimeout(function(){
+          window.qwe=setTimeout(function(){
           $(".header_top").slideUp("slow");
           $(".top_show").show();
         },10000);
-      }
+       }
+    });
+     
      $(".header_top").hover(
        function () {
-           $(".header_top").show();
+           clearTimeout(window.qwe);
        },
        function () {
-           setTimeout(function(){
+           var t=setTimeout(function(){
             $(".header_top").slideUp("slow");
             $(".top_show").show();
            },10000);
+           
        }
      );
-     $(".header_top").mouseout(function(){
-      setTimeout(function(){
-        $(".header_top").slideUp("slow");
-        $(".top_show").show();
-      },10000);
-     });
       $(".top_show").click(function(){
         $(".header_top").slideDown("slow");
         $(this).hide();
