@@ -4,32 +4,31 @@
 		/* $.Draggable(n);*/
 	});
   $(function(){
-    $(document).not(".header_top").mousemove(function(){
-       var flag = $(".header_top").css("display");
-      if(flag =="block"){
+     var flag = $(".header_top").css("display");
+       if(flag =="block"){
           window.qwe=setTimeout(function(){
           $(".header_top").slideUp("slow");
           $(".top_show").show();
-        },10000);
+        },1000);
        }
-    });
      
      $(".header_top").hover(
        function () {
-           clearTimeout(window.qwe);
+           clearTimeout(window.qwe); 
        },
        function () {
            var t=setTimeout(function(){
             $(".header_top").slideUp("slow");
             $(".top_show").show();
-           },10000);
-           
+           },1000);
        }
      );
+    
       $(".top_show").click(function(){
         $(".header_top").slideDown("slow");
         $(this).hide();
       });
+    
   	   /*margin control*/
   	$.each($(".messageBar").children(),function(i,n){
   		var former=$(n).attr("class");
