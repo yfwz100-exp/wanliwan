@@ -13,12 +13,15 @@ var postSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  res  :[String],
   //保存的
   photo:[String],
 
   music:[String],
 
   video:[String],
+
+  link :[String],
 
   // 该文字的状态，如果需要审核，可为未审核状态。
   state: String,
