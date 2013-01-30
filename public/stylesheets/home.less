@@ -8,10 +8,10 @@ body {
 }
 img {
 	border: 0px;
-  outline: none;
+  	outline: none;
 }
 #container {	
-  position: relative;
+  	position: relative;
 	width: 800px;
 	margin: 0 auto;
 	padding: 0px;
@@ -80,49 +80,58 @@ input#input_search{
 
 /*begin header_bottom*/
 .header_bottom {
-  margin-top: 15px;
-	height: 120px;
+  	margin-top: 15px;
+	height: 112px;
 }
 
-
-/*header_bottom navigation*/
+.avatar {
+	width: 98px;
+	height: 112px;
+	float: left;
+}
+.avatar img {
+	width: 98px;
+	height: 112px;
+	border-radius: 5px;
+}
+.navigator{
+}
 .navigator .right_show{
-	height: 64px;
-	width: 503px;
+	height: 76px;
+	width: 482px;
 	border-radius: 10px;
 	overflow: hidden;
-	margin-left: 2px;
 	background-color: #ffffff;
 }
 .navigator .right_show ul{
 	margin: 0px;
 	padding: 0px;
 }
-.avatar {
-	width: 90px;
-	height: 110px;
-	float: left;
-}
 .navigator_sign{
 	float:left;
-	width: 503px;
-	margin-left: 5px;
+	height:112px;
+	margin-left: 8px;
+	width: 482px;
 }
-.navigator{
+
+.sign{
+	background-color: rgb(199,227,239);
+	//display: inline-block;
+	margin-top:6px;
+	float:left;
+	border-radius: 10px;
 }
 .sign p{
-	background-color: rgb(199,227,239);
-	display: inline-block;
-	padding: 5px;
-	margin-top: 10px;
-	font-size: 17px;
-	border-radius: 8px;
-	margin-left: 2px;
+	margin:0;
+	padding:5px;
+	font-size: 18px;
 }
+
+
 .aide{
     cursor: pointer;
 	text-align:center;
-	width: 180px;
+	width: 160px;
 	float: left;
 	font-size: 12px;
 	margin-left: 20px;
@@ -163,10 +172,11 @@ ul.nav li span{
 .weather_img{
 	margin-left:5px;
 }
-/*header_bottom navigation*/
+/*end header_bottom*/
 
 /*content*/
 .content{
+	margin-top:15px;
 }
 .content_left,.messageBar{
 	background-color: #44628a;
@@ -233,11 +243,7 @@ a:link {
 	background-color: rgb(240,240,240);
 	border-radius: 10px 10px 10px 10px;
 }
-.avatar img {
-	width: 83px;
-	height: 101px;
-	border-radius: 5px;
-}
+
 
 .follow_avatar_left img {
 	width: 56px;

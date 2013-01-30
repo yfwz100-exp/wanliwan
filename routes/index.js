@@ -63,17 +63,19 @@ module.exports = {
     all: user.checkLogin,
     get: user.home
   },
-
-  'text': {
-    all : user.checkLogin,
-    get : text.postTextView,
-    post: text.postText
+  'new/':{
+    'text': {
+      all : user.checkLogin,
+      get : text.postTextView,
+      post: text.postText
+    },
+    'photo':{
+      all : user.checkLogin,
+      get : photo.postPhotoView,
+      post: photo.postPhoto
+    },
   },
-  'photo':{
-    all : user.checkLogin,
-    get : photo.postPhotoView,
-    post: photo.postPhoto
-  },
+  
   'findfollow':{
     all : user.checkLogin,
     get : user.findFollowView,
