@@ -12,22 +12,23 @@ exports.postPhoto = function postPhoto(req,res){
 
   fs.rename(tmp_path,target_path,function(err){
     if(!err){
-      fs.unlink('./'+tmp_path);           
+      fs.unlink(tmp_path);           
     }else{
       res.render('error',{
-        link:'/photo',
+        link:'/new/photo',
         message:  err
       });
     }
   });
   
-  var text = new Text({
-    content: req.body.text.content,
+  var photo = new Photo({
+    //content: req.body.photo.content,
     author : req.session.user._id,
+    photo  : '/uploads/'+req.session.user.name+req.files.photo.name,
     uri    : Date.now()+req.session.user.name
   });
 
-  text.save(function (err){
+  photo.save(function (err){
     if(!err){
       res.render('done',{
         link:'/home',

@@ -4,11 +4,47 @@ block append head
   link(href="/stylesheets/home.css",rel="stylesheet")
   link(href="/stylesheets/docs.css",rel="stylesheet")
   link(href="/javascripts/google-code-prettify/prettify.css",rel="stylesheet")
-  script(src="/javascripts/jquery.Draggable.js")
-  script(src="/javascripts/application.js")
+  script(src="/javascripts/toggleelement.jquery.js")
+  //script(src="/javascripts/application.js")
+
+
+
+  script
+    $(function () {
+      $('[data-toggle]').toggleElement({
+        duration: 10000,
+        toggle: function (elem) {
+          var $elem = $(elem);
+          $(elem).slideToggle();
+          $(".top_show").fadeToggle();
+        }
+      }).each(function (index,elem) {
+        var $elem = $(elem);
+        var $toggle = $($elem.data('toggle'));
+        $toggle.trigger('mouseleave');
+      });
+    });
+
+  script(src='/javascripts/jquery.pjax.js')
+  script(type='text/javascript')
+    $(document).pjax('a', '#pjax-container');
+
+
+
+  link(rel="stylesheet",type="text/css",href="/stylesheets/prettify.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
 block body
+  
+  input(type="button",value="点我",onclick="locking('newtext');")
+  #newtext(style="display:none;position: fixed; z-index: 3;height:auto; padding:20px;width:auto;top:20%;left:25%;border:2px solid #a2d2d2; ")
+    include newtext
+  #ly(style="position:fixed; top:0; left:0; z-index:2; width:100%; height:100%; background:#000; filter:alpha(opacity=70); opacity:0.7;display: none;")
+  
+  #pjax-container
+    a(href='/new/text') Click here to enter something.
   #container
-    .header_top
+    .header_top#headerbar
       p 万里万.
       .logo
         a(href="#")
@@ -42,6 +78,9 @@ block body
         form(method="post")
           i.icon-search.icon-large#icon_search
             input(type="text",class="search-query",id="input_search",name="search")
+    
+
+
     .header_bottom
       .avatar
         img(src="/images/2.png",alt="img")
@@ -94,7 +133,7 @@ block body
             | 晴转多云 东南风三级
         .date
           p 周五 壬申 廿二
-        i.icon-sort-down.icon-2x.top_show
+        i(data-toggle="#headerbar").icon-sort-down.icon-2x.top_show
           
     .content
       .content_left
@@ -155,3 +194,21 @@ block body
                 i.icon-refresh
               a(href="#").button
                 i.icon-heart
+block append footerjs
+  script(src='/javascripts/wysihtml5-0.3.0.js')
+  script(src='/javascripts/prettify.js')
+  //script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/bootstrap-wysihtml5.js')
+  script
+    $('.textarea').wysihtml5();
+  script
+    function  locking(newtext){
+      document.getElementById('ly').style.display="block";
+      document.getElementById(newtext).style.display='block';
+      scroll(0,0);
+    }
+    function hiddenDiv(newtext)
+    {
+      document.getElementById(newtext).style.display="none";
+      document.getElementById('ly').style.display='none';
+    }

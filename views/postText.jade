@@ -1,21 +1,12 @@
-extends layout
-block append head
-  title 新文本
-  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap.min.css")
-  link(rel="stylesheet",type="text/css",href="/stylesheets/prettify.css")
-  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
-  link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
-block body
-  form(action='/text', method='POST').form-horizontal
-    fieldset
-      legend 编辑文字
-      .control-group
-        label(for='username').control-label
-        .controls
-          textarea(placeholder="在这里输入...",name='text[content]',style="width: 503px; height: 200px").textarea
-    .form-actions
-      input(type='submit',value='开启奇妙之旅').btn.btn-primary
-      a(href="/home").btn.right 我再考虑一下
+form(action='/new/text', method='POST').form-horizontal
+  fieldset
+    .control-group
+      label(for='username').control-label
+      .controls
+        textarea(placeholder="在这里输入...",name='text[content]',style="width: 503px; height: 200px").textarea
+  .form-actions
+    input(type='submit',value='开启奇妙之旅').btn.btn-primary
+    a(href="/home").btn.right 我再考虑一下
 
 block append footerjs
   script(src='/javascripts/wysihtml5-0.3.0.js')

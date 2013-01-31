@@ -21,7 +21,10 @@ each post in posts
               a(href="#")
                 span.icon-remove.close
         .show_content
-          p !{post.content}
+          if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
+            include text
+          if  post.photo.length
+            include photo
         .appraize
           span.mood
             i.ti_mood #
@@ -40,7 +43,7 @@ each post in posts
           a(href="#")
             span.num 3
             span.wlw-share-alt.shape
-            <!--转发 zhuan fa-->a
+            <!--转发 zhuan fa-->
   else
     .tip_left
       .follow_avatar_left
