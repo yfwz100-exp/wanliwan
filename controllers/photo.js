@@ -2,7 +2,7 @@ var Photo = require('../models/post');
 var fs    = require('fs');
 
 exports.postPhotoView = function postPhotoView(req,res){
-  res.render('postPhoto');
+  res.render('newPhoto');
 }
 
 //发布图片
