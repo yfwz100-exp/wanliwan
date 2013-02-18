@@ -15,7 +15,7 @@ app.configure(function() {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
+  app.use(express.favicon(path.join(__dirname,'/public/images/favicon.ico')));
   app.use(express.logger('dev'));
   app.use(express.bodyParser({uploadDir:'./tmp'}));
   app.use(express.methodOverride());
@@ -28,9 +28,8 @@ app.configure(function() {
   }));
   app.use(app.router);
   app.use(require('less-middleware')({
-    src: __dirname + '/public'
+    src: path.join(__dirname, 'public')
   }));
-  //app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
@@ -38,27 +37,31 @@ app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
-app.map = function(a, route) {
-  route = route || '';
-  for (var key in a) {
-    switch (typeof a[key]) {
-    case 'object':
-      if (key.charAt(0) != '/') {
-        app.map(a[key], route + key);
-      } else {
-        app.map(a[key], key);
-      }
-      break;
-    case 'function':
-      app[key](route, a[key]);
-      break;
+app.map = function map(routes, p) {
+  if (p == null) p = '';
+  for (r in routes) {
+    switch (typeof routes[r]) {
+      case 'object':
+        if (r[0] == '@' || r[0] == '/') {
+          app.map(routes[r], r);
+        } else {
+          app.map(routes[r], p + '/' + r);
+        }
+        break;
+      case 'function':
+        if (p[0] != '@') {
+          app[r](p?p:'/', routes[r]);
+        } else {
+          app[r](new RegExp(p.substring(1)), routes[r]);
+        }
+        break;
+      default:
+        console.error('Unknown route at %s...', r);
     }
   }
 };
 
-app.map({
-  '/': routes
-});
+app.map(routes);
 
 //routes.init(app);
 http.createServer(app).listen(app.get('port'), function() {
