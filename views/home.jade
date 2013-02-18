@@ -9,27 +9,7 @@ block append head
 
   script(src='/javascripts/jquery.pjax.js')
 
-  script
-    $(function () {
-      $('[data-toggle]').toggleElement({
-        duration: 10000,
-        toggle: function (elem) {
-          var $elem = $(elem);
-          $(elem).slideToggle();
-          $(".top_show").fadeToggle();
-        }
-      }).each(function (index,elem) {
-        var $elem = $(elem);
-        var $toggle = $($elem.data('toggle'));
-        $toggle.trigger('mouseleave');
-      });
-
-      $(document).pjax('a', '#pjax-container');
-
-      $(document).on('pjax:complete', function () {
-        //$('#pjax-container .textarea').wysihtml5();
-      });
-    });
+  
 
 
   link(rel="stylesheet",type="text/css",href="/stylesheets/prettify.css")
@@ -37,13 +17,12 @@ block append head
   link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
 block body
   
-  input(type="button",value="点我",onclick="locking('newtext');")
+  //input(type="button",value="点我",onclick="locking('newtext');")
   #newtext(style="display:none;position: fixed; z-index: 3;height:auto; padding:20px;width:auto;top:20%;left:25%;border:2px solid #a2d2d2; ")
     include newText
   #ly(style="position:fixed; top:0; left:0; z-index:2; width:100%; height:100%; background:#000; filter:alpha(opacity=70); opacity:0.7;display: none;")
   
-  #pjax-container
-    a(href='/new/text') Click here to enter something.
+  
   #container
     .header_top#headerbar
       p 万里万.
@@ -135,66 +114,14 @@ block body
         .date
           p 周五 壬申 廿二
         i(data-toggle="#headerbar").icon-sort-down.icon-2x.top_show
-          
+    #pjax-container      
     .content
       .content_left
         .messageBar
           include posts
       .content_right
-        .noticeBar
-          .my_info
-            .msg_title
-              span 张国荣
-              span 男
-              span 演员
-            div
-              p#my_info_content
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-                br
-                a(href="#") 1028442429@qq.com
-              .icon-plus-sign#unfold
-              .icon-minus-sign#fold
-                
-          .present
-            span.icon-gift
-            span 礼物
-            span.num 12321312
-          .feeling.wanxin
-            span.icon-heart
-            span 万信
-            span.num 234324
-          .feeling.discuss
-            span.icon-heart
-            span 讨论
-            span.num 123213
-          .feeling.like
-            span.wlw-heart
-            span 喜欢
-            span.num 4354
-          .quote
-            a(href="/findfollow")
-              span.icon-hand-right
-              span 关注更多
-              span.num 4354
-          .photo
-            img(src="/images/zj.png")
-            .buttons
-              a(href="#").button
-                i.icon-plus
-              a(href="#").button
-                i.icon-refresh
-              a(href="#").button
-                i.icon-heart
+        include right
+
 block append footerjs
   script(src='/javascripts/wysihtml5-0.3.0.js')
   script(src='/javascripts/prettify.js')
@@ -203,13 +130,23 @@ block append footerjs
   script
     $('.textarea').wysihtml5();
   script
-    function  locking(newtext){
-      document.getElementById('ly').style.display="block";
-      document.getElementById(newtext).style.display='block';
-      scroll(0,0);
-    }
-    function hiddenDiv(newtext)
-    {
-      document.getElementById(newtext).style.display="none";
-      document.getElementById('ly').style.display='none';
-    }
+    $(function () {
+      $('[data-toggle]').toggleElement({
+        duration: 10000,
+        toggle: function (elem) {
+          var $elem = $(elem);
+          $(elem).slideToggle();
+          $(".top_show").fadeToggle();
+        }
+      }).each(function (index,elem) {
+        var $elem = $(elem);
+        var $toggle = $($elem.data('toggle'));
+        $toggle.trigger('mouseleave');
+      });
+
+      $(document).pjax('a', '#pjax-container');
+
+      $(document).on('pjax:complete', function () {
+        $('#pjax-container .textarea').wysihtml5();
+      });
+    });

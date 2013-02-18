@@ -42,6 +42,7 @@ var home = require('../controllers/home')
 module.exports = {
   get: home.index,
 
+
   users: {
   },
 
@@ -62,6 +63,12 @@ module.exports = {
   'home': {
     all: user.checkLogin,
     get: user.home
+  },
+
+  //a testing home page
+  'homeb': {
+    all: user.checkLogin,
+    get: user.home 
   },
   'new/':{
     'text': {
