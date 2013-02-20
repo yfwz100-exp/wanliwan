@@ -6,8 +6,18 @@ body {
   color: rgb(68, 68, 68);
   overflow: auto;
 }
-
-
+a:link{
+  text-decoration:none;
+}
+a:visited{
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:none;
+}
+a:active{
+  text-decoration:none;
+}
 #everything{
   position: relative;
   width: 800px;
@@ -96,45 +106,85 @@ body {
 }
 .content .posts .tip_big{
   float: left;
-  width: 607px;
+  width: 600px;
   margin: 5px; 
-  margin-top: 20px;
-  height:auto !important;
-  height:60px; /*假定最低高度是200px*/
-  min-height:60px; 
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .content .posts .tip_small{
   float: left;
-  width: 607px;
+  width: 600px;
   margin: 5px; 
-  height:auto !important;
-  height:60px; /*假定最低高度是200px*/
-  min-height:60px; 
+  margin-left: 15px; 
 }
-.content .posts .tip_big .message{
+.content .posts .tip_big .message ,.tip_small .message{
   border: 1px solid #ccc;
-  width: 532px;
+  width: 522px;
   float: left;
+  margin-right:10px; 
   background-color: rgb(240,240,240);
   border-radius: 10px;
 }
-.content .posts .tip_small .message{
-  border: 1px solid #ccc;
-  width: 532px;
-  float: left;
-  background-color: rgb(240,240,240);
-  border-radius: 10px;
-}
-
 .content .posts .tip_big .msg_avatar, .tip_small .msg_avatar{
   width: 56px;
   height: 64px;
   float: left;
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 10px 0px;
   border-radius: 5px;
-<<<<<<< HEAD
   overflow:hidden;
-=======
->>>>>>> 759143843909317b37024ce2629e5e75da076815
 }
+
+
+.msg_info{
+  margin: 0px 10px 0px 10px;
+}
+.msg_info .name{
+  float: left;
+  color: black;
+  font-weight: bold;
+}
+.msg_info .time{
+  margin-left:220px;
+}
+.msg_info .tool{
+  float:right;
+  opacity:0.8;
+}
+
+
+.msg_show {
+  background-color: rgb(199,227,239);
+  padding: 10px; 
+  margin: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+.msg_show p{
+  margin:0;
+}
+
+.msg_interactive {
+  margin: 0px 10px 0px 10px; 
+}
+.msg_interactive .tags{
+  color: green;
+}
+.msg_interactive .like{
+  margin-left: 10px;
+  float:right;
+  opacity:0.8; 
+}
+.msg_interactive .retweet{
+  margin-left: 10px;
+  float:right;
+  opacity:0.8;
+}
+.msg_interactive .reply{
+  margin-left: 10px;
+  float:right;
+  opacity:0.8;
+}
+
+
+
+
 //end content
