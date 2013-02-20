@@ -68,12 +68,12 @@ module.exports = {
   //a testing home page
   'homeb': {
     all: user.checkLogin,
-    get: user.home 
+    get: user.homeb
   },
   'new/':{
     'text': {
       all : user.checkLogin,
-      get : text.postTextView,
+      get : text.newText,
       post: text.postText
     },
     'photo':{

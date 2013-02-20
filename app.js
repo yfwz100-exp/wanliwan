@@ -63,7 +63,6 @@ app.map = function map(routes, p) {
 
 app.map(routes);
 
-//routes.init(app);
 http.createServer(app).listen(app.get('port'), function() {
   console.log("Express server listening on port " + app.get('port'));
 });

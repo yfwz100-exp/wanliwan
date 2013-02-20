@@ -1,0 +1,31 @@
+.msg_info
+  span.name #{post.author.name}
+  span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
+  //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
+  
+  if post.author.name==user.name
+    .tool
+      a(href="#")
+        i.icon-edit.icon-large
+      a(href="#")
+        i.icon-remove.close
+          
+.msg_show
+  if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
+    include text
+  if  post.photo.length
+    include photo
+
+.msg_interactive
+  span.tags
+    i.icon-tags
+    | 心情
+  a(href="#").reply
+    i.icon-reply
+      span.num 35
+  a(href="#").retweet
+    i.icon-retweet.icon-large
+      span.num 33
+  a(href="#").like
+    i.icon-heart-empty
+      span.num 34

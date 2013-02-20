@@ -117,6 +117,21 @@ exports.home = function home(req, res) {
   });
 }
 
+//begin  for testing
+exports.homeb = function homeb(req, res) {
+  Post.find({
+    author : {$in:req.session.user.followers}
+  }).sort({date:-1}).populate('author').exec(function(err,posts){
+    if (! posts) posts = [];
+    res.render('homeb',{
+      user  : req.session.user,
+      posts : posts
+    });
+  });
+}
+//end  for testing
+
+
 exports.findFollowView = function findFollowView(req, res) {
   User.find({
     _id :{$nin:req.session.user.followers}

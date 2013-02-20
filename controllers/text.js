@@ -1,8 +1,8 @@
 var Text = require('../models/post');
 
 
-exports.postTextView = function postTextView(req, res) {
-  res.render('postText');
+exports.newText = function newText(req, res) {
+  res.render('newText');
 }
 
 //发文本信息操作
