@@ -1,0 +1,31 @@
+.msg_info
+  span.name #{post.author.name}
+  span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
+  span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
+  
+  if post.author.name==user.name
+    .tool
+      a(href="#")
+        span.icon-wrench.fix
+      a(href="#")
+        span.icon-remove.close
+          
+.msg_show
+  if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
+    include text
+  if  post.photo.length
+    include photo
+
+.msg_interactive
+  span.mood
+    i.ti_mood #
+    | 心情
+  a(href="#")
+    span.num 1 
+    span.wlw-heart.shape
+  a(href="#")
+    span.num 2
+    span.icon-heart.shape
+  a(href="#")
+    span.num 3
+    span.wlw-share-alt.shape

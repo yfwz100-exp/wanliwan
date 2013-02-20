@@ -1,0 +1,135 @@
+body {
+  margin-top: 0px;
+  background: url("../images/jianbian700.png") repeat-x;
+  background-color:#44628a;
+  font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  color: rgb(68, 68, 68);
+  overflow: auto;
+}
+
+
+#everything{
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  padding: 0px;
+  overflow: auto;
+}
+
+//begin header
+.header{
+  margin-top: 15px;
+  height: 112px;
+} 
+
+.header .avatar{
+  width: 98px;
+  height: 112px;
+  float: left; 
+}
+
+.header .avatar img{
+  width: 98px;
+  height: 112px;
+  boder-radius: 5px;
+} 
+
+.navi_sign{
+  float:left;
+  height: 112px;
+  margin-left: 8px;
+  width: 512px;
+}
+
+.navi_sign .navigator {
+  height: 76px;
+  width: 512px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.navi_sign .navigator ul.nav{
+  margin: 0 auto;
+  padding: 0px;
+}
+.navi_sign .navigator ul.nav li{
+  list-style: none;
+  display: inline-block;
+  margin: 0px;
+  padding: 2px 6px 0px 7px;
+  float: left;
+  text-align: center;
+}
+.navi_sign .navigator ul.nav li>a:hover{
+  background-color: transparent;
+}
+.navi_sign .navigator ul.nav li span{
+  display: block;
+  width: 60px;
+  text-align: center;
+  color: #8f9091;
+}
+
+.navi_sign .sign{
+  background-color: rgb(199,227,239);
+  margin-top: 6px;
+  float:left;
+  border-radius: 10px;
+} 
+.navi_sign .sign p{
+  margin: 0 auto;
+  padding: 5px;
+}
+//end header
+
+//begin content
+.content{
+  margin-top: 15px;
+}
+
+.content .posts{
+  background-color: #44628a;
+  float:left;
+  width: 620px;
+  border-radius: 8px;
+}
+.content .posts .tip_big{
+  float: left;
+  width: 607px;
+  margin: 5px;  
+ 
+  height:auto !important;
+  height:60px; /*假定最低高度是200px*/
+  min-height:60px; 
+}
+.content .posts .tip_small{
+  float: left;
+  width: 607px;
+  margin: 5px; 
+  height:auto !important;
+  height:60px; /*假定最低高度是200px*/
+  min-height:60px; 
+}
+.content .posts .tip_big .message{
+  border: 1px solid #ccc;
+  width: 500px;
+  float: left;
+  background-color: rgb(240,240,240);
+  border-radius: 10px;
+}
+.content .posts .tip_small .message{
+  border: 1px solid #ccc;
+  width: 500px;
+  float: left;
+  background-color: rgb(240,240,240);
+  border-radius: 10px;
+}
+
+.content .posts .tip_big,.tip_small .msg_avatar{
+  width: 56px;
+  height: 64px;
+  float: left;
+  margin: 0px 10px 10px 10px;
+  boder-radius: 5px;
+}
+//end content

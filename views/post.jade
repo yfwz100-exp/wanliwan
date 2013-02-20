@@ -1,0 +1,38 @@
+-var position = true;
+-var temposition = position;
+-var tempost  = {author:{}} 
+each post in posts
+  if tempost.author.name != post.author.name
+    - position = !position
+  - tempost = post
+
+  if  position
+    if  position!=temposition
+      .tip_big
+        .msg_avatar
+          img(src="/images/2-1.png")
+        .message
+          include message
+    else
+      .tip_small
+        .msg_avatar
+          img(src="/images/2-1.png")
+        .message
+          include message
+  else
+    if  position!=temposition
+      .tip_big
+        .message
+          include message
+        .msg_avatar
+          img(src="/images/1.png")
+    else
+      .tip_small
+        .message
+          include message
+        .msg_avatar
+          img(src="/images/1.png")
+  -temposition = position
+else
+  span.center  你没有一点儿相关信息0_O!
+  a(href='findfollow').btn.btn-primary 加关注！
