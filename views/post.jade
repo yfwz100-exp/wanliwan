@@ -5,15 +5,13 @@ each post in posts
   if tempost.author.name != post.author.name
     - position = !position
   - tempost = post
-
-  if  position
-    .tip
+  .tip
+    if  position
       .msg_avatar
         img(src="/images/2-1.png")
       .message
         include message
-  else
-    .tip
+    else
       .message
         include message
       .msg_avatar
