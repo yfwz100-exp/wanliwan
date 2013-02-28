@@ -69,23 +69,6 @@ exports.login = function login(req, res) {
   var password = req.body.user.pass;
   User.get(username, function(err, user) {
     if (user && username == user.name && password == user.password) {
-      /*
-      if(! user.follows){
-        user.followers.push(user._id);
-        user.save(function (err) {
-          if (err) {
-            res.render('error', {
-              link: '/login',
-              message: '初始化失败，请重新登陆...'
-            });
-          }
-        });
-
-        User.get(user.name,function(err,user){
-          req.session.user = user;
-        });
-      }
-      */
       req.session.user = user;
       res.render('done', {
         message: 'Successfully login!',
@@ -133,6 +116,21 @@ exports.homeb = function homeb(req, res) {
     });
   });
 }
+exports.newTextView = function newTextView(req, res) {
+  if (! req.xhr) {
+    Post.find({
+      author : {$in:req.session.user.followers}
+    }).sort({date:-1}).populate('author').exec(function(err,posts){
+      if (! posts) posts = [];
+      res.render('newTextPage',{
+        user  : req.session.user,
+        posts : posts
+      });
+    });
+  } else {
+    res.render('newText');
+  }
+};
 //end  for testing
 
 

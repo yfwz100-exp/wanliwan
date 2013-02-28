@@ -1,13 +1,9 @@
-form(action='/new/text', method='POST').form-horizontal
-  fieldset
-    legend 编辑文字
-    .control-group
-      label(for='username').control-label
-      .controls
-        textarea(placeholder="在这里输入...",name='text[content]',style="width: 503px; height: 200px").textarea
-  .form-actions
-    input(type='submit',value='开启奇妙之旅').btn.btn-primary
-    a(href="/home").btn.right 我再考虑一下
-    //input(type='button',onclick="hiddenDiv('newtext')",value="关闭").btn.right
+.new-post-editor
+  form(action='/new/text', method='POST')
+    textarea(placeholder="从明天起，做一个幸福的人，喂马、劈柴、周游世界……",name='text[content]',style="width: 480px; height: 100px").textarea
+    .action
+      button(type='submit').btn.btn-primary 发布～
+      | 
+      a(href="/home").btn.right 还是不发了:)
 
 

@@ -2,7 +2,11 @@ var Text = require('../models/post');
 
 
 exports.newText = function newText(req, res) {
-  res.render('newText');
+  if (req.xhr) {
+    res.render('newText');
+  } else {
+    res.render('newTextPage');
+  }
 }
 
 //发文本信息操作

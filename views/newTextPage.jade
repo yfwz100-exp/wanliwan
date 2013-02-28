@@ -1,0 +1,18 @@
+extends homeb
+
+block title
+  title 发表文章
+
+append head 
+  script 
+    $(function () {
+      $('#new-post-area .textarea').wysihtml5({
+        "font-styles": false,
+        "emphasis": false,
+        "lists": false,
+      });
+    });
+
+block new-post-area
+  include newText
+
