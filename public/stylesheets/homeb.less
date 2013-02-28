@@ -34,7 +34,6 @@ a:active{
 .header .avatar{
   width: 98px;
   height: 112px;
-  float: left; 
 }
 
 .header .avatar img{
@@ -43,24 +42,22 @@ a:active{
   border-radius: 5px;
 } 
 
-.navi_sign{
-  float:left;
-  margin-left: 8px;
-  width: 512px;
-}
-
-.navi_sign .navigator {
+.navigator {
+  position: absolute;
+  top: 15px;
+  left: 108px;
   min-height: 76px;
   width: 512px;
   border-radius: 10px;
   overflow: hidden;
   background-color: #ffffff;
+
 }
-.navi_sign .navigator ul.nav{
+.navigator ul.nav{
   margin: 0 auto;
   padding: 0px;
 }
-.navi_sign .navigator ul.nav li{
+.navigator ul.nav li{
   list-style: none;
   display: inline-block;
   margin: 0px;
@@ -68,26 +65,28 @@ a:active{
   float: left;
   text-align: center;
 }
-.navi_sign .navigator ul.nav li>a:hover{
+.navigator ul.nav li>a:hover{
   background-color: transparent;
 }
-.navi_sign .navigator ul.nav li span{
+.navigator ul.nav li span{
   display: block;
   width: 60px;
   text-align: center;
   color: #8f9091;
 }
 
-.navi_sign .sign{
+.sign{
+  position: absolute;
+  top: 91px;
+  left: 108px;
+  width: 512px;
   background-color: rgb(199,227,239);
   margin-top: 6px;
-  float:left;
   border-radius: 10px;
 } 
-.navi_sign .sign p{
+.sign p{
   margin: 5px auto;
   margin-left: 2px;
-  padding:0px;
 }
 //end header
 
@@ -180,8 +179,9 @@ a:active{
 
 //begin rightbar
 .content .rightbar{
+  position: absolute;
+  right:0px;
   background-color: #44628a;
-  float:right;
   width:170px;
   border-radius: 2px 15px 15px 15px;
   overflow: hidden;
