@@ -33,23 +33,25 @@ exports.register = function register(req, res) {
       && req.body.user.pass == req.body.user.repass) {
     var user = new User({
       name: req.body.user.name,
-      password:req.body.user.pass
+      password:req.body.user.pass,
     });
 
-    user.save(function (err) {
-      if (! err) {
-        res.render('done', {
-          link: '/login',
-          message: 'Successfully register!'
-        });
-      } else {
-        res.render('error', {
-          link: '/register',
-          message: err
-        });
-      }
+    user.save(function (err, user) {
+      user.followers.push(user._id);
+      user.save(function (err, user) {
+        if (! err) {
+          res.render('done', {
+            link: '/login',
+            message: 'Successfully register!'
+          });
+        } else {
+          res.render('error', {
+            link: '/register',
+            message: err
+          });
+        }
+      });
     });
-    
    
   } else {
     req.render('done', {
@@ -67,6 +69,7 @@ exports.login = function login(req, res) {
   var password = req.body.user.pass;
   User.get(username, function(err, user) {
     if (user && username == user.name && password == user.password) {
+      /*
       if(! user.follows){
         user.followers.push(user._id);
         user.save(function (err) {
@@ -82,6 +85,7 @@ exports.login = function login(req, res) {
           req.session.user = user;
         });
       }
+      */
       req.session.user = user;
       res.render('done', {
         message: 'Successfully login!',
