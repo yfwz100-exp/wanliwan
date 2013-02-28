@@ -3,7 +3,7 @@ extends homeb
 block title
   title 发表文章
 
-append head 
+block append home-script
   script 
     $(function () {
       $('#new-post-area .textarea').wysihtml5({
@@ -11,6 +11,7 @@ append head
         "emphasis": false,
         "lists": false,
       });
+      $('#new-post-area').slideDown();
     });
 
 block new-post-area

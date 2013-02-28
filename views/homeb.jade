@@ -12,19 +12,40 @@ block append head
   script(src='/javascripts/bootstrap-wysihtml5.js')
   script(src='/javascripts/prettify.js')
 
-  script(sarc='/javascripts/toggleelement.jquery.js')
+  script(src='/javascripts/toggleelement.jquery.js')
   script(src='/javascripts/jquery.pjax.js')
-  script
-    $(function () {
-      $(document).pjax('a', '#new-post-area');
-      $(document).on('pjax:complete', function () {
-        $('#new-post-area .textarea').wysihtml5({
-          "font-styles": false,
-          "emphasis": false,
-          "lists": false,
-        });
+
+  block home-script
+    script
+      $(function () {
+        if ($.support.pjax) {
+          $('#new-post-area').hide();
+          $(document).on('click', '*', function (event) {
+            if ($('#new-post-area').css('display') != 'none') {
+              if (event.target.id != 'new-post-area' && !$.contains($('#new-post-area').get(0), event.target)) {
+                $('#new-post-area').slideUp();
+                window.history.replaceState(null, null, '/homeb/');
+                event.stopPropagation();
+              }
+            }
+          });
+          $(document).on('click', '.nav a', function (event) {
+            event.preventDefault();
+            var container = $('#new-post-area');
+            $.pjax.click(event, {
+              container: container
+            });
+          });
+          $(document).on('pjax:complete', function () {
+            $('#new-post-area .textarea').wysihtml5({
+              "font-styles": false,
+              "emphasis": false,
+              "lists": false,
+            });
+            $('#new-post-area').slideDown();
+          });
+        }
       });
-    });
 
 block body
   #everything
