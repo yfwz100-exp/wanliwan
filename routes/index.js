@@ -70,7 +70,7 @@ module.exports = {
     all: user.checkLogin,
     get: user.homeb
   },
-  'new/':{
+  'new':{
     'text': {
       all : user.checkLogin,
       get : text.newText,

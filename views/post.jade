@@ -7,31 +7,17 @@ each post in posts
   - tempost = post
 
   if  position
-    if  position!=temposition
-      .tip_big
-        .msg_avatar
-          img(src="/images/2-1.png")
-        .message
-          include message
-    else
-      .tip_small
-        .msg_avatar
-          img(src="/images/2-1.png")
-        .message
-          include message
+    .tip
+      .msg_avatar
+        img(src="/images/2-1.png")
+      .message
+        include message
   else
-    if  position!=temposition
-      .tip_big
-        .message
-          include message
-        .msg_avatar
-          img(src="/images/1.png")
-    else
-      .tip_small
-        .message
-          include message
-        .msg_avatar
-          img(src="/images/1.png")
+    .tip
+      .message
+        include message
+      .msg_avatar
+        img(src="/images/1.png")
   -temposition = position
 else
   span.center  你没有一点儿相关信息0_O!
