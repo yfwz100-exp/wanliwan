@@ -5,16 +5,42 @@
     p 戏如人生 人生如戏
 .bloginfo
   .post
-    a(href="#")
-      p 发表 
-        span 33
+    i.icon-file.icon-large &nbsp&nbsp发表
+      //显示自己发表数量
+      a(href="#").myself  33
+      //显示上一次登陆至今关注者发表数量
+      br
+      &nbsp&nbsp
+      a(href="#").others  33
   .retweet
-    a(href="#")
-      span 转发   123
+    i.icon-retweet &nbsp&nbsp转发
+      //显示我转发的数量
+      a(href="#").myself  4344553432
+      br
+      &nbsp&nbsp
+      //显示别人转发我的数量
+      a(href="#").others  345433
   .like
-    a(href="#")
-      span 喜欢   254
+    i.icon-heart &nbsp&nbsp喜欢
+      //显示自己喜欢的数量
+      a(href="#").myself  254
+      br
+      //显示自己被别人喜欢的数量
+      &nbsp&nbsp
+      a(href="#").others  33
   .reply
-    a(href="#")
-      span 讨论   54
+    i.icon-comments &nbsp&nbsp讨论
+      //显示自己参与评论的总数
+      a(href="#").myself  34
+      br
+      &nbsp&nbsp
+      //显示从上次登陆至今别人对自己的tip的评论数量
+      a(href="#").others  33
+.blogmanage
+  .find
+    a(href="#") 
+      i.icon-group.icon-large.blogavatar
+      i.icon-plus.blogplus
+.hot
+  .post
 .recommend

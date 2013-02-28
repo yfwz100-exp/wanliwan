@@ -184,6 +184,7 @@ a:active{
   float:right;
   width:170px;
   border-radius: 2px 15px 15px 15px;
+  overflow: hidden;
 }
 .content .rightbar .userinfo{
   color:#adb4bc;
@@ -204,25 +205,79 @@ a:active{
   color: gray;
   font-weight: bold;
 }
+
+
 .content .rightbar .bloginfo{
   color:#adb4bc;
   border:1px solid rgb(36,66,83);
   margin: 5px 15px 0px 10px;
-  border-radius: 15px;
+  border-radius: 15px 15px 2px 2px;
   background-color: rgb(47,83,101);  
 }
 
-.content .rightbar .bloginfo  .post{
-  border-bottom: 1px solid rgb(36,66,83);
+
+.content .rightbar .bloginfo i{
+  margin-left: 10px;
+
 }
+
+.content .rightbar .bloginfo .myself{
+  float: right;
+  margin-right:10px;
+}
+.content .rightbar .bloginfo .others{
+  float: right;
+  margin-right:10px; 
+}
+
+.content .rightbar .bloginfo .post{
+  border-bottom: 1px solid rgb(36,66,83);
+  width: 143px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
 .content .rightbar .bloginfo .retweet{
   border-bottom: 1px solid rgb(36,66,83);
+  width: 143px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
 }
 .content .rightbar .bloginfo .like{
   border-bottom: 1px solid rgb(36,66,83);
+  width: 143px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
 }
 .content .rightbar .bloginfo .reply{
+  width: 143px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
 
+
+.content .rightbar .blogmanage{
+  float: left;
+  width: 143px;
+  color:#adb4bc;
+  border:1px solid rgb(36,66,83);
+  margin: 5px 15px 0px 10px;
+  border-radius: 2px;
+  background-color: rgb(47,83,101);
+}
+
+.content .rightbar .blogmanage .find .blogavatar{
+  float: left;
+  width: 20px;
+}
+
+.content .rightbar .blogmanage  .find .blogplus{
+  float: left;
+  margin-top: 6px;
 }
 //end rightbar
 
