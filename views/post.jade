@@ -7,15 +7,14 @@ each post in posts
   - tempost = post
   .tip
     if  position
-      .msg_avatar
-        img(src="/images/2-1.png")
+      
+      img(src="/images/2-1.png").msg_avatar
       .message
         include message
     else
       .message
         include message
-      .msg_avatar
-        img(src="/images/1.png")
+      img(src="/images/1.png").msg_avatar
   -temposition = position
 else
   span.center  你没有一点儿相关信息0_O!
