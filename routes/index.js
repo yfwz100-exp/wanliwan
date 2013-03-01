@@ -62,7 +62,12 @@ module.exports = {
 
   'home': {
     all: user.checkLogin,
-    get: user.home
+    get: user.home,
+
+    'list': {
+      all: user.checkLogin,
+      get: user.homeList
+    }
   },
 
   //a testing home page

@@ -47,6 +47,17 @@ block append head
       function newTextPopup(ctx) {
         $.get('/new/'+ctx.params.type).success(function (data) {
           $('#new-post-area').html(data).slideDown();
+          $('#new-post-area form').submit(function (event) {
+            event.preventDefault();
+            var $this = $(this);
+            $.post('/new/'+ctx.params.type, $this.serialize()).success(function (data) {
+              alert('完成！');
+              $('#posts-list').load('/home/list');
+              page('/homeb/');
+            }).error(function (data) {
+              alert('错误了～');
+            });
+          });
           overlay.show();
         }).error(function (data) {
           $('#new-post-area').html('大哥手下留情，我们很快就会完善的了……').slideDown();
@@ -112,7 +123,7 @@ block body
         
       .clearfix
     .content
-      .posts
+      #posts-list.posts
         include post
       .rightbar
         include rightbar
