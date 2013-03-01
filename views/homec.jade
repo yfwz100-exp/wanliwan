@@ -13,13 +13,12 @@ block append head
   script(src='/javascripts/prettify.js')
 
   script(src='/javascripts/toggleelement.jquery.js')
-  script(src='/javascripts/page.js')
+  script(src='/javascripts/jquery.pjax.js')
 
   script
-    (function () {
-      "use strict"
-
-      $(function () {
+    $(function () {
+      if ($.support.pjax) {
+        var container = null;
         window.overlay = {
           _obj: $('<div></div>').css({
             position: 'fixed', 
@@ -35,31 +34,36 @@ block append head
           }
         };
         overlay._obj.click(function () {
-          page('/homeb');
+          $('#new-post-area').slideUp();
+          window.history.replaceState(null, null, '/homeb/');
+          overlay.hide();
         });
-        
-        page();
-      });
-      
-      page('/home(*)', home);
-      page('/new/:type(*)', newTextPopup);
 
-      function newTextPopup(ctx) {
-        $.get('/new/'+ctx.params.type).success(function (data) {
-          $('#new-post-area').html(data).slideDown();
+        $('#new-post-area').hide();
+
+        $(document).on('click', '.nav a', function (event) {
+          event.preventDefault();
+          var pcontainer = $('#new-post-area');
+          container = $('.navigator');
+          $.pjax.click(event, {
+            container: pcontainer
+          });
+        });
+
+        $(document).on('pjax:complete', function (event) {
+          $('#new-post-area').slideDown();
           overlay.show();
-        }).error(function (data) {
-          $('#new-post-area').html('大哥手下留情，我们很快就会完善的了……').slideDown();
-          overlay.show();
+        });
+
+        $(document).on('pjax:popstate', function (event) {
+          var state = event.state;
+          if (/(?:\/homeb|\/homeb\/)$/.exec(state.url)) {
+            overlay.hide();
+            $('#new-post-area').slideUp();
+          }
         });
       }
-
-      function home(ctx) {
-        $('#new-post-area').slideUp();
-        overlay.hide();
-      }
-
-    })();
+    });
 
 block body
   #everything
