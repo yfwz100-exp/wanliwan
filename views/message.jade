@@ -1,15 +1,15 @@
 .msg_info
   span.name #{post.author.name}
-  span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
-  //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
-  
   if post.author.name==user.name
     .tool
       a(href="#").edit
         i.icon-edit.icon-large
       a(href="#").remove
         i.icon-remove.close
-          
+  span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
+  //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
+
+  .clearfix  
 .msg_show
   if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
     include text
