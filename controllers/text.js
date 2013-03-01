@@ -1,13 +1,20 @@
 var Text = require('../models/post');
 
-
-exports.newText = function newText(req, res) {
-  if (req.xhr) {
-    res.render('newText');
+exports.newTextView = function newTextView(req, res) {
+  if (! req.xhr) {
+    Post.find({
+      author : {$in:req.session.user.followers}
+    }).sort({date:-1}).populate('author').exec(function(err,posts){
+      if (! posts) posts = [];
+      res.render('newTextPage',{
+        user  : req.session.user,
+        posts : posts
+      });
+    });
   } else {
-    res.render('newTextPage');
+    res.render('newText');
   }
-}
+};
 
 //发文本信息操作
 exports.postText = function postText(req, res) {
@@ -20,10 +27,17 @@ exports.postText = function postText(req, res) {
 
     text.save(function (err){
       if(!err){
-        res.render('done',{
-          link:'/home',
-          message:'成功发表一片文字！'
-        });
+        if (! req.xhr) {
+          res.render('done',{
+            link:'/home',
+            message:'成功发表一片文字！'
+          });
+        } else {
+          res.render('single-post', {
+            post: text,
+            user: req.session.user
+          });
+        } 
       }else{
         res.render('error',{
           link:'/text',

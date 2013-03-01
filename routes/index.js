@@ -79,7 +79,7 @@ module.exports = {
     'text': {
       all : user.checkLogin,
       //get : text.newText,
-      get: user.newTextView,
+      get: text.newTextView,
       post: text.postText
     },
     'photo':{

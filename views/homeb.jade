@@ -50,9 +50,11 @@ block append head
           $('#new-post-area form').submit(function (event) {
             event.preventDefault();
             var $this = $(this);
-            $.post('/new/'+ctx.params.type, $this.serialize()).success(function (data) {
-              alert('完成！');
-              $('#posts-list').load('/home/list');
+            var data = $this.serializeArray();
+            $.post('/new/'+ctx.params.type, data).success(function (data) {
+              var o = $('<div class="tip"></div>').html(data).hide();
+              $('#posts-list').prepend(o);
+              o.slideDown();
               page('/homeb/');
             }).error(function (data) {
               alert('错误了～');

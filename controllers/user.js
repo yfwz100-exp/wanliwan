@@ -134,22 +134,6 @@ exports.homeList = function homeList(req, res) {
     });
   }
 };
-
-exports.newTextView = function newTextView(req, res) {
-  if (! req.xhr) {
-    Post.find({
-      author : {$in:req.session.user.followers}
-    }).sort({date:-1}).populate('author').exec(function(err,posts){
-      if (! posts) posts = [];
-      res.render('newTextPage',{
-        user  : req.session.user,
-        posts : posts
-      });
-    });
-  } else {
-    res.render('newText');
-  }
-};
 //end  for testing
 
 
