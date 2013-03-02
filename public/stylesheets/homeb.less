@@ -310,7 +310,7 @@ a:active{
   color:#adb4bc;
   border:1px solid rgb(36,66,83);
   margin: 15px 25px 0px 15px;
-  border-radius:15px 15px 2px 2px ;
+  border-radius:15px 15px 5px 5px ;
   background-color: rgb(47,83,101);
   padding: 5px 10px 0px 4px;
   padding-right: 5px;
@@ -333,18 +333,59 @@ a:active{
   border-radius: 2px 2px 15px 15px;
   overflow: hidden;
 }
+
+.content .rightbar .recommend .image {
+  background-color: rgb(47,83,101);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.content .rightbar .recommend .image img{
+  border-radius: 5px 5px 0px 0px;
+  border-bottom:1px solid rgb(26,56,73);
+  //border-top:1px solid rgb(168,168,168);
+}
+
+.love_reblog_comment{
+  border-radius: 0px 0px 5px 5px ;
+}
+.love_reblog_comment a.heart,a.comment{
+  display: block;
+  width: 65px;
+  height: 40px;
+  line-height:40px;
+  float: left;
+  text-align: center;
+  background-color: rgb(47,83,101);
+}
+.love_reblog_comment a.reblog{
+  display: block;
+  width: 68px;
+  height: 40px;
+  line-height:40px;
+  float: left;
+  text-align: center;
+  border-right:1px solid rgb(57,97,117);
+  border-left:1px solid rgb(57,97,117);
+  background-color: rgb(47,83,101);
+}
+
+
+.love_reblog_comment>a:hover{
+  background-color: #5389b3;
+}
+  
+
 .content .rightbar .recommend .blog{
   margin-top: 5px;
 }
-.content .rightbar .recommend img{
-  border-radius: 3px;
-}
+
 .content .rightbar .recommend .blog img {
   border:1px solid rgb(36,66,83);
+  border-radius: 3px;
   float: left;
   width: 42px;
   height: 48px;
-  
 }
 .content .rightbar .recommend .blog span {
   margin-left: 10px;
