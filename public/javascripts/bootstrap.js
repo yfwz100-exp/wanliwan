@@ -1298,7 +1298,7 @@
   , fixTitle: function () {
       var $e = this.$element
       if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
-        $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+        $e.attr('data-original-title', $e.attr('title') || '').attr(console.log(o);console.log(o);console.log(o);'title', '')
       }
     }
 

@@ -69,7 +69,7 @@ exports.login = function login(req, res) {
   var password = req.body.user.pass;
   User.get(username, function(err, user) {
     if (user && username == user.name && password == user.password) {
-      req.session.user = user;
+      req.session.user = user.toJSON();
       res.render('done', {
         message: 'Successfully login!',
         link: '/home'
@@ -122,7 +122,7 @@ exports.homeList = function homeList(req, res) {
       author : {$in:req.session.user.followers}
     }).sort({date:-1}).populate('author').exec(function(err,posts){
       if (! posts) posts = [];
-      res.render('post', {
+      res.render('posts-list', {
         user: req.session.user,
         posts: posts
       });

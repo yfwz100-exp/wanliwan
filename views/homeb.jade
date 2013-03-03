@@ -2,11 +2,12 @@ extends layout
 
 block append head
   block title 
-    title home
+    title 个人中心 - #{user.name}的主页
 
   link(href='/stylesheets/homeb.css',rel='stylesheet')
   link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
   link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/info-area.css")
 
   script(src='/javascripts/wysihtml5-0.3.0.js')
   script(src='/javascripts/bootstrap-wysihtml5.js')
@@ -15,70 +16,18 @@ block append head
   script(src='/javascripts/toggleelement.jquery.js')
   script(src='/javascripts/page.js')
 
-  script
-    (function () {
-      "use strict"
-
-      $(function () {
-        window.overlay = {
-          _obj: $('<div></div>').css({
-            position: 'fixed', 
-            left: '0', top: '0', width:'100%', height:'100%',
-            display: 'none',
-            backgroundColor: 'rgba(22,22,22,0.85)'
-          }).appendTo(document.body),
-          show: function () {
-            this._obj.fadeIn();
-          },
-          hide: function () {
-            this._obj.hide();
-          }
-        };
-        overlay._obj.click(function () {
-          page('/homeb');
-        });
-        
-        page();
-      });
-      
-      page('/home(*)', home);
-      page('/new/:type(*)', newTextPopup);
-
-      function newTextPopup(ctx) {
-        $.get('/new/'+ctx.params.type).success(function (data) {
-          $('#new-post-area').html(data).slideDown();
-          $('#new-post-area form').submit(function (event) {
-            event.preventDefault();
-            var $this = $(this);
-            var data = $this.serializeArray();
-            $.post('/new/'+ctx.params.type, data).success(function (data) {
-              var o = $('<div class="tip"></div>').html(data).hide();
-              $('#posts-list').prepend(o);
-              o.slideDown();
-              page('/homeb/');
-            }).error(function (data) {
-              alert('错误了～');
-            });
-          });
-          overlay.show();
-        }).error(function (data) {
-          $('#new-post-area').html('大哥手下留情，我们很快就会完善的了……').slideDown();
-          overlay.show();
-        });
-      }
-
-      function home(ctx) {
-        $('#new-post-area').slideUp();
-        overlay.hide();
-      }
-
-    })();
-
+  script(src='/javascripts/home.js')
+    
 block body
   #everything
+    
     .header
+
       .avatar
-        img(src="/images/2.png",alt="img")
+        img(src=user.avatar,alt="Avatar")
+        .action 
+          a.edit-btn(href="#") 改头像
+          a.home-btn(href="#") 去主页
       
       .navigator
         ul.nav
@@ -126,7 +75,12 @@ block body
       .clearfix
     .content
       #posts-list.posts
-        include post
+
+        #info-area.popup
+          .title Hello,world!
+          .content Content is content.
+
+        include posts-list
       .rightbar
         include rightbar
       .clearfix

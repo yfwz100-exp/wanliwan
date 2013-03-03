@@ -75,12 +75,12 @@ module.exports = {
     all: user.checkLogin,
     get: user.homeb
   },
+
   'new':{
     'text': {
       all : user.checkLogin,
-      //get : text.newText,
-      get: text.newTextView,
-      post: text.postText
+      get: text.post.view,
+      post: text.post.post
     },
     'photo':{
       all : user.checkLogin,

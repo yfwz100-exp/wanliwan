@@ -15,9 +15,9 @@ var userSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref: 'User',
   }],
-  pic: {
+  avatar: {
     type: String,
-    'default': '/uploads/unknown.png'
+    'default': '/images/avatar/unknown.jpg'
   },
   description: String,
   verified: {

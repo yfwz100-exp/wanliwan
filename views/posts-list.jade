@@ -1,0 +1,20 @@
+-var position = true;
+-var temposition = position;
+-var tempost  = {author:{}} 
+each post in posts
+  if tempost.author.name != post.author.name
+    - position = !position
+  - tempost = post
+  .tip(class=position?'tip-left':'tip-right')
+    .avatar.msg_avatar
+      img(src=post.author.avatar)
+      .action 
+        a.edit-btn(href="#") 私信
+        a.home-btn(href="#") 主页
+
+    .message
+      include message
+  -temposition = position
+else
+  span.center  你没有一点儿相关信息0_O!
+  a(href='findfollow').btn.btn-primary 加关注！
