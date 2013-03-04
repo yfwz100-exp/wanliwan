@@ -8,38 +8,37 @@ html
       link(rel='stylesheet',href='/stylesheets/wlw.css')
       link(rel='stylesheet',href='/stylesheets/wanliwan.css')
       script(src='/javascripts/jquery.js')
-      link(rel='stylesheet',href='/stylesheets/login.css')
+      link(rel='stylesheet',href='/stylesheets/reg.css')
       script(src='/javascripts/check.js')
 
 body
   .container
-    .register
-      a(href="/").btn
-         span 取消 
-         &nbsp&nbsp
-         i.icon-remove.icon-large
-      &nbsp&nbsp
-      a(href="/reg").btn
-        span 注册
+    .login
+      a(href="/login").btn
+        span 已有账号
         &nbsp&nbsp
-        i.icon-ok.icon-large 
+        i.icon-home.icon-large 
     .clearfix
     .logo
-      span.chinese .万里万
-      span.english wanliwan.
+      a(href="/")
+        span.chinese .万里万
+        span.english wanliwan.
     .clearfix
-    .login
-      form(action='/login',method='POST',onsubmit="return checkReg()")
+    .register
+      form(action='/reg',method='POST',onsubmit="return checkReg()")
         input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
         #pass
           input(type='password',id='password',name='user[password]', placeholder='密码').password
         label.showpassword.checkbox
-          input(type='checkbox',onclick="showPassword(this)")
+          input(type='checkbox',onclick='showPassword(this)')
           span 显示密码
-
+     
         #error.btn.btn-warning.error
         #error1.btn.btn-danger.error1
-        input(type='submit',value='登 录').btn.btn-block.btn-primary.btn-large#rsubmit
-      
+        
+        input(type='submit',value='立即 加入').btn.btn-block.btn-primary.btn-large#rsubmit
+    
       .clearfix  
       .help
+ 
+

@@ -55,6 +55,12 @@ module.exports = {
     all: user.logout,
   },
 
+  //a testing register
+  'reg':{
+    get: user.regView,
+    post: user.reg,
+  },
+
   'register': {
     get: user.registerView,
     post: user.register
@@ -75,6 +81,7 @@ module.exports = {
     all: user.checkLogin,
     get: user.homeb
   },
+  
   'new':{
     'text': {
       all : user.checkLogin,
