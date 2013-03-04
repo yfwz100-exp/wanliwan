@@ -34,5 +34,9 @@ userSchema.statics.get = function get(username, callback) {
   this.findOne({name: username}).exec(callback);
 };
 
+userSchema.statics.getByEmail = function getByEmail(email, callback) {
+  this.findOne({email: email}).exec(callback);
+};
+
 module.exports = mongoose.model('User', userSchema);
 

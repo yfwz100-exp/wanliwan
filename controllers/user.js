@@ -53,6 +53,86 @@ exports.register = function register(req, res) {
   }
 };
 
+// begin test reg
+exports.regView = function regView(req, res) {
+  res.render('reg');
+};
+
+exports.reg = function reg(req, res) {
+  console.log(req.body.user.email+"屮");
+  console.log(req.body.user.password+"反屮");
+  if (req.body.user.email && req.body.user.password) {
+    User.getByEmail(req.body.user.email, function(err, user) {
+      if (user) {
+        res.render('redirect', {
+          success: false,
+          message: '该邮箱已注册!',
+          link: '/login'
+        });
+      } else {
+        var user = new User({
+          email: req.body.user.email,
+          password: req.body.user.password,
+        });
+
+        user.save(function (err, user) {
+          user.followers.push(user._id);
+          user.save(function (err, user) {
+            if (! err) {
+              res.render('redirect', {
+                success: true,
+                link: '/login',
+                message: '注册成功！'
+              });
+            } else {
+              res.render('rediect', {
+                success: false,
+                link: '/reg',
+                message: "注册失败(数据写入失败)..."
+              });
+            }
+          });
+        });    
+      }
+    });
+  }    
+};
+//end test reg
+
+exports.loginView = function loginView(req, res) {
+  res.render('login');
+};
+exports.login = function login(req, res) {
+  var email = req.body.user.email;
+  var password = req.body.user.password;
+  User.getByEmail(email, function(err, user) {
+    if (user && email == user.email && password == user.password) {
+      req.session.user = user;
+      res.render('redirect', {
+        success: true,
+        link: '/homeb',
+        message: '登陆成功！'
+      });
+    } else {
+      res.render('redirect', {
+        success: false,
+        link: '/login',
+        message: '密码或用户名不正确！'
+      });
+    }
+  }); 
+  
+ };
+
+exports.logout = function logout(req, res) {
+  req.session.user = null;
+  res.render('done', {
+    'link': '/login',
+    'message': 'Successfully logout!'
+  });
+}
+
+>>>>>>> master
 exports.home = function home(req, res) {
   Post.find({
     author : {$in:req.session.user.followers}
@@ -65,7 +145,7 @@ exports.home = function home(req, res) {
   });
 }
 
-//begin  for testing
+// begin for testing
 exports.homeb = function homeb(req, res) {
   Post.find({
     author : {$in:req.session.user.followers}

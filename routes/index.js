@@ -52,6 +52,12 @@ module.exports = {
     all: auth.logout,
   },
 
+  //a testing register
+  'reg':{
+    get: user.regView,
+    post: user.reg,
+  },
+
   'register': {
     get: user.registerView,
     post: user.register
