@@ -132,7 +132,6 @@ exports.logout = function logout(req, res) {
   });
 }
 
->>>>>>> master
 exports.home = function home(req, res) {
   Post.find({
     author : {$in:req.session.user.followers}
