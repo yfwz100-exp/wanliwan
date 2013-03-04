@@ -1,4 +1,4 @@
 
-var Text = require('./post')
-  , User = require('./user')
-  ;
+exports.Text = require('./post')
+exports.User = require('./user')
+  

@@ -6,14 +6,6 @@
 var User = require('../models/user');
 var Post = require('../models/post');
 
-exports.checkLogin = function checkLogin(req, res, next) {
-  if (! req.session.user) {
-    return res.redirect('/login');
-  } else {
-    next();
-  }
-}
-
 exports.list = function(req, res){
   if (req.session.user) {
     res.render('list', {
@@ -61,43 +53,12 @@ exports.register = function register(req, res) {
   }
 };
 
-exports.loginView = function loginView(req, res) {
-  res.render('login');
-};
-exports.login = function login(req, res) {
-  var username = req.body.user.name;
-  var password = req.body.user.pass;
-  User.get(username, function(err, user) {
-    if (user && username == user.name && password == user.password) {
-      req.session.user = user.toJSON();
-      res.render('done', {
-        message: 'Successfully login!',
-        link: '/home'
-      });
-    } else {
-      res.render('error', {
-        message: 'Wrong username or password...',
-        link: '/login'
-      });
-    }
-  }); 
-  
- };
-
-exports.logout = function logout(req, res) {
-  req.session.user = null;
-  res.render('done', {
-    'link': '/login',
-    'message': 'Successfully logout!'
-  });
-}
-
 exports.home = function home(req, res) {
   Post.find({
     author : {$in:req.session.user.followers}
   }).sort({date:-1}).populate('author').exec(function(err,posts){
     if (! posts) posts = [];
-    res.render('home',{
+    res.render('homeb',{
       user  : req.session.user,
       posts : posts
     });
@@ -135,7 +96,6 @@ exports.homeList = function homeList(req, res) {
   }
 };
 //end  for testing
-
 
 exports.findFollowView = function findFollowView(req, res) {
   User.find({

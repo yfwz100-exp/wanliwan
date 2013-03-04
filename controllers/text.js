@@ -6,10 +6,10 @@ exports.post = {
   // 视图。相应HTTP GET操作。
   view: function view(req, res) {
     if (! req.xhr) {
-    Text.find({
-      author : {$in:req.session.user.followers}
-    }).sort({date:-1}).populate('author').exec(function(err,posts){
-      if (! posts) posts = [];
+      Text.find({
+        author : {$in: req.session.user.followers}
+      }).sort({date:-1}).populate('author').exec(function(err,posts){
+        if (! posts) posts = [];
         res.render('newTextPage',{
           user  : req.session.user,
           posts : posts

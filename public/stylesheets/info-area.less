@@ -1,16 +1,20 @@
 
 #info-area {
   display: none;
-  background-color: #efefef;
+  background-color: #44628a;
   width: 100%;
-  box-shadow: 0 0 5px #222;
+  box-shadow: inset 0 1em 2em -1em #222, inset 0 -1em 2em -1em #222;
 
-  padding: 10px;
-  margin: -10px;
+  .title, .content {
+    background-color: #fff;
+    border-radius: 0.2em;
+    box-shadow: 0 0 5px #acacac;
+    padding: 5px;
+    margin: 10px;
+    line-height: 1.4;
+  }
 
   .title {
-    border-bottom: 2px solid lightblue;
     font-size: 20pt;
-    line-height: 1.4em;
   }
 }

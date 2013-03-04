@@ -10,11 +10,50 @@
         display: 'none',
         backgroundColor: 'rgba(22,22,22,0.85)'
       }).appendTo(document.body),
-      show: function () {
-        this._obj.fadeIn();
+      show: function (func) {
+        this._obj.fadeIn({
+          always: typeof func != 'undefined' ? func : null
+        });
+      },
+      hide: function (func) {
+        this._obj.fadeOut({
+          always: typeof func != 'undefined' ? func : null
+        });
+      }
+    };
+
+    window.infoArea = {
+      _obj: $('#info-area').css({
+        position: 'absolute'
+      }),
+      show: function (y, func) {
+        this._obj.css({
+          top: y + 'px',
+          zIndex: 642,
+        }).slideDown();
       },
       hide: function () {
-        this._obj.fadeOut();
+        this._obj.slideUp();
+      },
+      get height() {
+        return this._obj.height();
+      },
+      get width() {
+        return this._obj.width();
+      },
+      set message(message) {
+        var msg = this._msg ? this._msg : this._msg = $('.content', this._obj);
+        msg.html(message);
+      },
+      get message() {
+        return this._msg ? this._msg.html() : (this._msg = $('.content', this._obj)).html(); 
+      },
+      set title(title) {
+        var tit = this._title ? this._title : this._title = $('.title', this._obj);
+        tit.html(title);
+      },
+      get title() {
+        return this._title ? this._title.html() : (this._title = $('.title', this._obj)).html(); 
       }
     };
 
@@ -31,28 +70,22 @@
         var $target = $(event.currentTarget);
         var pos = $target.position();
 
-        var $title = $('.title', $info);
-        var $content = $('.content', $info);
-        $.get($target.attr('href'), null, null, 'html').success(function (data) {
-          // var obj = $.parseJSON(data);
-          // $title.html(obj.title);
-          $content.html($(data));
-          window.o = $(data);
+        $.get($target.attr('href')).success(function (data, attr, xhr) {
+          var $obj = $($.parseHTML(data));
 
-          var actualHeight = $info.height();
-          $info.css({
-            top: pos.top + 'px'
-          });
-          $info.slideToggle();
+          infoArea.title = $obj.filter('title').html();
+          infoArea.message = $obj.filter('#everything').html();
+
+          var attop = pos.top - infoArea.height / 2;
+          var vtop = $(document).scrollTop() - infoArea._obj.parent().offset().top;
+          infoArea.show(attop > vtop ? attop : vtop);
         }).error(function (data) {
-          $title.html('The site is still being actively contructing.');
-          $content.html('Refer to the administrator of the website for more information.');
-          
-          var actualHeight = $info.height();
-          $info.css({
-            top: pos.top - actualHeight / 2 + 'px'
-          });
-          $info.slideToggle();
+          infoArea.title = 'The site is still being actively contructing.';
+          infoArea.message = 'Refer to the administrator of the website for more information.';
+
+          var attop = pos.top - infoArea.height / 2;
+          var vtop = $(document).scrollTop() - infoArea._obj.parent().offset().top;
+          infoArea.show(attop > vtop ? attop : vtop);
         });
       }
     });
@@ -67,10 +100,16 @@
   page('/new/:type(*)', newTextPopup);
 
   function newTextPopup(ctx) {
+    $('.header .navigator').css({
+      zIndex: 642
+    });
+    $('.header .avatar').css({
+      zIndex: 642
+    });
+
     $.get('/new/'+ctx.params.type).success(function (data) {
       $('#new-post-area').html(data).slideDown();
       $('#new-post-area form').submit(function (event) {
-
         // 取消默认动作。
         event.preventDefault();
         var $this = $(this);
@@ -94,12 +133,17 @@
   }
 
   function home(ctx) {
-    overlay.hide();
     $('#new-post-area').slideUp();
-    $('#info-area').css({
-      position: 'absolute',
-      zIndex: 642,
-    }).slideUp();
+    overlay.hide(function () {
+      $('.header .navigator').css({
+        zIndex: 0
+      });
+      $('.header .avatar').css({
+        zIndex: 0
+      });
+      
+    });
+    infoArea.hide();
   }
 
 })();

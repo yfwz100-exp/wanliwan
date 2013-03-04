@@ -1,11 +1,3 @@
-var home = require('../controllers/home')
-  , user = require('../controllers/user')
-  , text = require('../controllers/text')
-  , photo= require('../controllers/photo')
-  , music= require('../controllers/music')
-  , video= require('../controllers/video')
-  , test = require('../controllers/tests');
-
 /**
  * URL 路由配置。
  *
@@ -39,20 +31,25 @@ var home = require('../controllers/home')
  *
  */
 
+var home = require('../controllers/home')
+  , user = require('../controllers/user')
+  , auth = require('../controllers/auth')
+  , text = require('../controllers/text')
+  , photo= require('../controllers/photo')
+  , music= require('../controllers/music')
+  , video= require('../controllers/video')
+  ;
+
 module.exports = {
   get: home.index,
 
-
-  users: {
-  },
-
   'login': {
-    get: user.loginView,
-    post: user.login,
+    get: auth.login.view,
+    post: auth.login.post,
   },
 
   'logout': {
-    all: user.logout,
+    all: auth.logout,
   },
 
   'register': {
@@ -61,41 +58,46 @@ module.exports = {
   },
 
   'home': {
-    all: user.checkLogin,
+    '(*)': {
+      all: auth.checkLogin,
+    },
+
     get: user.home,
 
     'list': {
-      all: user.checkLogin,
       get: user.homeList
+    },
+  
+    'findfollow':{
+      get : user.findFollowView,
+      post: user.findFollow
+    },
+    'follow/:id': {
+      get : user.follow 
     }
   },
 
-  //a testing home page
-  'homeb': {
-    all: user.checkLogin,
-    get: user.homeb
-  },
-
   'new':{
+    '(*)': {
+      all: auth.checkLogin
+    },
+
     'text': {
-      all : user.checkLogin,
       get: text.post.view,
       post: text.post.post
     },
     'photo':{
-      all : user.checkLogin,
       get : photo.postPhotoView,
       post: photo.postPhoto
     },
   },
-  
-  'findfollow':{
-    all : user.checkLogin,
-    get : user.findFollowView,
-    post: user.findFollow
+
+  'homeb': {
+    '(*)': {
+      all: auth.checkLogin
+    },
+    get: user.homeb
   },
-  'follow/:id': {
-    all : user.checkLogin,
-    get : user.follow 
-  }
+  
 };
+

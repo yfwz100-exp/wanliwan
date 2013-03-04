@@ -44,6 +44,8 @@ app.map = function map(routes, p) {
       case 'object':
         if (r[0] == '@' || r[0] == '/') {
           app.map(routes[r], r);
+        } else if (r[0] == '(') {
+          app.map(routes[r], p + r);
         } else {
           app.map(routes[r], p + '/' + r);
         }
@@ -51,6 +53,7 @@ app.map = function map(routes, p) {
       case 'function':
         if (p[0] != '@') {
           app[r](p?p:'/', routes[r]);
+          console.log(p);
         } else {
           app[r](new RegExp(p.substring(1)), routes[r]);
         }
