@@ -19,19 +19,21 @@ exports.login = {
    * 相应登陆动作。
    */
   post: function (req, res) {
-    var username = req.body.user.name;
-    var password = req.body.user.pass;
-    User.get(username, function(err, user) {
-      if (user && username == user.name && password == user.password) {
-        req.session.user = user.toJSON();
-        res.render('done', {
-          message: 'Successfully login!',
-          link: '/home'
+    var email = req.body.user.email;
+    var password = req.body.user.password;
+    User.getByEmail(email, function(err, user) {
+      if (user && email == user.email && password == user.password) {
+        req.session.user = user;
+        res.render('redirect', {
+          success: true,
+          link: '/homeb',
+          message: '登陆成功！'
         });
       } else {
-        res.render('error', {
-          message: 'Wrong username or password...',
-          link: '/login'
+        res.render('redirect', {
+          success: false,
+          link: '/login',
+          message: '密码或用户名不正确！'
         });
       }
     });

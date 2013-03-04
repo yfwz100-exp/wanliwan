@@ -98,40 +98,7 @@ exports.reg = function reg(req, res) {
   }    
 };
 //end test reg
-
-exports.loginView = function loginView(req, res) {
-  res.render('login');
-};
-exports.login = function login(req, res) {
-  var email = req.body.user.email;
-  var password = req.body.user.password;
-  User.getByEmail(email, function(err, user) {
-    if (user && email == user.email && password == user.password) {
-      req.session.user = user;
-      res.render('redirect', {
-        success: true,
-        link: '/homeb',
-        message: '登陆成功！'
-      });
-    } else {
-      res.render('redirect', {
-        success: false,
-        link: '/login',
-        message: '密码或用户名不正确！'
-      });
-    }
-  }); 
-  
- };
-
-exports.logout = function logout(req, res) {
-  req.session.user = null;
-  res.render('done', {
-    'link': '/login',
-    'message': 'Successfully logout!'
-  });
-}
-
+//
 exports.home = function home(req, res) {
   Post.find({
     author : {$in:req.session.user.followers}

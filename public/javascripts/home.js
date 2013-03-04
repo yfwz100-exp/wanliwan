@@ -67,6 +67,7 @@
       duration: 0,
       toggle: function ($info, event) {
         overlay.show();
+
         var $target = $(event.currentTarget);
         var pos = $target.position();
 
