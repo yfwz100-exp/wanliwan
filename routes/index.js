@@ -52,15 +52,9 @@ module.exports = {
     all: auth.logout,
   },
 
-  //a testing register
-  'reg':{
-    get: user.regView,
-    post: user.reg,
-  },
-
   'register': {
-    get: user.registerView,
-    post: user.register
+    get: auth.register.view,
+    post: auth.register.post,
   },
 
   'home': {
@@ -78,6 +72,7 @@ module.exports = {
       get : user.findFollowView,
       post: user.findFollow
     },
+
     'follow/:id': {
       get : user.follow 
     }

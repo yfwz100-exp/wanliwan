@@ -1,55 +1,44 @@
-extends layout
+doctype 5
+html
+  head
+    meta(charset='utf8')
+    block head
+      title 欢迎加入
+      link(rel='stylesheet',href='/stylesheets/bootstrap/bootstrap.css')
+      link(rel='stylesheet',href='/stylesheets/wlw.css')
+      link(rel='stylesheet',href='/stylesheets/wanliwan.css')
+      script(src='/javascripts/jquery.js')
+      link(rel='stylesheet',href='/stylesheets/reg.css')
+      script(src='/javascripts/check.js')
 
-block append head
-  title 欢迎加入
-  link(rel='stylesheet',href='/stylesheets/carousel.css')
-
-block body
-  .navbar-wrapper
-    .container
-      .navbar.navbar-inverse
-        .navbar-inner
-          a(data-toggle="collapse",data-target=".nav-collapse").btn.btn-navbar
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a(href="/").brand 万里万
-
-          .nav-collapse.collapse
-            ul.nav
-              li.active: a(href="/") 主页
-              li: a(href='/news') 新鲜事
-              li: a(href='/explore') 探索
-              li: a(href="/about") 关于
-              
-              li.dropdown
-                a(href="#",data-toggle="dropdown").dropdown-toggle 更多
-                  b.caret
-                ul.dropdown-menu
-                  li: a(href="#") 这是什么？
-                  li: a(href="https://github.com/yfwz100/wanliwan") 项目说明
- 
-  .stage.container.featurette
-    form(action='/register',method='POST').form-horizontal
-      fieldset
-        legend 登记
+body
+  .container
+    .login
+      a(href="/login").btn
+        span 已有账号
+        &nbsp&nbsp
+        i.icon-home.icon-large 
+    .clearfix
+    .logo
+      a(href="/")
+        span.chinese .万里万
+        span.english wanliwan.
+    .clearfix
+    .register
+      form(action='/register',method='POST',onsubmit="return checkReg()")
+        input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
+        #pass
+          input(type='password',id='password',name='user[password]', placeholder='密码').password
+        label.showpassword.checkbox
+          input(type='checkbox',onclick='showPassword(this)')
+          span 显示密码
+     
+        #error.btn.btn-warning.error
+        #error1.btn.btn-danger.error1
         
-        .control-group
-          label(for='username').control-label
-          .controls
-            input(type='text',id='username',name='user[name]', placeholder='昵称')
+        input(type='submit',value='立即 加入').btn.btn-block.btn-primary.btn-large#rsubmit
+    
+      .clearfix  
+      .help
+ 
 
-        .control-group
-          label(for='password').control-label
-          .controls
-            input(type='password',id='password',name='user[pass]', placeholder='密码')
-              
-        .control-group
-          label(for='password').control-label
-          .controls
-            input(type='password',id='password',name='user[repass]', placeholder='确认密码')
-      
-      .form-actions
-        input(type='submit',value='开启奇妙之旅').btn.btn-primary
-        | 
-        input(type='reset',value='我再考虑一下').btn

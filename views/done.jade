@@ -1,23 +1,38 @@
-extends layout
-block append head
-  title Done
-  link(rel="stylesheet",href="/stylesheets/wanliwan.css")
-  meta(http-equiv='refresh',content='3; '+link)
-  script
-    $(function() {
-      setInterval(function() {
-        var secs = parseInt($('#secs').text());
-        $('#secs').text(--secs);
-      }, 1000);
-    });
-block body
-  .container
-    .page-header
-      h1 完成~
-      .pull-right ^_^
+doctype 5
+html
+  head
+    meta(charset='utf8')
+    block head
+      title 欢迎加入
+      link(rel='stylesheet',href='/stylesheets/bootstrap/bootstrap.css')
+      link(rel='stylesheet',href='/stylesheets/wlw.css')
+      link(rel='stylesheet',href='/stylesheets/wanliwan.css')
+      script(src='/javascripts/jquery.js')
+      link(rel='stylesheet',href='/stylesheets/reg.css')
+      script(src='/javascripts/check.js')
+      link(rel="stylesheet",href="/stylesheets/done.css")
+      meta(http-equiv='refresh',content='3; '+link)
+      script
+        window.onload = function(){
+          if(!#{success}){
+            var d=document.getElementById('message');
+            d.style.border="2px solid red";
+            doShake('message');
+          }
+        }
+        $(function() {
+          setInterval(function() {
+            var secs = parseInt($('#secs').text());
+            $('#secs').text(--secs);
+          },1000);
+        });
+body
+  .container 
     .content
-      p.well #{message}
-      .more
-        a(href='#{link}').btn.btn-primary 
-          span#secs 3
-          | 秒后继续
+      i.icon-spinner.icon-spin.icon-4x
+      p#message #{message}
+      a(href='#{link}')
+        span 点击此处快速跳转
+        span#secs 3   
+        span 秒后继续
+      .clearfix
