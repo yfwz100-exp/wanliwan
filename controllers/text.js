@@ -41,7 +41,7 @@ exports.post = {
             });
           } else {
             var post = text.toJSON();
-            post.author = req.session.user.avatar;
+            post.author = req.session.user;
             res.render('posts-list', {
               posts: [post],
               user: req.session.user
