@@ -12,13 +12,13 @@ html
       script(src='/javascripts/check.js')
       link(rel="stylesheet",href="/stylesheets/done.css")
       meta(http-equiv='refresh',content='3; '+link)
-      if typeof success != 'undefined' || success == false
+      if typeof success != 'undefined' &&  success == false
         script
-          window.onload = function(){
+          $(function () {
             var d=document.getElementById('message');
             d.style.border="2px solid red";
             doShake('message');
-          }
+          });
       script
         $(function() {
           setInterval(function() {
