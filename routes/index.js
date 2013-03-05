@@ -93,6 +93,15 @@ module.exports = {
     },
   },
 
+  'del': {
+    '(*)': {
+      all: auth.checkLogin
+    },
+    ':uri(*)': {
+      all: text.remove
+    }
+  },
+
   'homeb': {
     '(*)': {
       all: auth.checkLogin

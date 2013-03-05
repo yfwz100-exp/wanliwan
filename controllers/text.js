@@ -58,3 +58,44 @@ exports.post = {
     }
   }
 };
+
+exports.remove = function (req, res) {
+  async.waterfall([
+    function(callback) {
+      Text.findOne({
+        uri: req.params['uri']
+      }, function (err, text) {
+        if (text.author == req.session.user._id) {
+          callback(null, text);
+        } else {
+          callback('Forbidden', null);
+        }
+      });
+    },
+    function(text, callback) {
+      text.remove(callback);
+    }
+  ], function (err, result) {
+    if (err) {
+      if (req.xhr) {
+        res.send({success: false, message: err});
+      } else {
+        res.render('redirect',{
+          link: '/home',
+          message: err,
+          success: false,
+        });
+      }
+    } else {
+      if (req.xhr) {
+        res.send({success: false, message: 'done!'});
+      } else {
+        res.render('redirect',{
+          link: '/home',
+          message: 'Done!',
+          success: true,
+        });
+      }
+    }
+  });
+};

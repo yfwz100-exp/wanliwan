@@ -4,7 +4,7 @@
     .tool
       a(href="#").edit
         i.icon-edit.icon-large
-      a(href="#").remove
+      a(href="del/"+post.uri).remove
         i.icon-remove.close
   span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
   //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
