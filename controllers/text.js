@@ -35,7 +35,7 @@ exports.post = {
       text.save(function (err, text){
         if(!err){
           if (! req.xhr) {
-            res.render('done',{
+            res.render('redirect',{
               link:'/home',
               message:'成功发表一片文字！'
             });
@@ -92,7 +92,7 @@ exports.remove = function (req, res) {
       } else {
         res.render('redirect',{
           link: '/home',
-          message: 'Done!',
+          message: 'redirect!',
           success: true,
         });
       }

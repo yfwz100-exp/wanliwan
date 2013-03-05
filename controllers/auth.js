@@ -24,13 +24,13 @@ exports.login = {
     User.getByEmail(email, function(err, user) {
       if (user && email == user.email && password == user.password) {
         req.session.user = user;
-        res.render('done', {
+        res.render('redirect', {
           success: true,
-          link: '/homeb',
+          link: '/home',
           message: '登陆成功！'
         });
       } else {
-        res.render('done', {
+        res.render('redirect', {
           success: false,
           link: '/login',
           message: '密码或用户名不正确！'
@@ -45,7 +45,7 @@ exports.login = {
  */
 exports.logout = function (req, res) {
   req.session.user = null;
-  res.render('done', {
+  res.render('redirect', {
     'link': '/login',
     'message': 'Successfully logout!'
   });
@@ -76,7 +76,7 @@ exports.register = {
     if (req.body.user.email && req.body.user.password) {
       User.getByEmail(req.body.user.email, function(err, user) {
         if (user) {
-          res.render('done', {
+          res.render('redirect', {
             success: false,
             message: '该邮箱已注册!',
             link: '/register'
@@ -91,13 +91,13 @@ exports.register = {
             user.followers.push(user._id);
             user.save(function (err, user) {
               if (! err) {
-                res.render('done', {
+                res.render('redirect', {
                   success: true,
                   link: '/login',
                   message: '注册成功！'
                 });
               } else {
-                res.render('done', {
+                res.render('redirect', {
                   success: false,
                   link: '/register',
                   message: "注册失败(数据写入失败)..."

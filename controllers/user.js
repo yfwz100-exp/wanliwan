@@ -104,7 +104,7 @@ exports.home = function home(req, res) {
     author : {$in:req.session.user.followers}
   }).sort({date:-1}).populate('author').exec(function(err,posts){
     if (! posts) posts = [];
-    res.render('homeb',{
+    res.render('home',{
       user  : req.session.user,
       posts : posts
     });
@@ -167,7 +167,7 @@ exports.follow = function follow(req,res){
     user.save(function (err) {
       if (! err) {
         req.session.user = user;
-        res.render('done', {
+        res.render('redirect', {
           link: '/home',
           message: 'Successfully 关注!'
         });

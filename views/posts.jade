@@ -1,7 +1,7 @@
 -var position = false
 -var tempost  = {author:{}} 
 each post in posts
-  if tempost.author.name != post.author.name
+  if tempost.author.email != post.author.email
     - position = !position
   - tempost = post
   if  position
@@ -10,11 +10,11 @@ each post in posts
         img(src="/images/2-1.png")
       .message_right
         .messagebar
-          span.name #{post.author.name}
+          span.name #{post.author.email}
           span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
           span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
           
-          if post.author.name==user.name
+          if post.author.email==user.email
             .tool
               a(href="#")
                 span.icon-wrench.fix
@@ -50,10 +50,10 @@ each post in posts
         img(src="/images/1.png")
       .message_left
         .messagebar
-          span.name #{post.author.name}
+          span.name #{post.author.email}
           span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
           span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
-          if post.author.name==user.name
+          if post.author.email==user.email
             .tool
               a(href="#")
                 span.icon-wrench.fix

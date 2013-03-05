@@ -14,7 +14,7 @@ exports.login = {
     User.get(username, function(err, user) {
       if (user && username == user.name && password == user.password) {
         req.session.user = user.toJSON();
-        res.render('done', {
+        res.render('redirect', {
           message: 'Successfully login!',
           link: '/home'
         });
@@ -30,7 +30,7 @@ exports.login = {
 
 exports.logout = function (req, res) {
   req.session.user = null;
-  res.render('done', {
+  res.render('redirect', {
     'link': '/login',
     'message': 'Successfully logout!'
   });

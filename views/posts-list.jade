@@ -2,7 +2,7 @@
 -var temposition = position;
 -var tempost  = {author:{}} 
 each post in posts
-  if tempost.author.name != post.author.name
+  if tempost.author.email != post.author.email
     - position = !position
   - tempost = post
   .tip(class=position?'tip-left':'tip-right')

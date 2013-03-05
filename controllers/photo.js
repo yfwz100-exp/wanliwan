@@ -30,7 +30,7 @@ exports.postPhoto = function postPhoto(req,res){
 
   photo.save(function (err){
     if(!err){
-      res.render('done',{
+      res.render('redirect',{
         link:'/home',
         message:'成功发表一张图片！'
       });
