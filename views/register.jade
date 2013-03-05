@@ -8,7 +8,7 @@ html
       link(rel='stylesheet',href='/stylesheets/wlw.css')
       link(rel='stylesheet',href='/stylesheets/wanliwan.css')
       script(src='/javascripts/jquery.js')
-      link(rel='stylesheet',href='/stylesheets/reg.css')
+      link(rel='stylesheet',href='/stylesheets/register.css')
       script(src='/javascripts/check.js')
 
 body
@@ -27,15 +27,17 @@ body
     .register
       form(action='/register',method='POST',onsubmit="return checkReg()")
         input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
+        input(type='text',id='name',name='user[name]', placeholder='昵称').name
         #pass
           input(type='password',id='password',name='user[password]', placeholder='密码').password
+        
         label.showpassword.checkbox
           input(type='checkbox',onclick='showPassword(this)')
           span 显示密码
      
         #error.btn.btn-warning.error
         #error1.btn.btn-danger.error1
-        
+        #error2.btn.btn-info.error2
         input(type='submit',value='立即 加入').btn.btn-block.btn-primary.btn-large#rsubmit
     
       .clearfix  

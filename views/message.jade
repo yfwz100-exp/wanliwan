@@ -1,15 +1,19 @@
 .msg_info
-  span.name #{post.author.name}
-  if post.author.name==user.name
+  span.name #{post.author.email}
+  if post.author.email==user.email
     .tool
+      a(href="del/"+post.uri).trash
+        i.icon-trash.close
       a(href="#").edit
-        i.icon-edit.icon-large
-      a(href="del/"+post.uri).remove
-        i.icon-remove.close
+        i.icon-edit.close
+      
   span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
   //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
 
-  .clearfix  
+  .clearfix
+
+.msg_notice
+  a(href="#") @王植 
 .msg_show
   if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
     include text
@@ -20,11 +24,11 @@
   span.tags
     i.icon-tags 心情
   a(href="#").reply
-    i.icon-comments.icon-large
-      span.num 333324345
+    i.icon-comments.close
+      span 333324345
   a(href="#").retweet
-    i.icon-retweet.icon-large
-      span.num 3332434
+    i.icon-retweet.close
+      span 3332434
   a(href="#").like
-    i.icon-heart.icon-large
-      span.num 343332434
+    i.icon-heart.close
+      span 343332434

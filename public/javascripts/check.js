@@ -135,6 +135,61 @@ function checkReg(){
     };
 }
 
+
+function checkLogin(){   
+    var strReg="";                   
+    var r;
+    var strText=document.getElementById("email").value;
+  
+    //去除前后空格
+    strText = strText.replace(/^(\s|\u00A0)+/,'').replace(/(\s|\u00A0)+$/,'');
+
+    document.getElementById("email").value = strText;
+
+    strReg=/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/i;                
+    r=strText.search(strReg);
+
+    if(r==-1) {
+      var insertText = "<span>请输入一个有效邮箱</span>";
+      document.getElementById("error").innerHTML = insertText;
+      document.getElementById("error").style.display='block';
+
+      if (document.getElementById("password").value=="") {  
+        var insertText = "<span>密码不可以为空</span>";
+        document.getElementById("error1").innerHTML = insertText;
+        document.getElementById("error1").style.display='block';
+        document.getElementById("rsubmit").style.marginTop='20px';
+        doShake('password');
+        doShake('email');
+        return false;
+      }else{
+        document.getElementById("rsubmit").style.marginTop='10px';
+        document.getElementById("error1").style.display='none';
+        doShake('email');
+        return false;  
+      }
+      
+    }else{
+      document.getElementById("error").style.display='none';
+      document.getElementById("rsubmit").style.marginTop='0px';
+
+      if (document.getElementById("password").value=="") {
+        var insertText = "<span>密码不可以为空</span>";
+        document.getElementById("error1").innerHTML = insertText;
+        document.getElementById("error1").style.display='block';
+        document.getElementById("rsubmit").style.marginTop='20px';
+        doShake('password');
+        return false;
+      }else{
+        document.getElementById("error").style.display='none';
+        document.getElementById("rsubmit").style.marginTop='0px';
+        checkPassword();
+
+        return true;
+      }
+    };
+}
+
 //抖动
 function doShake(id){  
     var o=document.getElementById(id);  
