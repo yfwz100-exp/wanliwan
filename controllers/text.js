@@ -1,5 +1,8 @@
 
-var Text = require('../models').Text;
+var Text = require('../models').Text
+  , User = require('../models').User
+  , async = require('async')
+  ;
 
 exports.post = {
 
@@ -26,10 +29,10 @@ exports.post = {
       var text = new Text({
         content: req.body.text.content,
         author : req.session.user._id,
-        uri    : Date.now()+req.session.user.name
+        uri    : Date.now().toString()+req.session.user.name
       });
 
-      text.save(function (err){
+      text.save(function (err, text){
         if(!err){
           if (! req.xhr) {
             res.render('done',{
@@ -37,15 +40,18 @@ exports.post = {
               message:'成功发表一片文字！'
             });
           } else {
+            var post = text.toJSON();
+            post.author = req.session.user.avatar;
             res.render('posts-list', {
-              posts: [text],
+              posts: [post],
               user: req.session.user
             });
           } 
         }else{
-          res.render('error',{
-            link:'/text',
-            message:  err
+          res.render('redirect', {
+            link:'/new/text',
+            message:  err,
+            success: false
           });
         }
       });

@@ -107,10 +107,12 @@
     $('.header .avatar').css({
       zIndex: 642
     });
+    overlay.show();
 
     $.get('/new/'+ctx.params.type).success(function (data) {
       $('#new-post-area').html(data).slideDown();
       $('#new-post-area form').submit(function (event) {
+
         // 取消默认动作。
         event.preventDefault();
         var $this = $(this);
@@ -118,15 +120,14 @@
 
         // AJAX 提交表单。
         $.post('/new/'+ctx.params.type, data).success(function (data) {
-          var o = $(data).hide();
+          var o = $(data).css({display: 'none'});
           $('#posts-list').prepend(o);
           o.slideDown();
-          page('/homeb/');
+          page('/home');
         }).error(function (data) {
           alert('错误了～');
         });
       });
-      overlay.show();
     }).error(function (data) {
       $('#new-post-area').html('大哥手下留情，我们很快就会完善的了……').slideDown();
       overlay.show();
