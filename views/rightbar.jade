@@ -1,14 +1,18 @@
 .userinfo
-  .nameinfo  
-    p #{user.email}
+  .nameinfo 
+    a(href="#") 
+      span #{user.name}
+    a(href="/logout").icon-off.close
+    .clearfix
   .description
-    p 戏如人生 人生如戏
+    p #{user.description}
+    
 .bloginfo
   .post
     i.icon-file.icon-large &nbsp&nbsp发表
     //显示自己发表数量
     a(href="#").myself  33
-    //显示上一次登陆至今你所关注的人发表数量
+    //显示上 一次 登陆 至今 你所关注的人发表数量
     &nbsp&nbsp
     a(href="#").others  33
   .retweet
@@ -74,4 +78,3 @@
     img(src="/images/2.png").hotpost_avatar
     span #{user.name}
     .clearfix
-

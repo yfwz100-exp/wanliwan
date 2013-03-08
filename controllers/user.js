@@ -123,6 +123,23 @@ exports.homeb = function homeb(req, res) {
     });
   });
 };
+
+
+// begin for testing homec
+exports.homec = function homec(req, res) {
+  Post.find({
+    author : {$in:req.session.user.followers}
+  }).sort({date:-1}).populate('author').exec(function(err,posts){
+    if (! posts) posts = [];
+    res.render('homec',{
+      user  : req.session.user,
+      posts : posts
+    });
+  });
+};
+
+
+
 exports.homeList = function homeList(req, res) {
   if (req.xhr) {
     Post.find({

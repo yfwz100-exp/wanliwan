@@ -24,23 +24,29 @@ body
         span.chinese .万里万
         span.english wanliwan.
     .clearfix
+
+    .errboard
+      #nameerr.btn.btn-info
+      #mailerr.btn.btn-warning
+      #passerr.btn.btn-danger
+
     .register
       form(action='/register',method='POST',onsubmit="return checkReg()")
-        input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
         input(type='text',id='name',name='user[name]', placeholder='昵称').name
+        input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
         #pass
           input(type='password',id='password',name='user[password]', placeholder='密码').password
         
         label.showpassword.checkbox
           input(type='checkbox',onclick='showPassword(this)')
           span 显示密码
-     
-        #error.btn.btn-warning.error
-        #error1.btn.btn-danger.error1
-        #error2.btn.btn-info.error2
+        textarea(rows='3',id='email',name='user[description]', placeholder='写点什么描述你自己吧！~(28字)')
+
         input(type='submit',value='立即 加入').btn.btn-block.btn-primary.btn-large#rsubmit
-    
+        
       .clearfix  
+    
+
       .help
  
 

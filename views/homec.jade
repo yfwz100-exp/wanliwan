@@ -4,7 +4,7 @@ block append head
   block title 
     title home
 
-  link(href='/stylesheets/homeb.css',rel='stylesheet')
+  link(href='/stylesheets/homec.css',rel='stylesheet')
   link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
   link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
 
@@ -16,109 +16,16 @@ block append head
   script(src='/javascripts/jquery.pjax.js')
 
   script
-    $(function () {
-      if ($.support.pjax) {
-        var container = null;
-        window.overlay = {
-          _obj: $('<div></div>').css({
-            position: 'fixed', 
-            left: '0', top: '0', width:'100%', height:'100%',
-            display: 'none',
-            backgroundColor: 'rgba(22,22,22,0.85)'
-          }).appendTo(document.body),
-          show: function () {
-            this._obj.fadeIn();
-          },
-          hide: function () {
-            this._obj.hide();
-          }
-        };
-        overlay._obj.click(function () {
-          $('#new-post-area').slideUp();
-          window.history.replaceState(null, null, '/homeb/');
-          overlay.hide();
-        });
-
-        $('#new-post-area').hide();
-
-        $(document).on('click', '.nav a', function (event) {
-          event.preventDefault();
-          var pcontainer = $('#new-post-area');
-          container = $('.navigator');
-          $.pjax.click(event, {
-            container: pcontainer
-          });
-        });
-
-        $(document).on('pjax:complete', function (event) {
-          $('#new-post-area').slideDown();
-          overlay.show();
-        });
-
-        $(document).on('pjax:popstate', function (event) {
-          var state = event.state;
-          if (/(?:\/homeb|\/homeb\/)$/.exec(state.url)) {
-            overlay.hide();
-            $('#new-post-area').slideUp();
-          }
-        });
+    function floatbar($elem, event) {
+      if ($elem.css('display') != 'none') {
+        $elem.css('display', 'none');
+      } else {
+        $elem.css('display', 'block');
       }
-    });
+    }
 
 block body
   #everything
-    .header
-      .avatar
-        img(src="/images/2.png",alt="img")
-      
-      .navigator
-        ul.nav
-          li
-            a(href="/new/text")#new-post-btn.pjax
-              i.icon-pencil.icon-3x
-              br
-              span 文字
-          li
-            a(href="/new/photo")
-              i.icon-camera-retro.icon-3x
-              br
-              span 图片
-          li
-            a(href="/new/music")
-              i.icon-music.icon-3x
-              br
-              span 音乐
-          li
-            a(href="/new/video")
-              i.icon-facetime-video.icon-3x
-              br
-              span 视频
-          li
-            a(href="/new/link")
-              i.icon-link.icon-3x
-              br
-              span 链接
-          li
-            a(href="/new/bell")
-              i.icon-quote-right.icon-3x
-              br
-              span 签名
-          li
-            a(href="/new/bell")
-              i.icon-bell.icon-3x
-              br
-              span @伊
-        .clearfix
-        #new-post-area 
-          block new-post-area
-      .sign
-        p 有志者事竟成,破釜沉舟,百二秦关终属楚;苦心人天不负,卧薪尝胆,三千越甲可吞吴。
-        
-      .clearfix
-    .content
-      .posts
-        include post
-      .rightbar
-        include rightbar
-      .clearfix
-    .footer
+    .postbar
+
+    

@@ -47,7 +47,7 @@ exports.logout = function (req, res) {
   req.session.user = null;
   res.render('redirect', {
     'link': '/login',
-    'message': 'Successfully logout!'
+    'message': '你正在退出...'
   });
 };
 
@@ -55,7 +55,7 @@ exports.logout = function (req, res) {
  * 测试是否已经登陆。
  */
 exports.checkLogin = function (req, res, next) {
-  if (! req.session.user) {
+  if (! req.session.user.email) {
     return res.redirect('/login');
   } else {
     next();
@@ -83,8 +83,10 @@ exports.register = {
           });
         } else {
           var user = new User({
+            name : req.body.user.name,
             email: req.body.user.email,
             password: req.body.user.password,
+            description: req.body.user.description,  
           });
 
           user.save(function (err, user) {

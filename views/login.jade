@@ -30,18 +30,18 @@ body
     .clearfix
     .login
       form(action='/login',method='POST',onsubmit="return checkLogin()")
-        input(type='text',id='email',name='user[email]', placeholder='邮箱').mail
+        input(type='text',id='email',name='user[email]', placeholder='邮箱 | 昵称').mail
 
         #pass
           input(type='password',id='password',name='user[password]', placeholder='密码').password
         label.showpassword.checkbox
           input(type='checkbox',onclick="showPassword(this)")
           span 显示密码
-
+        
         #error.btn.btn-warning.error
         #error1.btn.btn-danger.error1
 
         input(type='submit',value='登 录').btn.btn-block.btn-primary.btn-large#rsubmit
-      
+        
       .clearfix  
       .help

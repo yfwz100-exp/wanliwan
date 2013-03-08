@@ -1,0 +1,104 @@
+extends layout
+
+append head
+  title Website:: home page
+  link(href=('/stylesheets/posts.css'),rel='stylesheet')
+
+  link(href=('/stylesheets/avatar.css'),rel='stylesheet')
+  link(rel="stylesheet",href="/stylesheet/jquery.Jcrop.css")
+  script(src='/javascripts/jquery.Jcrop.js')
+
+  script
+    (function() {
+      $(function() {
+        return $('#photo-btn').append($('<iframe src="/home/upload?callback=upload"></iframe>').css({
+          display: 'none'
+        })).click(function(event) {
+          var $ifr;
+          event.preventDefault();
+          $ifr = $(this).children('iframe').contents();
+          $ifr.find('#photo-upload-btn').click().change(function() {
+            return $ifr.find('#photo-upload').submit();
+          });
+        });
+      });
+
+      window.upload = function(opt) {
+        if (opt.name) {
+          $('#post-form').append('<input type="hidden" name="photos[]" value="' + opt.name + '"/>');
+          $('#previewid').html($('<img  id="target" src="' + opt.url + '"/><div id="preview-pane"><div class="preview-container"><img src="' + opt.url + '" class="jcrop-preview" alt="Preview" /></div></div>'));
+          
+
+          jQuery(function($){
+
+            // Create variables (in this scope) to hold the API and image size
+            var jcrop_api,
+                boundx,
+                boundy,
+
+                // Grab some information about the preview pane
+                $preview = $('#preview-pane'),
+                $pcnt = $('#preview-pane .preview-container'),
+                $pimg = $('#preview-pane .preview-container img'),
+
+
+                xsize = $pcnt.width(),
+                ysize = $pcnt.height();
+            console.log('init',[xsize,ysize]);
+            $('#target').Jcrop({
+              onChange: updatePreview,
+              onSelect: updatePreview,
+              aspectRatio: xsize / ysize
+            },function(){
+              // Use the API to get the real image size
+              var bounds = this.getBounds();
+              boundx = bounds[0];
+              boundy = bounds[1];
+              // Store the API in the jcrop_api variable
+              jcrop_api = this;
+              // Move the preview into the jcrop container for css positioning
+              $preview.appendTo(jcrop_api.ui.holder);
+            });
+
+            function updatePreview(c)
+            {
+              if (parseInt(c.w) > 0)
+              {
+                var rx = xsize / c.w;
+                var ry = ysize / c.h;
+
+                //console.log('onChange',[rx *boundx,ry *boundy]);
+                $pimg.css({
+                  width: Math.round(rx * boundx) + 'px',
+                  height: Math.round(ry * boundy) + 'px',
+
+                  marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                  marginTop: '-' + Math.round(ry * c.y) + 'px'
+                });
+
+                console.log('oncss',[c.x,c.y]);
+                console.log('oncss',[c.x+c.w,c.y+c.h]);
+                
+              }
+            };
+
+          }); 
+          //-   .click(function(event) {
+          //-   $(this).remove();
+          //-   return $("[value='" + opt.name + "']").remove();
+          //- }));
+        }
+      };
+
+
+    }).call(this);
+
+
+      
+
+block body
+  form(action=('/home/avatar'),method='POST',enctype='multipart/form-data')#post-form
+      span.btn#photo-btn Photo
+      button(type='submit').btn.btn-primary Submit!
+    #previewid
+    

@@ -42,8 +42,8 @@ exports.post = {
           } else {
             var post = text.toJSON();
             post.author = req.session.user;
-            res.render('posts-list', {
-              posts: [post],
+            res.render('posts-list-post', {
+              post: post,
               user: req.session.user
             });
           } 

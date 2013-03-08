@@ -1,5 +1,5 @@
 .msg_info
-  span.name #{post.author.email}
+  span.name #{post.author.name}
   if post.author.email==user.email
     .tool
       a(href="del/"+post.uri).trash
@@ -13,7 +13,8 @@
   .clearfix
 
 .msg_notice
-  a(href="#") @王植 
+  a(href="#") @somebody
+  span What the fuck you are doing?
 .msg_show
   if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
     include text

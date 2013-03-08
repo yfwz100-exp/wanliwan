@@ -75,7 +75,14 @@ module.exports = {
 
     'follow/:id': {
       get : user.follow 
-    }
+    },
+    'avatar':{
+      get : photo.avatar.view,
+    },
+    'upload':{
+      get : photo.upload.view,
+      post: photo.upload.post,
+    },
   },
 
   'new':{
@@ -107,6 +114,13 @@ module.exports = {
       all: auth.checkLogin
     },
     get: user.homeb
+  },
+
+  'homec': {
+    '(*)': {
+      all: auth.checkLogin
+    },
+    get: user.homec
   },
   
 };

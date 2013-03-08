@@ -9,7 +9,10 @@ block body
         legend 图片
         .control-group
           label.control-label 选择图片路径
-          input(type="file",name="photo",multiple)#multiple
+          input(type="file",name="photo",onkeypress="return false",onpaste="return false",onchange="previewImg(this.value)")#photo
+        .control-group
+          label.control-label 图片预览
+          .preview
       .form-actions
         input(type="submit",value='火速上传').btn.btn-primary
         a(href='/home').btn 还是算了
@@ -20,3 +23,22 @@ block append  footerjs
     jQuery(function($){
       $('#target').Jcrop();    
     });
+
+    function showImg(value)
+    { 
+      var lujing = $("#multiple").val();
+      alert(lujing);
+      var obj = window.document.getElementById("showimg");
+      obj.src = value
+    }
+
+    function previewImg(path) {
+      var pathLength=path.length;
+      // substring 从 path 长度-3 的开始截取, 截止位置是 path 的长度，结果就是 path 的最后三位:
+      var additionName=path.substring(pathLength-3,pathLength);
+      // 判断是否为 .jpg .png .gif格式图片，是，则显示，否，则提示错误
+      if(additionName=="jpg" || additionName=="png" || additionName=="gif")
+        document.getElementById('preview').innerHTML = '<img  src= "' + path + '" width="180" height="200"/>';
+      else
+        document.getElementById('preview').innerHTML="<font color=red>请选择格式为jpg,png或gif的图片!否则无法预览及上传</font>";   
+    }

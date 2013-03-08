@@ -7,23 +7,28 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
   email: {
     type: String,
     required: true
   },
+
   followers:[{
     type:mongoose.Schema.Types.ObjectId,
     ref: 'User',
   }],
+
   avatar: {
     type: String,
     'default': '/images/avatar/unknown.jpg'
   },
+
   description: String,
   verified: {
     type: Boolean,
     'default': false
   },
+  
   posts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post'

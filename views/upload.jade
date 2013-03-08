@@ -1,0 +1,13 @@
+extends layout
+
+append head
+  title Upload photo
+  :coffeescript
+    if window.parent and window.parent['#{callback}']
+      window.parent['#{callback}']({name: '#{name}', url:'#{"/uploads/"+name}'})
+block body
+  form(action='/home/upload',enctype='multipart/form-data',method='POST')#photo-upload
+    input(type='hidden',name='callback',value=callback)
+    input(type='file',name='photo')#photo-upload-btn
+    button(type='submit') Upload
+
