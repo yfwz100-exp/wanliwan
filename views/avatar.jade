@@ -22,37 +22,69 @@ append head
         });
       });
 
+      function showPreview($target, coords) {
+        $('.thumbnail-area .preview').each(function(i, e) {
+          var $e = $(e);
+          var $img = $('img', $e);
+          var rx = $e.width() / coords.w;
+          var ry = $e.height() / coords.h;
+
+          $img.css({
+            width: Math.round(rx * $target.width()) + 'px',
+            height: Math.round(ry * $target.height()) + 'px',
+            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+            marginTop: '-' + Math.round(ry * coords.y) + 'px'
+          });
+
+        });
+      }
+
       window.upload = function(opt) {
         if (opt.name) {
           $('#photo').val(opt.name);
-          $('#target').css({
-            width: '500px'
-          }).attr('src', opt.url).Jcrop({
+          $('.preview img').attr('src', opt.url);
+          var $target = $('#target').Jcrop({
+            aspectRatio: 1,
             trackDocument: true,
-            onChange: function (c) {
-              $('#photo-x').val(c.x);
-              $('#photo-y').val(c.y);
-              $('#photo-w').val(c.w);
-              $('#photo-h').val(c.h);
-              console.log(c);
+            onSelect: function (c) {
+              $('#clip-x').val(c.x);
+              $('#clip-y').val(c.y);
+              $('#clip-w').val(c.w);
+              $('#clip-h').val(c.h);
+              $('#photo-w').val($target.width());
+              $('#photo-h').val($target.height());
+
+              showPreview($target, c);
             }
           });
+          
         }
       };
 
     }).call(this);
 
 block body
-  div
-    img#target
-  form(action=('/home/avatar'),method='POST')#post-form
-    span.btn#broimg Photo 
-    button(type='submit').btn.btn-primary Submit!
-    input(type='hidden',name='photo')#photo
-    input(type='hidden',name='rect[x]')#photo-x
-    input(type='hidden',name='rect[y]')#photo-y
-    input(type='hidden',name='rect[w]')#photo-w
-    input(type='hidden',name='rect[h]')#photo-h
-  
+  .container
+    .preview-pane
+      #preview.preview
+        img#target
 
+      .thumbnail-area
+        .preview.preview-128
+          img.target
+        .preview.preview-64
+          img.target
+        .preview.preview-32
+          img.target
+
+    form(action=('/home/avatar'),method='POST')#post-form
+      button#broimg.btn.btn-block 浏览
+      button(type='submit').btn.btn-block.btn-primary 提交 
+      input(type='hidden',name='photo[path]')#photo
+      input(type='hidden',name='photo[w]')#photo-w
+      input(type='hidden',name='photo[h]')#photo-h
+      input(type='hidden',name='clip[x]')#clip-x
+      input(type='hidden',name='clip[y]')#clip-y
+      input(type='hidden',name='clip[w]')#clip-w
+      input(type='hidden',name='clip[h]')#clip-h
 
