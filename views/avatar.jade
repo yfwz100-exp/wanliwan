@@ -27,9 +27,15 @@ append head
           $('#photo').val(opt.name);
           $('#target').css({
             width: '500px'
-          }).attr('src', opt.url)
-          $('#target').Jcrop({
-            trackDocument: true
+          }).attr('src', opt.url).Jcrop({
+            trackDocument: true,
+            onChange: function (c) {
+              $('#photo-x').val(c.x);
+              $('#photo-y').val(c.y);
+              $('#photo-w').val(c.w);
+              $('#photo-h').val(c.h);
+              console.log(c);
+            }
           });
         }
       };
@@ -41,6 +47,10 @@ block body
     span.btn#photo-btn Photo
     button(type='submit').btn.btn-primary Submit!
     input(type='hidden',name='photo')#photo
+    input(type='hidden',name='rect[x]')#photo-x
+    input(type='hidden',name='rect[y]')#photo-y
+    input(type='hidden',name='rect[w]')#photo-w
+    input(type='hidden',name='rect[h]')#photo-h
   div
     img#target
 
