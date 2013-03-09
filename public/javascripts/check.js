@@ -187,6 +187,37 @@ function checkLogin(){
     };
 }
 
+(function ($) {
+  "use strict"
+
+  $.fn.doShake = function (options) {
+    return this.each(function (index, e) {
+      var $e = $(e);
+      var pos = $e.css('position');
+      var f;
+      if (pos == 'absolute') {
+        f = [elem.offsetLeft,elem.offsetTop];
+      } else if (pos == 'relative') {
+        f = [0,0];
+      } else {
+        $elem.css('position', 'relative');
+      }
+      var p=["left","top"];
+      var i=0;  
+      var u = setInterval(function() {  
+        var s = e.style;  
+        s[p[i % 2]] = f[i % 2] + ((i++) % 4 < 2 ? -2 : 2) + "px";  
+        if (i > 30) {  
+            clearInterval(u);  
+            s[p[0]] = f[0] + "px";  
+            s[p[1]] = f[1] + "px";  
+            i = 0;  
+        }
+      },36);
+    });
+  }
+
+})(jQuery);
 //抖动
 function doShake(id){  
     var o=document.getElementById(id);  

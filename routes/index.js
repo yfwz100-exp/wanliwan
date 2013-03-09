@@ -76,16 +76,20 @@ module.exports = {
     'follow/:id': {
       get : user.follow 
     },
+
     'avatar':{
       get : photo.avatar.view,
+      post: photo.avatar.post,
+      
+      'upload':{
+        get : photo.upload.view,
+        post: photo.upload.post,
+      },
     },
-    'upload':{
-      get : photo.upload.view,
-      post: photo.upload.post,
-    },
+    
   },
 
-  'new':{
+  'new': {
     '(*)': {
       all: auth.checkLogin
     },
@@ -122,6 +126,16 @@ module.exports = {
     },
     get: user.homec
   },
+
+  'redirect': {
+    get: function (req, res) {
+      res.render('redirect', {
+        message: 'check',
+        link: '/',
+        error: 1
+      });
+    }
+  }
   
 };
 

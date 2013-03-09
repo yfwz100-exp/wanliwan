@@ -2,24 +2,25 @@ doctype 5
 html
   head
     meta(charset='utf8')
-    block head
-      title 欢迎加入
-      link(rel='stylesheet',href='/stylesheets/bootstrap/bootstrap.css')
-      link(rel='stylesheet',href='/stylesheets/wlw.css')
-      link(rel='stylesheet',href='/stylesheets/wanliwan.css')
-      script(src='/javascripts/jquery.js')
-      link(rel='stylesheet',href='/stylesheets/reg.css')
-      script(src='/javascripts/check.js')
-      link(rel="stylesheet",href="/stylesheets/redirect.css")
-      meta(http-equiv='refresh',content='3; '+link)
-      if typeof success != 'undefined' &&  success == false
-        script
-          $(function () {
-            var d=document.getElementById('message');
-            d.style.border="2px solid red";
-            doShake('message');
-          });
-      meta(http-equiv='refresh',content='3; '+link)
+    title 跳转中
+    link(rel='stylesheet',href='/stylesheets/bootstrap/bootstrap.css')
+    link(rel='stylesheet',href='/stylesheets/wlw.css')
+    link(rel='stylesheet',href='/stylesheets/wanliwan.css')
+    script(src='/javascripts/jquery.js')
+    link(rel='stylesheet',href='/stylesheets/reg.css')
+    script(src='/javascripts/check.js')
+    link(rel="stylesheet",href="/stylesheets/redirect.css")
+    if typeof error!='undefined' && error !=false
+      script
+        $(function () {
+          $('#message').css({
+            border: '2px solid red',
+          }).doShake();
+        });
+    else
+      - refresh = 3
+    if typeof refresh != 'undefined' && refresh > 0
+      meta(http-equiv='refresh',content=refresh+'; '+link)
       script
         $(function() {
           setInterval(function() {
@@ -27,13 +28,20 @@ html
             $('#secs').text(--secs);
           },1000);
         });
-body
-  .container 
+
+  body
     .content
-      i.icon-spinner.icon-spin.icon-4x
-      p#message #{message}
-      a(href='#{link}')
-        span 点击此处快速跳转
-        span#secs 3   
-        span 秒后继续
-      .clearfix
+      div.sign
+        if typeof error!='undefined' && error !=false
+          i.icon-warning-sign.icon-4x
+        else
+          i.icon-spinner.icon-spin.icon-4x
+      p#message= message
+      div.center
+        a(href='#{link}',class=typeof error!='undefined'?'btn-danger':'btn-success').btn.btn-large
+          span 点击此处快速跳转
+          if typeof refresh != 'undefined' && refresh > 0
+            span#secs= refresh
+            span 秒后继续
+    .clearfix
+

@@ -1,38 +1,48 @@
+@backgroundColor: rgb(47,83,101);
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   margin-top: 0px;
-  background-color:rgb(47,83,101);
+  background-color: @backgroundColor;
   font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif,"新宋体";
   color: rgb(68, 68, 68);
   overflow: auto;
   font-size: 16px;
 }
 
-
 .content {
 	position: relative;
-	margin-top: 200px;
-	padding-left: 200px;
+  top: 10%;
+  width: 600px;
+  margin: 1em auto;
+  padding: 20px;
+  background-color: lighten(@backgroundColor, 10%);
+  border-radius: 10px;
+  transition: 0.5s;
 }
 
-i {
+.sign {
 	position: relative;
 	color: #c7e3ef;
-	margin-top: 10px;
-	margin-left: 200px;
+  text-align: center;
+  padding-top: 50px;
 }
 
 .content #message {
 	position: relative;
 	text-align: center;
 	font-size: 30px;
-	margin: 50px 0px 20px 85px;
 	color:rgb(244,244,244);
-	width: 300px;
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.content a {
+.content .center {
 	text-align: center;
-	font-size: 30px;
-	margin-left: 15px;
-	color: white;
+	margin-top: 30px;
 }
