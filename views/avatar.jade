@@ -10,7 +10,7 @@ append head
   script
     (function() {
       $(function() {
-        $('#photo-btn').append($('<iframe src="/home/avatar/upload?callback=upload"></iframe>').css({
+        $('#broimg').append($('<iframe src="/home/avatar/upload?callback=upload"></iframe>').css({
           display: 'none'
         })).click(function(event) {
           var $ifr;
@@ -43,14 +43,16 @@ append head
     }).call(this);
 
 block body
+  div
+    img#target
   form(action=('/home/avatar'),method='POST')#post-form
-    span.btn#photo-btn Photo
+    span.btn#broimg Photo 
     button(type='submit').btn.btn-primary Submit!
     input(type='hidden',name='photo')#photo
     input(type='hidden',name='rect[x]')#photo-x
     input(type='hidden',name='rect[y]')#photo-y
     input(type='hidden',name='rect[w]')#photo-w
     input(type='hidden',name='rect[h]')#photo-h
-  div
-    img#target
+  
+
 
