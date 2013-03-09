@@ -69,7 +69,7 @@ exports.upload = {
    */
   post: function (req, res) {
     var tmp_path = req.files.photo.path;
-    var target_path = './public/uploads/'+req.session.user.name+req.files.photo.name;
+    var target_path = './public/uploads/'+req.session.user.name+'-'+req.files.photo.name;
 
     fs.rename(tmp_path,target_path,function(err){
       if(!err){
