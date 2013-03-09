@@ -18,7 +18,8 @@ html
           }).doShake();
         });
     else
-      - refresh = 3
+      if typeof refresh == 'undefined'
+        - refresh = 3
     if typeof refresh != 'undefined' && refresh > 0
       meta(http-equiv='refresh',content=refresh+'; '+link)
       script
