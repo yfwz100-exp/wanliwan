@@ -55,10 +55,14 @@ exports.logout = function (req, res) {
  * 测试是否已经登陆。
  */
 exports.checkLogin = function (req, res, next) {
-  if (! req.session.user.email) {
+  if (! req.session.user) {
     return res.redirect('/login');
-  } else {
-    next();
+  } else { 
+    if (! req.session.user.email) {
+      return res.redirect('/login');
+    } else {
+      next();
+    }
   }
 };
 

@@ -28,13 +28,13 @@ body {
   #preview {
     width: 362px;
     min-height: 256px;
-    background-color: #ccc;
+    //background-color: #ccc;
     background-image: url('../images/avatar/upload-sign.png');
     background-repeat: no-repeat;
     background-position: center center;
     img {
-      max-width: 362px;
-      width: auto;
+      width: 362px;
+     // width: auto;
     }
   }
 
@@ -54,23 +54,25 @@ body {
         max-width: none;
       }
 
-      &.preview-128 {
-        width: 128px;
-        height: 128px;
-      }
-
-      &.preview-32 {
-        width: 32px;
-        height: 32px;
-      }
-
-      &.preview-64 {
-        width: 64px;
-        height: 64px;
-      }
     }
   }
 }
+
+#avatar-big {
+  width: 119px;
+  height: 136px;
+}
+
+#avatar-middle {
+  width: 77px;
+  height: 88px;
+}
+
+#avatar-small {
+  width: 42px;
+  height: 48px;
+}
+
 
 #post-form {
   text-align: center;
