@@ -1,4 +1,5 @@
 var Photo = require('../models/post');
+var imgk= require("imagemagick");
 var fs    = require('fs');
 
 exports.postPhotoView = function postPhotoView(req,res){
@@ -54,20 +55,21 @@ exports.avatar = {
   },
 
   post: function (req, res) {
-    var type = req.body.post.type;
-    var body = req.body.post.body;
-    if (type && body) {
-      var post = new model.post({
-        author: req.session.user._id,
-      });
+    //var type = req.body.post.type;
 
-      post.save(function(err) {
-        if (err) {
-          res.render('error', {msg: err, lnk:'/user'});
-        } else {
-          res.render('info', {msg: 'Done!', lnk:'/user'});
-        }
+    if (req.body) {
+      var path = './public/uploads/avatar/'+req.body.photo.path;
+      var cx  = req.body.clip.x;
+      var cy  = req.body.clip.y;
+      var cw  = req.body.clip.w;
+      var ch  = req.body.clip.h;
+      console.log(path);
+      
+      imgk.convert(["'"+path+"'",'-crop',cw+'x'+ch+'+'+cx+'+'+cy, path], function (err, stdout) {
+        if (err) throw err;
+        res.render('error', {msg:'Done',lnk:'/'});
       });
+      
     } else {
       res.render('error', {msg: 'Wrong parameters.', lnk: '/user'});
     }
@@ -86,8 +88,8 @@ exports.upload = {
 
   post: function (req, res) {
     var tmp_path = req.files.photo.path;
-    var target_path = './public/uploads/'+req.session.user.name+req.files.photo.name;
-
+    var target_path = './public/uploads/avatar/'+req.session.user.name+req.files.photo.name;
+    console.log('pathHH:'+target_path);
     fs.rename(tmp_path, target_path, function(err){
       if (!err) {
         res.render('avatar/upload', {

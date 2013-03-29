@@ -7,15 +7,24 @@ body {
   overflow: auto;
 }
 
+.container {
+  margin-top:60px;
+  width: 928px;
+  border-radius: 25px 25px 0px 0px;
+  background-color: #44628a;
+}
 .preview-pane {
-  margin: 10px auto;
-  padding: 9px;
+  position: relative;
+  float: left;
+  margin: 25px;
+  padding: 0;
+  
   border: 1px rgba(0,0,0,.4) solid;
   background-color: white;
   position: relative;
 
-  width: 500px;
-  min-height: 256px;
+  width: 878px;
+  min-height: 450px;
 
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -26,28 +35,33 @@ body {
   box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
 
   #preview {
-    width: 362px;
-    min-height: 256px;
-    //background-color: #ccc;
-    background-image: url('../images/avatar/upload-sign.png');
+    float: left;
+    padding: 10px;
+    width: 610px;
+    border-radius: 10px;
+    min-height: 420px;
+    //overflow: hidden;//background-color: #ccc;
+    //background-image: url('../images/avatar/upload-sign.png');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+    
+    .preview #firbroimg{
+      width: 610px;
+      min-height: 420px;  
+    }
+
     img {
-      width: 362px;
-     // width: auto;
+      width: auto;
     }
   }
 
   .thumbnail-area {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 128px;
-    overflow: visible;
-
+    position: relative;
+    float: left;
+    margin-top:10px;
     .preview {
       overflow: hidden;
-      border: 1px solid #ccc;
+      //border: 1px solid #ccc;
       margin-bottom: 10px;
 
       img {
@@ -59,23 +73,41 @@ body {
 }
 
 #avatar-big {
+  position: relative;
+  float: left;
+  border-radius: 10px;
   width: 119px;
   height: 136px;
 }
 
 #avatar-middle {
+  position: relative;
+  float: left;
+  top: 48px;
+  border-radius: 10px;
   width: 77px;
   height: 88px;
 }
 
 #avatar-small {
+  position: relative;
+  float: left;
+  top: 88px;
+  border-radius: 10px;
   width: 42px;
   height: 48px;
 }
 
 
 #post-form {
-  text-align: center;
-  width: 512px;
+  position: relative;
+  float: left;
+  bottom:0px;
+  //text-align: center;
+  //width: 512px;
   margin: auto;
+
+  #broimg{
+    display: none;
+  }
 }

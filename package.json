@@ -12,6 +12,7 @@
     "async": "*",
     "mongodb": "*",
     "connect-mongo": ">=0.1.7",
-    "mongoose": "*"
+    "mongoose": "*",
+    "node-imagemagick":"*"
   }
 }

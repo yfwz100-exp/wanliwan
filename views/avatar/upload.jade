@@ -4,7 +4,7 @@ append head
   title Upload photo
   script
     if(window.parent && window.parent['#{callback}']) {
-      window.parent['#{callback}']({name: '#{name}', url:"/uploads/#{name}"})
+      window.parent['#{callback}']({name: '#{name}', url:"/uploads/avatar/#{name}"})
       console.log("#{callback}");
     }
 block body

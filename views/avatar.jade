@@ -12,6 +12,9 @@ block body
   .container
     .preview-pane
       #preview.preview
+        #firbroimg
+          //img(src="../images/avatar/upload-sign.png")
+          span 点击选择上传图片
         img#target
 
       .thumbnail-area
@@ -22,14 +25,14 @@ block body
         .preview#avatar-small
           img.target
 
-    form(action=('/home/avatar'),method='POST')#post-form
-      button#broimg.btn.btn-block 浏览
-      button(type='submit').btn.btn-block.btn-primary 提交 
-      input(type='hidden',name='photo[path]')#photo
-      input(type='hidden',name='photo[w]')#photo-w
-      input(type='hidden',name='photo[h]')#photo-h
-      input(type='hidden',name='clip[x]')#clip-x
-      input(type='hidden',name='clip[y]')#clip-y
-      input(type='hidden',name='clip[w]')#clip-w
-      input(type='hidden',name='clip[h]')#clip-h
+      form(action=('/home/avatar'),method='POST')#post-form
+        #broimg.btn.btn-block 浏览
+        button(type='submit').btn.btn-primary 提交 
+        input(type='hidden',name='photo[path]')#photo
+        input(type='hidden',name='photo[w]')#photo-w
+        input(type='hidden',name='photo[h]')#photo-h
+        input(type='hidden',name='clip[x]')#clip-x
+        input(type='hidden',name='clip[y]')#clip-y
+        input(type='hidden',name='clip[w]')#clip-w
+        input(type='hidden',name='clip[h]')#clip-h
 

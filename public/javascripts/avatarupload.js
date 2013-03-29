@@ -4,6 +4,22 @@
       display: 'none'
     })).click(function(event) {
       var $ifr;
+      //$('.preview button').css({display:'none'});
+
+      event.preventDefault();
+      $ifr = $(this).children('iframe').contents();
+      $ifr.find('#photo-upload-btn').click().change(function() {
+        return $ifr.find('#photo-upload').submit();
+      });
+    });
+
+
+    $('#firbroimg').append($('<iframe src="/home/avatar/upload?callback=upload"></iframe>').css({
+      display: 'none'
+    })).click(function(event) {
+      var $ifr;
+     
+                      
       event.preventDefault();
       $ifr = $(this).children('iframe').contents();
       $ifr.find('#photo-upload-btn').click().change(function() {
@@ -31,6 +47,8 @@
 
   window.upload = function(opt) {
     if (opt.name) {
+      $('#firbroimg').css({display:'none'});
+      $('#broimg').css({display:'block'});
       $('#photo').val(opt.name);
       $('.preview img').attr('src', opt.url);
       var $target = $('#target').Jcrop({
