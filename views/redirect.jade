@@ -10,7 +10,7 @@ html
     link(rel='stylesheet',href='/stylesheets/reg.css')
     script(src='/javascripts/check.js')
     link(rel="stylesheet",href="/stylesheets/redirect.css")
-    if typeof error!='undefined' && error !=false
+    if typeof error!='undefined' && error != null
       script
         $(function () {
           $('#message').css({
@@ -33,13 +33,13 @@ html
   body
     .content
       div.sign
-        if typeof error!='undefined' && error !=false
+        if typeof error!='undefined' && error != null
           i.icon-warning-sign.icon-4x
         else
           i.icon-spinner.icon-spin.icon-4x
       p#message= message
       div.center
-        a(href='#{link}',class=typeof error!='undefined'?'btn-danger':'btn-success').btn.btn-large
+        a(href='#{link}',class=typeof error!='undefined'&& error!=null?'btn-danger':'btn-success').btn.btn-large
           span 点击此处快速跳转
           if typeof refresh != 'undefined' && refresh > 0
             span#secs= refresh

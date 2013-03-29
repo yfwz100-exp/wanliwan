@@ -1,0 +1,72 @@
+   
+.bloginfo
+  .post
+    i.icon-file.icon-large &nbsp&nbsp发表
+    // 显示自己发表数量
+    a(href="#").myself  33
+    // 显示上 一次 登陆 至今 你所关注的人发表数量
+    &nbsp;&nbsp;
+    a(href="#").others  33
+  .retweet
+    i.icon-retweet &nbsp;&nbsp;转发
+    // 显示我转发的数量
+    a(href="#").myself  434455
+    &nbsp;&nbsp;
+    // 显示别人转发我的数量
+    a(href="#").others  345433
+  .like
+    i.icon-heart &nbsp;&nbsp;喜欢
+    // 显示自己喜欢的数量
+    a(href="#").myself  254
+    // 显示自己被别人喜欢的数量
+    &nbsp;&nbsp;
+    a(href="#").others  33
+  .reply
+    i.icon-comments &nbsp;&nbsp;讨论
+    // 显示自己参与评论的总数
+    a(href="#").myself  34
+    &nbsp;&nbsp;
+    // 显示从上次登陆至今别人对自己的tip和自己评论的评论数量
+    a(href="#").others  33
+.blogmanage
+  a(href="/home/findfollow").find
+    i.icon-group.icon-large.blogavatar
+    i.icon-plus.blogplus &nbsp;
+    span 寻找博客
+    .clearfix
+  a(href="#").manage
+    i.icon-cogs.icon-large
+  .clearfix
+.hot
+  // span字长限制在11个汉字
+  ul
+    li
+      a(href="/hack")
+        span 假宝
+    li
+      a(href="/home/list")
+        span 假宝马撞人假宝马宝马宝
+    li
+      a(href="#")
+        span 假宝马撞人假宝马宝马宝
+    li
+      a(href="#")
+        span 假宝马撞人假宝马宝马宝
+    li
+      a(href="#")
+        span 假宝马撞人假宝马宝马宝
+.recommend
+  .image
+    img(src="/images/slide-03.jpg")
+    .love_reblog_comment
+      a(href="#").heart
+        i.icon-heart.icon-large
+      a(href="#").reblog
+        i.icon-retweet.icon-large
+      a(href="#").comment
+        i.icon-comments.icon-large
+      .clearfix
+  .blog
+    img(src="/images/2.png").hotpost_avatar
+    span #{user.name}
+    .clearfix

@@ -77,15 +77,7 @@ module.exports = {
       get : user.follow 
     },
 
-    'avatar':{
-      get : photo.avatar.view,
-      post: photo.avatar.post,
-      
-      'upload':{
-        get : photo.upload.view,
-        post: photo.upload.post,
-      },
-    },
+    'avatar': require('./avatar')
     
   },
 
