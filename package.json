@@ -13,6 +13,6 @@
     "mongodb": "*",
     "connect-mongo": ">=0.1.7",
     "mongoose": "*",
-    "node-imagemagick":"*"
+    "imagemagick":"*"
   }
 }
