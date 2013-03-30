@@ -1,0 +1,134 @@
+//begin header
+.header{
+  margin-top: 15px;
+  position: relative;
+
+  .avatar {
+    width: 119px;
+    height: 136px;
+    
+    img {
+      width: 119px;
+      height: 136px;
+    }
+  }
+
+  .avatar{
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    &:hover .action {
+      bottom: 0;
+    }
+
+    .action {
+      position: absolute;
+      bottom: -3em;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(22,22,22,0.8);
+      line-height: 2em;
+
+      transition: 1s;
+      -moz-transition: 1s;
+      -webkit-transition: 1s;
+
+      .edit-btn {
+        width: 50%;
+        display: block;
+        float: left;
+        color: #efefef;
+
+        &:hover {
+          background-color: rgba(120,120,120,0.8);
+          color: #fafafa;
+        }
+      }
+
+      .home-btn {
+        width: 50%;
+        display: block;
+        float: left;
+        color: #efefef;
+
+        &:hover {
+          background-color: rgba(120,120,120,0.8);
+          color: #fafafa;
+        }
+      }
+    }
+  }
+
+  .navigator {
+    position: absolute;
+    top: 0px;
+    left: 134px;
+    min-height: 136px;
+    width: 544px;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+
+    ul.nav{
+      margin: 0 auto;
+      padding: 0px;
+
+      li{
+        list-style: none;
+        display: inline-block;
+        margin-top: 1px;
+        margin: 15px 8px 0px 10px;
+        float: left;
+        text-align: center;
+       
+        float:left;
+      
+        .text{
+          margin-top: 8px;
+          display: block;
+          text-align: left;
+          color: #8f9091;
+          font-size: 20px;
+          position: relative;
+          float:right;
+          width: 20px;
+        }
+      
+        a:hover {
+          background-color: transparent;
+        }
+      }
+      
+    }  
+    
+    .sign{
+      width: 544px;
+      overflow: hidden;
+      p {
+        padding-left: 16px;
+        margin: 8px 0px 8px 0px;
+        color: #8f9091;
+      }
+    }
+
+    .formp{
+      margin: 15px 0px 0px 14px;
+      input{
+        width: 444px;
+        height: 26px;
+      }
+
+      button{
+        position: absolute;
+        float:right;
+        margin: 0px 10px 0px 4px;
+        height: 36px;
+      }
+    } 
+  }
+} 
+
+
+//end header

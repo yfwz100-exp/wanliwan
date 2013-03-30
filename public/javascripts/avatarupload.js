@@ -52,7 +52,7 @@
       $('#photo').val(opt.name);
       $('.preview img').attr('src', opt.url);
       var $target = $('#target').Jcrop({
-        aspectRatio: 1,
+        aspectRatio: 0.875,
         trackDocument: true,
         onSelect: function (c) {
           $('#clip-x').val(c.x);

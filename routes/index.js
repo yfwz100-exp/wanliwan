@@ -118,6 +118,31 @@ module.exports = {
     },
     get: user.homec
   },
+  
+  'homed': {
+    '(*)': {
+      all: auth.checkLogin,
+    },
+
+    get: user.homed,
+
+    'list': {
+      get: user.homeList
+    },
+  
+    'findfollow':{
+      get : user.findFollowView,
+      post: user.findFollow
+    },
+
+    'follow/:id': {
+      get : user.follow 
+    },
+
+    'avatar': require('./avatar')
+    
+  },
+
 
   'redirect': {
     get: function (req, res) {

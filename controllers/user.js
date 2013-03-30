@@ -138,7 +138,19 @@ exports.homec = function homec(req, res) {
   });
 };
 
-
+//begin homed
+exports.homed = function homed(req, res) {
+  Post.find({
+    author : {$in:req.session.user.followers}
+  }).sort({date:-1}).populate('author').exec(function(err,posts){
+    if (! posts) posts = [];
+    res.render('homed',{
+      user  : req.session.user,
+      posts : posts
+    });
+  });
+}
+//end   homed
 
 exports.homeList = function homeList(req, res) {
   if (req.xhr) {

@@ -1,0 +1,168 @@
+.posts{
+	background-color: #44628a;
+	float:left;
+	width: 678px;
+	padding-top: 17px;
+	padding-bottom: 17px;
+	border-radius: 25px 5px 25px 25px;
+	position: relative;
+
+	.tip{
+	  float: left;
+	  margin-top: 7px;
+	  margin-left: 25px; 
+	  margin-bottom: 7px;
+	  
+	  .message{
+		border: 1px solid #ccc;
+		width: 544px;
+		float: left;
+		margin-right: 15px;
+		background-color: #fff;
+		border-radius: 10px;
+
+
+
+		.msg_info{
+		  margin: 6px 10px 6px 10px;
+
+		  .name{
+		    float: left;
+		    color: #b2b2b2;
+		  }
+
+		  .time{
+		    float:right;
+		    color:#b2b2b2;
+		  }
+
+		  .tool{
+		    float:right;
+		    opacity:0.8;
+		    
+		    .edit{
+		      float:right;
+		      padding-right: 10px;
+		    }
+		    .trash{
+		      float: right;
+		    }
+		  }
+		}
+
+		.msg_notice {
+		  margin: 0px 10px 0px 10px;
+		  border-radius: 0px;
+		}
+
+		.msg_show {
+		  background-color: rgb(199,227,239);
+		  padding: 3px 10px 3px 10px; 
+		  margin: 0px 0px 5px 0px;
+		  border-radius: 0px;
+
+		  p{
+		    margin:0;
+		  }
+		}
+
+		.msg_interactive {
+		  margin: 0px 10px 0px 10px; 
+
+		  span{
+		    font-size: 14px;
+		  }
+
+		  .tags{
+		    color:#b2b2b2;
+		  }
+
+		  .reply{
+		    margin-left: 10px;
+		    float:right;
+		    opacity:0.8;
+		  }
+		  .retweet{
+		    margin-left: 10px;
+		    float:right;
+		    opacity:0.8;
+		  }
+		  .like{
+		    margin-left: 10px;
+		    float:right;
+		    opacity:0.8; 
+		  }
+		}
+
+	  }
+
+	  
+	  .avatar{
+		position: relative;
+		overflow: hidden;
+		border-radius: 10px;
+
+
+		&:hover .action {
+		  bottom: 0;
+		}
+
+		.action {
+		  position: absolute;
+		  bottom: -3em;
+		  left: 0;
+		  width: 100%;
+		  text-align: center;
+		  background-color: rgba(22,22,22,0.8);
+		  line-height: 2em;
+
+		  transition: 1s;
+		  -moz-transition: 1s;
+		  -webkit-transition: 1s;
+
+		  .edit-btn {
+		    width: 50%;
+		    display: block;
+		    float: left;
+		    color: #efefef;
+
+		    &:hover {
+		      background-color: rgba(120,120,120,0.8);
+		      color: #fafafa;
+		    }
+		  }
+
+		  .home-btn {
+		    width: 50%;
+		    display: block;
+		    float: left;
+		    color: #efefef;
+
+		    &:hover {
+		      background-color: rgba(120,120,120,0.8);
+		      color: #fafafa;
+		    }
+		  }
+		}
+	  }
+
+	}
+
+	.tip .msg_avatar {
+	  img {
+		width: 77px;
+		height: 88px;
+	  }
+	  margin: 0px 15px 0px 0px;
+	  border-radius: 10px;
+	  overflow:hidden;
+	}
+
+	.tip-right .msg_avatar {
+	  float: right;
+	}
+
+	.tip-left .msg_avatar {
+	  float: left;
+	}
+}

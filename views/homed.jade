@@ -1,0 +1,39 @@
+extends layout
+
+block append head
+  block title 
+    title 个人中心 - #{user.name}的主页
+
+  link(href='/stylesheets/homed.css',rel='stylesheet')
+  link(rel="stylesheet",type="text/css",href="/stylesheets/bootstrap-wysihtml5.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/text.css")
+  link(rel="stylesheet",type="text/css",href="/stylesheets/info-area.css")
+
+  script(src='/javascripts/wysihtml5-0.3.0.js')
+  script(src='/javascripts/bootstrap-wysihtml5.js')
+  script(src='/javascripts/prettify.js')
+
+  script(src='/javascripts/toggleelement.jquery.js')
+  script(src='/javascripts/page.js')
+
+  script(src='/javascripts/home.js')
+    
+block body
+  #everything
+    .header
+      include postbar
+    
+    .content
+      #posts-list.posts
+
+        #info-area
+          .title Hello,world!
+          .content Content is content.
+
+        include posts-list
+        .clearfix
+
+      .rightbar
+        include rightbar
+      .clearfix
+    .footer
