@@ -45,7 +45,7 @@ exports.register = function register(req, res) {
       });
     });
    
-  } else {
+  }else {
     req.render('done', {
       link: '/login',
       message: 'The user has been registered.'
@@ -208,4 +208,19 @@ exports.follow = function follow(req,res){
       }
     });
   });
+}
+
+exports.forward = {
+  view: function (req,res) {
+    res.render('');
+  },
+
+  post: function (req,res) {
+    var id = req.params.id;
+    var user = req.session.user;
+    console.log(id);
+     
+   
+  }
+
 }

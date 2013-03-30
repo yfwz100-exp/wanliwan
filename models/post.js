@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var postSchema = new mongoose.Schema({
   // 转发层次；为空即原创
-  parent: [String],
+  forwardid: [String],
   // 文字内容
   content: {
     type: String

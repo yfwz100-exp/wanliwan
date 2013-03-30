@@ -138,7 +138,10 @@ module.exports = {
     'follow/:id': {
       get : user.follow 
     },
-
+    'forward/:id': {
+      get : user.forward.view,
+      post: user.forward.post
+    },
     'avatar': require('./avatar')
     
   },
