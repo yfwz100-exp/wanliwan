@@ -91,8 +91,8 @@ module.exports = {
       post: text.post.post
     },
     'photo':{
-      get : photo.postPhotoView,
-      post: photo.postPhoto
+      get : photo.post.view,
+      post: photo.post.post
     },
   },
 

@@ -1,1 +1,5 @@
-img(src="#{post.photo}")
+img(src="/uploads/postphoto/small/"+"#{post.photo}",data-artZoom-show="/uploads/postphoto/big/"+"#{post.photo}",data-artZoom-source="/uploads/postphoto/big/"+"#{post.photo}").artZoom
+
+block append footerjs
+  script(src='/javascripts/photosize.js')
+

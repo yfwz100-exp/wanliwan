@@ -4,47 +4,66 @@ var async = require('async');
 var imgk = require('imagemagick');
 var fs = require('fs');
 
-exports.postPhotoView = function postPhotoView(req,res){
-  res.render('postPhoto');
-}
-
-//发布图片
-exports.postPhoto = function postPhoto(req,res){
-  var tmp_path    = req.files.photo.path;
-  var target_path = './public/uploads/'+req.session.user.name+req.files.photo.name;
-
-  fs.rename(tmp_path,target_path,function(err){
-    if(!err){
-      fs.unlink(tmp_path);           
-    }else{
-      res.render('error',{
-        link:'/new/photo',
-        message:  err
-      });
-    }
-  });
+exports.post = {
   
-  var photo = new Photo({
-    //content: req.body.photo.content,
-    author : req.session.user._id,
-    photo  : '/uploads/'+req.session.user.name+req.files.photo.name,
-    uri    : Date.now()+req.session.user.name
-  });
+  view: function postPhotoView(req,res){
+    res.render('postPhoto');
+  },
 
-  photo.save(function (err){
-    if(!err){
-      res.render('redirect',{
-        link:'/home',
-        message:'成功发表一张图片！'
+  //发布图片
+  post: function postPhoto(req,res){
+    var tmp_path    = req.files.photo.path;
+    var target_path = './public/uploads/postphoto/big/'+req.session.user.name+req.files.photo.name;
+    
+    fs.rename(tmp_path,target_path,function(err){
+      if(!err){
+        fs.unlink(tmp_path);           
+      }else{
+        res.render('error',{
+          link:'/new/photo',
+          message:  err
+        });
+      }
+    });
+    
+    var sourcepath=__dirname+'/../public/uploads/postphoto/big/'+req.session.user.name+req.files.photo.name;
+    var path=__dirname+ '/../public/uploads/postphoto/small/'+req.session.user.name+req.files.photo.name;
+
+    async.parallel({
+      photo: function (callback) {
+        imgk.convert(
+          [sourcepath,'-resize', 'x100', path]
+        , function (err, stdout) { 
+          if (err) throw err;
+            callback(null, path);
+          });
+        }
       });
-    }else{
-      res.render('redirect',{
-        link:'/text',
-        message:  err
-      });
-    }
+
+  
+    var photo = new Photo({
+      //content: req.body.photo.content,
+      author : req.session.user._id,
+      photo  : req.session.user.name+req.files.photo.name,
+      uri    : Date.now()+req.session.user.name
+    });
+
+    photo.save(function (err){
+      if(!err){
+        res.render('redirect',{
+          link:'/home',
+          message:'成功发表一张图片！'
+        });
+      }else{
+        res.render('redirect',{
+          link:'/text',
+          message:  err
+        });
+      }
       
-  });
+    });
+  }
+
 }
 
 /*
