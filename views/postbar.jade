@@ -22,10 +22,10 @@
       a(href="/new/link")
         i.icon-link.icon-4x
         .text 链接
-    //li
+    li
       a(href="/new/bell")
-        i.icon-quote-right.icon-4x
-        .text 签名
+        i.icon-file.icon-4x
+        .text 附件
     li
       a(href="/new/bell")
         i.icon-bell.icon-4x
@@ -39,5 +39,5 @@
     block new-post-area
   form(action='/new/text',method="POST").formp
     input(type="text",name='text[content]',placeholder="")
-    button(type="submit").btn 发表
+    button(type="submit").btn 发 表
 .clearfix

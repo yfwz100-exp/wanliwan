@@ -1,27 +1,32 @@
 .msg_info
   span.name #{post.author.name}
   if post.author.email==user.email
-    .tool
+    //.tool
       a(href="del/"+post.uri).trash
         i.icon-trash.close
       a(href="#").edit
         i.icon-edit.close
-      
+    .tool
+      a(href="del/"+post.uri).trash
+        span 删除
+     // a(href="#").edit
+        span 修改
+
   span.time #{post.date.getHours()}: #{post.date.getMinutes()}&nbsp;&nbsp;
   //span.date #{post.date.getMonth()+1} - #{post.date.getDate()}
 
   .clearfix
 
 .msg_notice
-  a(href="#") @somebody
-  span What the fuck you are doing?
+  //a(href="#") @somebody
+  //span What the fuck you are doing?
 .msg_show
   if  !(post.photo.length||post.music.length||post.video.length||post.link.length)
     include text
   if  post.photo.length
     include photo
 
-.msg_interactive
+//.msg_interactive
   span.tags
     i.icon-tags 心情
   a(href="#").reply
@@ -33,3 +38,11 @@
   a(href="#").like
     i.icon-heart.close
       span 343332434
+.msg_interactive
+  a(href="#").reply
+    span 333324345
+  a(href="#").retweet
+    span 3332434
+  a(href="#").like
+    span 343332434
+
