@@ -5,7 +5,7 @@ each post in posts
   if tempost.author.email != post.author.email
     - position = !position
   - tempost = post
-  .tip(class=position?'tip-left':'tip-right')
+  .tip(class=position?'tip-right':'tip-left')
     .avatar.msg_avatar
       img(src=post.author.avatar)
       .action 

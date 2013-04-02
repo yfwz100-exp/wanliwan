@@ -1,171 +1,186 @@
-.posts{
-	background-color: #44628a;
-	float:left;
-	width: 613px;
-	padding-top: 16px;
-	padding-bottom: 17px;
-	border-radius: 25px 25px 0px 0px;
-	position: relative;
+.content {
+  position: absolute;
+  top: 137px;
+  width: 613px;
+  .posts{
+		background-color: #44628a;
+		float:left;
+		width: 613px;
+		padding-top: 20px;
+		padding-bottom: 17px;
+		border-radius: 25px 10px 0px 0px;
 
-	.tip{
-	  float: left;
-	  margin-top: 5px;
-	  margin-left: 23px; 
-	  margin-bottom: 5px;
-	  
-	  .message{
-		  border: 1px solid #ccc;
-		  width: 488px;
-     // min-height: 72px;
+		.tip{
+			float: left;
+			margin-top: 5px;
+			margin-left: 25px; 
+			margin-bottom: 5px;
+			
+			.avatar{
+				position: relative;
+				overflow: hidden;
+				border-radius: 10px;
+
+
+				&:hover .action {
+				  bottom: 0;
+				}
+
+				.action {
+				  position: absolute;
+				  bottom: -3em;
+				  left: 0;
+				  width: 100%;
+				  text-align: center;
+				  background-color: rgba(22,22,22,0.8);
+				  line-height: 2em;
+
+				  transition: 1s;
+				  -moz-transition: 1s;
+				  -webkit-transition: 1s;
+
+				  .edit-btn {
+				    width: 50%;
+				    display: block;
+				    float: left;
+				    color: #efefef;
+
+				    &:hover {
+				      background-color: rgba(120,120,120,0.8);
+				      color: #fafafa;
+				    }
+				  }
+
+				  .home-btn {
+				    width: 50%;
+				    display: block;
+				    float: left;
+				    color: #efefef;
+
+				    &:hover {
+				      background-color: rgba(120,120,120,0.8);
+				      color: #fafafa;
+				    }
+				  }
+				}
+			}
+
+		}
+
+		.tip .msg_avatar {
+			img {
+				width: 63px;
+				height: 72px;
+			}
+			margin: 0px 0px 0px 0px;
+			//border-radius: 10px;
+			overflow:hidden;
+		}
+
+		.tip-right .msg_avatar {
+		  border-radius: 8px 8px 8px 8px;
+			float: right;
+		}
+		.tip-right .message{
+			border: 1px solid #ccc;
+			width: 490px;
+		  // min-height: 72px;
+			float: left;
+			margin-right: 10px;
+			background-color: #eeeeff;
+			//border-radius: 10px;
+		  border-radius: 8px 3px 3px 8px;
+		}
+	
+		.tip-left .msg_avatar{
+		  border-radius: 8px 8px 8px 8px;
+		  float:left;
+		}	
+		.tip-left .message{
+			border: 1px solid #ccc;
+			width: 490px;
+		 	min-height: 72px;
+			float: left;
+			margin-left: 10px;
+			background-color: #eeeeff;
+			//border-radius: 10px;    
+			border-radius: 3px 8px 8px 3px;
+		}
+
+	}
+
+	//message内的class 
+	.msg_info{
+		margin: 5px 10px 5px 10px;
+
+		.name{
 		  float: left;
-		  margin-right: 14px;
-		  background-color: #eeeeff;
-		  border-radius: 10px;
+		  color: black;
+		  font-size: 16px;
+			font-weight: bold;
+		}
 
+		.time{
+		  float:right;
+		  color:#b2b2b2;
+		}
 
-
-		  .msg_info{
-		    margin: 6px 10px 6px 10px;
-
-		    .name{
-		      float: left;
-		      color: black;
-          font-size: 16px;
-		    }
-
-		    .time{
-		      float:right;
-		      color:#b2b2b2;
-		    }
-
-		    .tool{
-		      float:right;
-		      opacity:0.8;
-		    
-		      .edit{
-		        float:right;
-		        padding-right: 10px;
-		      }
-		      .trash{
-		        float: right;
-		      }
-		    }
+		.tool{
+		  float:right;
+		  opacity:0.8;
+		
+		  .edit{
+		    float:right;
+		    padding-right: 10px;
 		  }
-
-		  .msg_notice {
-		    margin: 0px 10px 0px 10px;
-		    border-radius: 0px;
+		  .trash{
+		    float: right;
 		  }
-
-		  .msg_show {
-		    //background-color: rgb(199,227,239);
-		    padding: 4px 10px 4px 10px; 
-		    margin: 0px 0px 5px 0px;
-		    border-radius: 0px;
-        font-size: 14px;
-
-        .small{
-          cursor: url("/home/qzr/wanliwan/public/images/zoomin.cur");
-        }
-
-		    p{
-		      margin:0;
-		    }
-		  }
-
-		  .msg_interactive {
-		    margin: 0px 10px 0px 10px; 
-
-		    .tags{
-		      color:#b2b2b2;
-		    }
-
-		    .reply{
-		      margin-left: 10px;
-		      float:right;
-		      opacity:0.8;
-		    }
-		    .retweet{
-		      margin-left: 10px;
-		      float:right;
-		      opacity:0.8;
-		    }
-		    .like{
-		      margin-left: 10px;
-		      float:right;
-		      opacity:0.8; 
-		    }
-		  }
-
-	  }
-
-	  
-	  .avatar{
-		  position: relative;
-		  overflow: hidden;
-		  border-radius: 10px;
-
-
-		  &:hover .action {
-		    bottom: 0;
-		  }
-
-		  .action {
-		    position: absolute;
-		    bottom: -3em;
-		    left: 0;
-		    width: 100%;
-		    text-align: center;
-		    background-color: rgba(22,22,22,0.8);
-		    line-height: 2em;
-
-		    transition: 1s;
-		    -moz-transition: 1s;
-		    -webkit-transition: 1s;
-
-		    .edit-btn {
-		      width: 50%;
-		      display: block;
-		      float: left;
-		      color: #efefef;
-
-		      &:hover {
-		        background-color: rgba(120,120,120,0.8);
-		        color: #fafafa;
-		      }
-		    }
-
-		    .home-btn {
-		      width: 50%;
-		      display: block;
-		      float: left;
-		      color: #efefef;
-
-		      &:hover {
-		        background-color: rgba(120,120,120,0.8);
-		        color: #fafafa;
-		      }
-		    }
-		  }
-	  }
-
+		}
 	}
 
-	.tip .msg_avatar {
-	  img {
-		width: 63px;
-		height: 72px;
-	  }
-	  margin: 0px 14px 0px 0px;
-	  border-radius: 10px;
-	  overflow:hidden;
+	.msg_notice {
+		margin: 0px 10px 0px 10px;
+		border-radius: 0px;
 	}
 
-	.tip-right .msg_avatar {
-	  float: right;
+	.msg_show {
+		//background-color: rgb(199,227,239);
+		padding: 4px 10px 4px 10px; 
+		margin: 0px 0px 5px 0px;
+		border-radius: 0px;
+		font-size: 14px;
+
+		.small{
+		  cursor: url("/home/qzr/wanliwan/public/images/zoomin.cur");
+		}
+
+		p{
+		  margin:0;
+		}
 	}
 
-	.tip-left .msg_avatar {
-	  float: left;
+	.msg_interactive {
+		margin: 0px 10px 0px 10px; 
+
+		.tags{
+		  color:#b2b2b2;
+		}
+
+		.reply{
+		  margin-left: 10px;
+		  float:right;
+		  opacity:0.8;
+		}
+		.retweet{
+		  margin-left: 10px;
+		  float:right;
+		  opacity:0.8;
+		}
+		.like{
+		  margin-left: 10px;
+		  float:right;
+		  opacity:0.8; 
+		}
 	}
 }
