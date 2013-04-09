@@ -1,14 +1,23 @@
-form(enctype="multipart/form-data",action="/new/photo",method='POST').form-horizontal
-  .control-group
-    label.control-label 选择图片路径
-    input(type="file",name="photo",onkeypress="return false",onpaste="return false",onchange="previewImg(this.value)")#photo
-  .control-group
-    label.control-label 图片预览
-    .preview
-  .form-actions
-    input(type="submit",value='火速上传').btn.btn-primary
-    a(href='/home').btn 还是算了
+extends layout
+block append head
+  title 图片
+  link(rel='stylesheet',href='/stylesheets/jquery.Jcrop.css')  
 
+block body
+  .stage.container.featurette
+    include postPhoto
+    // 
+      form(enctype="multipart/form-data",action="/new/photo",method='POST').form-horizontal
+        .control-group
+          label.control-label 选择图片路径
+          input(type="file",name="photo",onkeypress="return false",onpaste="return false",onchange="previewImg(this.value)")#photo
+        .control-group
+          label.control-label 图片预览
+          .preview
+        .form-actions
+          input(type="submit",value='火速上传').btn.btn-primary
+          a(href='/home').btn 还是算了
+block append  footerjs
   script(src='/javascripts/mutileupload.js')
   script(src='/javascripts/jquery.Jcrop.min.js')
   script

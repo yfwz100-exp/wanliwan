@@ -1,0 +1,87 @@
+
+body {
+  color: rgb(32,32,32);
+  background-color: rgb(224,224,224);
+
+  .content {
+    margin-top: 1em;
+  }
+}
+
+.header {
+  background-color: rgb(255,255,255);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px #ccc;
+
+  .user-info {
+    float: left;
+    width: 250px;
+
+    .avatar {
+      position: relative;
+      overflow: hidden;
+      float: left;
+      margin: 1em;
+
+      &:hover .action {
+        bottom: 0;
+      }
+
+      .action {
+        position: absolute;
+        bottom: -2em;
+        left: 0;
+        transition: 1s;
+        text-align: center;
+
+        width: 100%;
+        background-color: rgba(200,200,200,0.4);
+
+        a {
+          display: block;
+        }
+      }
+    }
+    
+    .author {
+      margin-top: 1em;
+
+      .title {
+        font-size: 2em;
+        line-height: 1.5em;
+      }
+    }
+  }
+
+}
+
+.navigator {
+  float: left;
+  width: 400px;
+
+  .nav-pills {
+    margin-bottom: 0px;
+
+    li {
+      position: relative;
+      overflow: hidden;
+
+      span {
+        display: block;
+        position: absolute;
+        bottom: -1em;
+      }
+    }
+  }
+
+  #new-post-area {
+    form {
+      margin: 0;
+    }
+    textarea {
+      width: 100%;
+      height: 3em;
+    }
+  }
+}
+

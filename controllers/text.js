@@ -4,6 +4,11 @@ var Text = require('../models').Text
   , async = require('async')
   ;
 
+/**
+ * 文字发表控制器。
+ *
+ */
+
 exports.post = {
 
   // 视图。相应HTTP GET操作。

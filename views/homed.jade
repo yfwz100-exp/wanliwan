@@ -22,6 +22,55 @@ block append head
   //script(src='/javascripts/page.js')
 
   //script(src='/javascripts/home.js')
+  script
+    $(function () {
+      
+      var overlay = {
+        _obj: $('<div></div>').css({
+          position: 'fixed', 
+          left: '0', top: '0', width:'100%', height:'100%',
+          display: 'none',
+          backgroundColor: 'rgba(22,22,22,0.85)'
+        }).appendTo(document.body).click(function (event) {
+          event.preventDefault();
+          overlay.revert();
+        }),
+        display: function () {
+          this._obj.show();
+          return this;
+        },
+        revert: function (callback) {
+          if (callback) {
+            this._callback = callback;
+          } else {
+            if (this._callback) this._callback();
+            this._obj.fadeOut();
+          }
+          return this;
+        }
+      };
+
+      $('#post-box').click(function () {
+        var $this = $(this);
+        $('textarea', this).slideDown().focus();
+        $('.text-holder', this).hide();
+        overlay.display().revert(function () {
+          $('#post-box .text-holder').html($('#post-box textarea').slideUp().val()).show();
+        });
+      });
+
+      $('#post').submit(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        $.post($this.attr('action'), 
+        $this.serialize()).success(function (data) {
+          overlay.revert();
+          var $data = $(data).hide();
+          $('#posts-list').prepend($data);
+          $data.slideDown();
+        });
+      });
+    });
     
 block body
   #everything
@@ -37,9 +86,9 @@ block body
           .content Content is content.
 
         include posts-list
-       
 
     .rightbar
       include rightbar
     .clearfix
+
     .footer

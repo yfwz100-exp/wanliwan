@@ -7,7 +7,11 @@ var fs = require('fs');
 exports.post = {
   
   view: function postPhotoView(req,res){
-    res.render('postPhoto');
+    if (req.xhr) {
+      res.render('postPhoto');
+    } else {
+      res.render('postPhotoPage');
+    }
   },
 
   //发布图片
