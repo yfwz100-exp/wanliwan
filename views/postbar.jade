@@ -5,9 +5,9 @@
     a.home-btn(href="#") 去主页
       
 .navigator
-  ul.nav
+  ul#navbar.nav
     li
-      a(href="/new/photo")
+      a(href="/new/photo")#img-btn
         i.icon-camera-retro.icon-4x
         .text 图片
     li
@@ -38,6 +38,8 @@
 
   .new-post-area 
     form(action='/new/text',method="POST")#post.formp
+      #attachment
+      .clearfix
       #post-box.input-box 
         block new-post-area
           .text-holder Ka, is everything well?

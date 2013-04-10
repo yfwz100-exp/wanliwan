@@ -34,6 +34,7 @@ exports.post = {
       var text = new Text({
         content: req.body.text.content,
         author : req.session.user._id,
+        post   : req.body.image,
         uri    : Date.now().toString()+req.session.user.name
       });
 

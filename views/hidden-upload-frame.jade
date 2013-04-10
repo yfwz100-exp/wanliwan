@@ -1,0 +1,15 @@
+extends layout
+
+append head
+  title Upload photo
+  script
+    if(window.parent && window.parent['#{callback}']) {
+      window.parent['#{callback}']({name: '#{name}', url:"/uploads/avatar/#{name}"})
+      console.log("#{callback}");
+    }
+block body
+  form(action='#{actionUrl}',enctype='multipart/form-data',method='POST')#photo-upload
+    input(type='hidden',name='callback',value=callback)
+    input(type='file',name='photo')#photo-upload-btn
+    button(type='submit') Upload
+

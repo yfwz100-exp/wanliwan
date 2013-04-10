@@ -9,8 +9,9 @@ module.exports = {
   get : photo.avatar.view,
   post: photo.avatar.post,
   
-  'upload':{
-    get : photo.upload.view,
-    post: photo.upload.post,
-  },
+  'upload': require('../controllers/upload')({
+    uploadDir: './public/uploads/avatar/',
+    errorUrl: '/new/photo'
+  })
+
 };

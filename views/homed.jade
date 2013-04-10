@@ -61,15 +61,39 @@ block append head
 
       $('#post').submit(function (event) {
         event.preventDefault();
+        if($('#post-box textarea').css('display')=='none') return;
         var $this = $(this);
         $.post($this.attr('action'), 
         $this.serialize()).success(function (data) {
           overlay.revert();
           var $data = $(data).hide();
           $('#posts-list').prepend($data);
+          $('#attachment').html('').hide();
           $data.slideDown();
         });
       });
+      
+      $('#img-btn').append($('<iframe src="/new/photo/upload?callback=upload"></iframe>').css({
+        display: 'none'
+      })).click(function(event) {
+        var $ifr;
+        event.preventDefault();
+        $ifr = $(this).children('iframe').contents();
+        $ifr.find('#photo-upload-btn').click().change(function() {
+          return $ifr.find('#photo-upload').submit();
+        });
+      });
+
+      window.upload = function(opt) {
+        if (opt.name) {
+          var $obj = $('<div class="img"></div>')
+            .append('<img width="200" src="/uploads/post/'+opt.name+'" />')
+            .append('<input type="hidden" name="image[]" value="'+ opt.name +'" />');
+          $('#attachment').append($obj).show();
+          $('#post-box').click();
+        }
+      };
+
     });
     
 block body

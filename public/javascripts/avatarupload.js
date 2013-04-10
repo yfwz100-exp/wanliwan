@@ -13,13 +13,11 @@
       });
     });
 
-
     $('#firbroimg').append($('<iframe src="/home/avatar/upload?callback=upload"></iframe>').css({
       display: 'none'
     })).click(function(event) {
       var $ifr;
      
-                      
       event.preventDefault();
       $ifr = $(this).children('iframe').contents();
       $ifr.find('#photo-upload-btn').click().change(function() {

@@ -90,9 +90,16 @@ module.exports = {
       get: text.post.view,
       post: text.post.post
     },
+
     'photo':{
       get : photo.post.view,
-      post: photo.post.post
+      post: photo.post.post,
+
+      'upload': require('../controllers/upload')({
+        uploadDir: './public/uploads/post/',
+        errorUrl: '/home'
+      })
+
     },
   },
 
